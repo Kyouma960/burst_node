@@ -1,0 +1,10 @@
+# IDEs
+.idea
+.vscode
+*.plist
+target/
+
+cargo
+.cache/
+config-node.toml.sample
+config-rpc.toml.sample

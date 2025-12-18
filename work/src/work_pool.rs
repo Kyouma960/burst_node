@@ -1,0 +1,359 @@
+use std::{
+    mem::size_of,
+    num::NonZero,
+    sync::Arc,
+    thread::{self, JoinHandle, available_parallelism},
+    time::Duration,
+};
+
+use rsnano_types::{Root, WorkNonce, WorkRequest, WorkRequestAsync};
+use rsnano_utils::container_info::{ContainerInfo, ContainerInfoProvider};
+
+#[cfg(feature = "opencl")]
+use super::gpu_work_generator::GpuWorkGenerator;
+use super::{CpuWorkGenerator, OpenClConfig, WorkQueueCoordinator, WorkThread, WorkTicket};
+
+pub struct WorkPoolBuilder {
+    cpu_thread_count: Option<usize>,
+    cpu_rate_limiter: Option<Duration>,
+    enable_gpu: bool,
+    opencl_config: Option<OpenClConfig>,
+}
+
+impl WorkPoolBuilder {
+    pub fn threads(mut self, count: usize) -> Self {
+        self.cpu_thread_count = Some(count);
+        self
+    }
+
+    pub fn gpu_only(mut self) -> Self {
+        self.enable_gpu = true;
+        self.cpu_thread_count = Some(0);
+        self
+    }
+
+    pub fn one_cpu_only(mut self) -> Self {
+        self.enable_gpu = false;
+        self.cpu_thread_count = Some(1);
+        self
+    }
+
+    pub fn disabled(mut self) -> Self {
+        self.enable_gpu = false;
+        self.cpu_thread_count = Some(0);
+        self
+    }
+
+    pub fn cpu_rate_limit(mut self, limit: Duration) -> Self {
+        self.cpu_rate_limiter = Some(limit);
+        self
+    }
+
+    pub fn opencl_config(mut self, config: OpenClConfig) -> Self {
+        self.opencl_config = Some(config);
+        self
+    }
+
+    pub fn enable_gpu(mut self, enable: bool) -> Self {
+        self.enable_gpu = enable;
+        self
+    }
+
+    pub fn finish(self) -> WorkPool {
+        let thread_count = self.cpu_thread_count.unwrap_or_else(|| {
+            available_parallelism()
+                .unwrap_or(NonZero::new(1).unwrap())
+                .into()
+        });
+        let cpu_rate_limiter = self.cpu_rate_limiter.unwrap_or(Duration::ZERO);
+        let opencl_config = self.opencl_config.unwrap_or_default();
+
+        WorkPool::new(
+            thread_count,
+            cpu_rate_limiter,
+            self.enable_gpu,
+            opencl_config,
+        )
+    }
+}
+
+pub struct WorkPool {
+    threads: Vec<JoinHandle<()>>,
+    work_queue: Arc<WorkQueueCoordinator>,
+    cpu_rate_limiter: Duration,
+    has_open_cl: bool,
+}
+
+impl WorkPool {
+    fn new(
+        thread_count: usize,
+        cpu_rate_limiter: Duration,
+        enable_open_cl: bool,
+        opencl_config: OpenClConfig,
+    ) -> Self {
+        let mut pool = Self {
+            threads: Vec::new(),
+            work_queue: Arc::new(WorkQueueCoordinator::new()),
+            cpu_rate_limiter,
+            has_open_cl: false,
+        };
+
+        pool.spawn_threads(thread_count, enable_open_cl, opencl_config);
+        pool
+    }
+
+    pub fn builder() -> WorkPoolBuilder {
+        WorkPoolBuilder {
+            cpu_thread_count: None,
+            cpu_rate_limiter: None,
+            enable_gpu: false,
+            opencl_config: None,
+        }
+    }
+
+    pub fn new_null(configured_work: WorkNonce) -> Self {
+        let mut pool = Self {
+            threads: Vec::new(),
+            work_queue: Arc::new(WorkQueueCoordinator::new()),
+            cpu_rate_limiter: Duration::ZERO,
+            has_open_cl: false,
+        };
+
+        pool.threads
+            .push(pool.spawn_stub_worker_thread(configured_work.into()));
+        pool
+    }
+
+    pub fn disabled() -> Self {
+        Self {
+            threads: Vec::new(),
+            work_queue: Arc::new(WorkQueueCoordinator::new()),
+            cpu_rate_limiter: Duration::ZERO,
+            has_open_cl: false,
+        }
+    }
+
+    #[allow(unused_variables)]
+    fn spawn_threads(
+        &mut self,
+        thread_count: usize,
+        enable_open_cl: bool,
+        opencl_config: OpenClConfig,
+    ) {
+        #[cfg(feature = "opencl")]
+        {
+            if enable_open_cl {
+                match GpuWorkGenerator::new(opencl_config) {
+                    Ok(gpu) => {
+                        self.threads.push(self.spawn_worker_thread(gpu));
+                        self.has_open_cl = true;
+                    }
+                    Err(e) => {
+                        tracing::warn!("Error initializing GPU: {:?}", e);
+                    }
+                }
+            }
+        }
+
+        for _ in 0..thread_count {
+            self.threads.push(self.spawn_cpu_worker_thread())
+        }
+    }
+
+    fn spawn_cpu_worker_thread(&self) -> JoinHandle<()> {
+        self.spawn_worker_thread(CpuWorkGenerator::new(self.cpu_rate_limiter))
+    }
+
+    fn spawn_stub_worker_thread(&self, configured_work: u64) -> JoinHandle<()> {
+        self.spawn_worker_thread(StubWorkGenerator(configured_work))
+    }
+
+    fn spawn_worker_thread<T>(&self, work_generator: T) -> JoinHandle<()>
+    where
+        T: WorkGenerator + Send + 'static,
+    {
+        let work_queue = Arc::clone(&self.work_queue);
+        thread::Builder::new()
+            .name("Work pool".to_string())
+            .spawn(move || {
+                WorkThread::new(work_generator, work_queue).work_loop();
+            })
+            .unwrap()
+    }
+
+    pub fn has_opencl(&self) -> bool {
+        self.has_open_cl
+    }
+
+    pub fn work_generation_enabled(&self) -> bool {
+        !self.threads.is_empty()
+    }
+
+    pub fn cancel(&self, root: &Root) {
+        self.work_queue.cancel(root);
+    }
+
+    pub fn stop(&self) {
+        self.work_queue.stop();
+    }
+
+    pub fn size(&self) -> usize {
+        self.work_queue.lock_work_queue().len()
+    }
+
+    pub fn pending_value_size() -> usize {
+        size_of::<WorkRequestAsync>()
+    }
+
+    pub fn thread_count(&self) -> usize {
+        self.threads.len()
+    }
+
+    pub fn generate_async(&self, req: WorkRequestAsync) {
+        debug_assert!(!req.root.is_zero());
+        if self.threads.is_empty() {
+            req.cancelled();
+        } else {
+            self.work_queue.enqueue(req);
+        }
+    }
+
+    pub fn generate(&self, req: WorkRequest) -> Option<WorkNonce> {
+        if self.threads.is_empty() {
+            return None;
+        }
+
+        let (req_async, done) = req.into_async();
+        self.generate_async(req_async);
+        done.wait()
+    }
+}
+
+impl ContainerInfoProvider for WorkPool {
+    fn container_info(&self) -> ContainerInfo {
+        [("pending", self.size(), Self::pending_value_size())].into()
+    }
+}
+
+impl Default for WorkPool {
+    fn default() -> Self {
+        Self::builder().finish()
+    }
+}
+
+impl Drop for WorkPool {
+    fn drop(&mut self) {
+        self.stop();
+        for handle in self.threads.drain(..) {
+            handle.join().unwrap();
+        }
+    }
+}
+
+pub(crate) trait WorkGenerator {
+    fn create(
+        &mut self,
+        item: &Root,
+        min_difficulty: u64,
+        work_ticket: &WorkTicket,
+    ) -> Option<WorkNonce>;
+}
+
+struct StubWorkGenerator(u64);
+
+impl WorkGenerator for StubWorkGenerator {
+    fn create(
+        &mut self,
+        _item: &Root,
+        _min_difficulty: u64,
+        _work_ticket: &WorkTicket,
+    ) -> Option<WorkNonce> {
+        Some(self.0.into())
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::{WorkThresholds, dev_difficulty};
+    use rsnano_types::{Block, TestBlockBuilder};
+    use std::sync::{LazyLock, mpsc};
+
+    pub static WORK_POOL: LazyLock<WorkPool> =
+        LazyLock::new(|| WorkPool::new(4, Duration::ZERO, false, OpenClConfig::default()));
+
+    #[test]
+    fn work_disabled() {
+        let pool = WorkPool::new(0, Duration::ZERO, false, OpenClConfig::default());
+        let result = pool.generate(WorkRequest::new(Root::from(1), dev_difficulty()));
+        assert_eq!(result, None);
+    }
+
+    #[test]
+    fn work_one() {
+        let pool = &WORK_POOL;
+        let mut block = TestBlockBuilder::state().build();
+        let root = block.root();
+        block.set_work(
+            pool.generate(WorkRequest::new(root, dev_difficulty()))
+                .unwrap(),
+        );
+        assert!(WorkThresholds::publish_dev().threshold_base() < difficulty(&block));
+    }
+
+    #[test]
+    fn work_validate() {
+        let pool = &WORK_POOL;
+        let mut block = TestBlockBuilder::legacy_send().work(6).build();
+        assert!(difficulty(&block) < WorkThresholds::publish_dev().threshold_base());
+        let root = block.root();
+        block.as_block_mut().set_work(
+            pool.generate(WorkRequest::new(root, dev_difficulty()))
+                .unwrap(),
+        );
+        assert!(difficulty(&block) > WorkThresholds::publish_dev().threshold_base());
+    }
+
+    #[test]
+    fn work_cancel() {
+        let (tx, rx) = mpsc::channel();
+        let key = Root::from(12345);
+        WORK_POOL.generate_async(WorkRequestAsync::new(
+            key,
+            WorkThresholds::publish_dev().base,
+            Box::new(move |_done| {
+                tx.send(()).unwrap();
+            }),
+        ));
+        WORK_POOL.cancel(&key);
+        assert_eq!(rx.recv_timeout(Duration::from_secs(2)), Ok(()))
+    }
+
+    #[test]
+    fn work_difficulty() {
+        let root = Root::from(1);
+        let difficulty1 = 0xff00000000000000;
+        let difficulty2 = 0xfff0000000000000;
+        let difficulty3 = 0xffff000000000000;
+        let mut result_difficulty = u64::MAX;
+        let req_diff1 = WorkRequest::new(root, difficulty1);
+        let req_diff2 = WorkRequest::new(root, difficulty2);
+
+        while result_difficulty > difficulty2 {
+            let work = WORK_POOL.generate(req_diff1.clone()).unwrap();
+            result_difficulty = WorkThresholds::publish_dev().difficulty(&root, work);
+        }
+        assert!(result_difficulty > difficulty1);
+
+        result_difficulty = u64::MAX;
+        while result_difficulty > difficulty3 {
+            let work = WORK_POOL.generate(req_diff2.clone()).unwrap();
+            result_difficulty = WorkThresholds::publish_dev().difficulty(&root, work);
+        }
+        assert!(result_difficulty > difficulty2);
+    }
+
+    fn difficulty(block: &Block) -> u64 {
+        WorkThresholds::publish_dev().difficulty_block(block)
+    }
+}

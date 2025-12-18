@@ -1,0 +1,26 @@
+[package]
+name = "rsnano_daemon"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+ledger_snapshots = [
+	"rsnano_utils/ledger_snapshots",
+	"rsnano_ledger/ledger_snapshots",
+	"rsnano_rpc_server/ledger_snapshots",
+]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_derive = "1"
+rsnano_nullable_http_client = { path = "../nullables/http_client" }
+rsnano_types = { path = "../types" }
+rsnano_utils = { path = "../utils" }
+rsnano_ledger = { path = "../ledger" }
+rsnano_node = { path = "../node" }
+rsnano_rpc_server = { path = "../rpc/server" }
+rsnano_websocket_server = { path = "../websocket/server" }
+anyhow = "1"
+tokio = { version = "1", features = ["signal"] }
+tracing = "0"

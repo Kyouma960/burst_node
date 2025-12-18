@@ -1,0 +1,91 @@
+@startuml "Confirmation Height"
+
+package "Infrastructure" {
+    class Ledger
+}
+
+package "Logic"{
+
+    class WriteBatcher {
+        enqueue(section)
+        next_write(data_requester): BlockChainSection
+        is_done()
+    }
+
+    class BatchWriteSizeManager {
+        current()
+    }
+
+    interface LedgerDataRequester{
+        get_block(hash)
+        was_block_pruned(hash)
+        get_confirmation_height(account)
+        get_account_info(account)
+    }
+
+    class CementationWalker{
+        initialize(hash)
+        next_cementation()
+    }
+
+    class BlockCementerLogic{
+        enqueue_block(block)
+        process_current_block(data_requester, callbacks): bool
+        get_flush_decision()
+        next_write(data_requester): BlockChainSection
+        batch_completed(callbacks)
+    }
+
+    enum FlushDecision{
+        DontFlush
+        TryFlush
+        ForceFlush
+    }
+}
+
+package "Values"{
+    struct BlockChainSection{
+        account
+        bottom_height
+        bottom_hash
+        top_height
+        top_hash
+    }
+}
+
+package "Application"{
+    class CementationThread{
+        add(block)
+        run(mode)
+    }
+
+    class BlockCementer{
+        process(block, callbacks)
+    }
+
+    class LedgerAdapter
+}
+
+Ledger --> BlockChainSection
+
+BlockCementer --> Ledger
+BlockCementer --> LedgerAdapter
+BlockCementer --> BlockCementerLogic
+
+BlockCementerLogic --> CementationWalker
+BlockCementerLogic --> WriteBatcher
+BlockCementerLogic --> FlushDecision
+
+CementationWalker --> BlockChainSection: creates
+CementationWalker --> LedgerDataRequester
+
+WriteBatcher --> BatchWriteSizeManager
+WriteBatcher --> LedgerDataRequester
+WriteBatcher --> BlockChainSection
+
+CementationThread --> BlockCementer
+
+LedgerAdapter ..|> LedgerDataRequester
+LedgerAdapter --> Ledger
+
+@enduml

@@ -1,0 +1,92 @@
+use std::{path::Path, sync::Arc};
+
+use anyhow::Context;
+
+use rsnano_ledger::{AnySet, Ledger};
+use rsnano_nullable_lmdb::{LmdbEnvironment, Transaction, WriteTransaction};
+use rsnano_store_lmdb::LmdbWalletStore;
+use rsnano_types::{KeyDerivationFunction, PrivateKey, PublicKey, WalletId, WorkNonce};
+
+pub struct Wallet {
+    id: WalletId,
+    pub store: Arc<LmdbWalletStore>,
+}
+
+impl Wallet {
+    pub fn new(
+        id: WalletId,
+        env: &LmdbEnvironment,
+        fanout: usize,
+        kdf: KeyDerivationFunction,
+        representative: PublicKey,
+        wallet_path: &Path,
+    ) -> anyhow::Result<Self> {
+        let store = LmdbWalletStore::new(fanout, kdf, env, &representative, &wallet_path)
+            .context("could not create wallet store")?;
+
+        Ok(Self {
+            id,
+            store: Arc::new(store),
+        })
+    }
+
+    pub fn new_from_json(
+        id: WalletId,
+        env: &LmdbEnvironment,
+        fanout: usize,
+        kdf: KeyDerivationFunction,
+        wallet_path: &Path,
+        json: &str,
+    ) -> anyhow::Result<Self> {
+        let store = LmdbWalletStore::new_from_json(fanout, kdf, env, &wallet_path, json)
+            .context("could not create wallet store")?;
+
+        Ok(Self {
+            id,
+            store: Arc::new(store),
+        })
+    }
+
+    pub fn id(&self) -> &WalletId {
+        &self.id
+    }
+
+    pub fn work_put(&self, txn: &mut WriteTransaction, pub_key: &PublicKey, work: WorkNonce) {
+        self.store.work_put(txn, pub_key, work);
+    }
+
+    pub fn deterministic_check(&self, txn: &dyn Transaction, index: u32, ledger: &Ledger) -> u32 {
+        let mut result = index;
+        let any = ledger.any();
+        let mut i = index + 1;
+        let mut n = index + 64;
+        while i < n {
+            let prv = self.store.deterministic_key(txn, i);
+            let pair = PrivateKey::from_bytes(prv.as_bytes());
+            // Check if account received at least 1 block
+            let latest = any.account_head(&pair.account());
+            match latest {
+                Some(_) => {
+                    result = i;
+                    // i + 64 - Check additional 64 accounts
+                    // i/64 - Check additional accounts for large wallets. I.e. 64000/64 = 1000 accounts to check
+                    n = i + 64 + (i / 64);
+                }
+                None => {
+                    // Check if there are pending blocks for account
+                    if any.receivable_exists(pair.account()) {
+                        result = i;
+                        n = i + 64 + (i / 64);
+                    }
+                }
+            }
+
+            i += 1;
+        }
+        result
+    }
+
+    pub fn live(&self) -> bool {
+        self.store.is_open()
+    }
+}

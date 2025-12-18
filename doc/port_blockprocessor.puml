@@ -1,0 +1,118 @@
+@startuml "Port Blockprocessor"
+class block_processor #PaleGreen
+class active_transactions
+class election #PaleGreen
+class confirmation_solicitor
+class election_status #PaleGreen
+class online_reps #PaleGreen
+class ledger #PaleGreen
+class vote_generator
+class vote_broadcaster
+class vote_processor
+class vote_spacing #PaleGreen
+class wallets #PaleGreen
+class local_vote_history #PaleGreen
+class vote_cache #PaleGreen
+class signature_checker #PaleGreen
+
+interface message_visitor
+
+package "Networking"{
+class network
+class rep_crawler
+class peer_exclusion #PaleGreen
+class tcp_message_manager #PaleGreen
+class channel_tcp_wrapper #PaleGreen
+class channel_tcp #PaleGreen
+class outbound_bandwidth_limiter #PaleGreen
+class syn_cookies #PaleGreen
+class tcp_server #PaleGreen
+class tcp_channels #PaleGreen
+class tcp_server_factory #PaleGreen
+class network_filter #PaleGreen
+class tcp_listener
+interface tcp_server_observer #PaleGreen
+}
+
+package "Bootstrapping"{
+    class bulk_pull_server #PaleGreen
+    class bulk_pull_account_server #PaleGreen
+    class frontier_req_server #PaleGreen
+    class bulk_push_server #PaleGreen
+    class bootstrap_message_visitor #PaleGreen
+    class bootstrap_message_visitor_factory #PaleGreen {
+        create_visitor(tcp_server)
+    }
+}
+
+active_transactions --> election
+active_transactions --> online_reps
+active_transactions --> ledger
+active_transactions --> block_processor
+active_transactions --> vote_generator
+active_transactions --> network
+active_transactions --> local_vote_history
+active_transactions --> vote_cache
+active_transactions ..> confirmation_solicitor
+confirmation_solicitor --> network
+
+election --> election_status
+
+vote_generator --> vote_broadcaster
+vote_broadcaster --> vote_processor
+vote_generator --> vote_spacing
+vote_generator --> ledger
+vote_generator --> wallets
+
+vote_processor --> signature_checker
+vote_processor --> active_transactions
+vote_processor --> online_reps
+vote_processor --> rep_crawler 
+vote_processor --> ledger
+
+rep_crawler --> tcp_channels
+rep_crawler --> online_reps
+rep_crawler --> ledger
+rep_crawler --> active_transactions
+rep_crawler --> vote_processor
+
+network --> network_filter
+network --> tcp_channels
+network --> rep_crawler
+network --> syn_cookies
+
+tcp_channels --> tcp_server_factory
+tcp_channels --> outbound_bandwidth_limiter
+tcp_channels --> syn_cookies
+tcp_channels --> tcp_message_manager
+tcp_channels --> channel_tcp_wrapper
+tcp_channels --> peer_exclusion
+
+tcp_server_factory ..> tcp_server: creates
+tcp_server --> syn_cookies
+tcp_server --> network_filter
+tcp_server --> bootstrap_message_visitor_factory
+tcp_server --> tcp_server_observer
+
+tcp_listener ..|> tcp_server_observer
+tcp_listener --> network
+
+channel_tcp_wrapper --> channel_tcp
+channel_tcp --> tcp_server
+
+bulk_pull_server --> tcp_server
+bulk_pull_account_server --> tcp_server
+bulk_push_server --> tcp_server
+bulk_push_server --> bootstrap_initiator
+bulk_push_server --> block_processor
+
+bootstrap_message_visitor ..|> message_visitor
+bootstrap_message_visitor --> bulk_pull_account_server
+bootstrap_message_visitor --> bulk_pull_server
+bootstrap_message_visitor --> frontier_req_server
+bootstrap_message_visitor --> bulk_push_server
+
+bootstrap_message_visitor_factory ..> bootstrap_message_visitor: creates
+bootstrap_message_visitor_factory --> block_processor
+bootstrap_message_visitor_factory --> bootstrap_initiator
+@enduml

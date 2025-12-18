@@ -1,0 +1,14 @@
+[package]
+name = "rsnano_rpc_messages"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+ledger_snapshots = []
+
+[dependencies]
+rsnano_types = { path = "../../types" }
+rsnano_messages = { path = "../../messages" }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+indexmap = { version = "2", features = ["serde"] }

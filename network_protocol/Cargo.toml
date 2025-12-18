@@ -1,0 +1,18 @@
+[package]
+name = "rsnano_network_protocol"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+ledger_snapshots = ["rsnano_messages/ledger_snapshots"]
+
+[dependencies]
+rsnano_types = { path = "../types" }
+rsnano_utils = { path = "../utils" }
+rsnano_messages = { path = "../messages" }
+rsnano_network = { path = "../network" }
+anyhow = "1"
+rand = { version = "0.9.2" }
+tracing = "0"
+strum = "0"
+strum_macros = "0"

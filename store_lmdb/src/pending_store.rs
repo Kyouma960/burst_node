@@ -1,0 +1,283 @@
+use std::{ops::RangeBounds, sync::Arc};
+
+use rsnano_nullable_lmdb::{
+    ConfiguredDatabase, DatabaseFlags, Error, LmdbDatabase, LmdbEnvironment, Transaction,
+    WriteFlags, WriteTransaction,
+};
+use rsnano_output_tracker::{OutputListenerMt, OutputTrackerMt};
+use rsnano_types::{Account, BlockHash, PendingInfo, PendingKey};
+
+use crate::{LmdbIterator, PENDING_TEST_DATABASE, iterator::LmdbRangeIterator};
+
+pub struct LmdbPendingStore {
+    database: LmdbDatabase,
+    put_listener: OutputListenerMt<(PendingKey, PendingInfo)>,
+    delete_listener: OutputListenerMt<PendingKey>,
+}
+
+impl LmdbPendingStore {
+    pub fn new(env: &LmdbEnvironment) -> anyhow::Result<Self> {
+        let database = env.create_db(Some("pending"), DatabaseFlags::empty())?;
+
+        Ok(Self {
+            database,
+            put_listener: OutputListenerMt::new(),
+            delete_listener: OutputListenerMt::new(),
+        })
+    }
+
+    pub fn database(&self) -> LmdbDatabase {
+        self.database
+    }
+
+    pub fn track_puts(&self) -> Arc<OutputTrackerMt<(PendingKey, PendingInfo)>> {
+        self.put_listener.track()
+    }
+
+    pub fn track_deletions(&self) -> Arc<OutputTrackerMt<PendingKey>> {
+        self.delete_listener.track()
+    }
+
+    pub fn put(&self, txn: &mut WriteTransaction, key: &PendingKey, pending: &PendingInfo) {
+        self.put_listener.emit((key.clone(), pending.clone()));
+        let key_bytes = key.to_bytes();
+        let pending_bytes = pending.to_bytes();
+        txn.put(
+            self.database,
+            &key_bytes,
+            &pending_bytes,
+            WriteFlags::empty(),
+        )
+        .unwrap();
+    }
+
+    pub fn del(&self, txn: &mut WriteTransaction, key: &PendingKey) {
+        self.delete_listener.emit(key.clone());
+        let key_bytes = key.to_bytes();
+        txn.delete(self.database, &key_bytes, None).unwrap();
+    }
+
+    pub fn get(&self, txn: &dyn Transaction, key: &PendingKey) -> Option<PendingInfo> {
+        let key_bytes = key.to_bytes();
+        match txn.get(self.database, &key_bytes) {
+            Ok(mut bytes) => {
+                Some(PendingInfo::deserialize(&mut bytes).expect("Should be valid pending info"))
+            }
+            Err(Error::NotFound) => None,
+            Err(e) => {
+                panic!("Could not load pending info: {:?}", e);
+            }
+        }
+    }
+
+    pub fn iter<'tx>(
+        &self,
+        tx: &'tx dyn Transaction,
+    ) -> impl Iterator<Item = (PendingKey, PendingInfo)> + 'tx + use<'tx> {
+        let cursor = tx.open_ro_cursor(self.database).unwrap();
+        LmdbIterator::new(cursor, read_pending_record)
+    }
+
+    pub fn iter_range<'tx>(
+        &self,
+        tx: &'tx dyn Transaction,
+        range: impl RangeBounds<PendingKey> + 'static,
+    ) -> impl Iterator<Item = (PendingKey, PendingInfo)> + 'tx {
+        let cursor = tx.open_ro_cursor(self.database).unwrap();
+        LmdbRangeIterator::new(
+            cursor,
+            range.start_bound().map(|b| b.to_bytes().to_vec()),
+            range.end_bound().map(|b| b.to_bytes().to_vec()),
+            read_pending_record,
+        )
+    }
+
+    pub fn exists(&self, txn: &dyn Transaction, key: &PendingKey) -> bool {
+        self.iter_range(txn, *key..)
+            .next()
+            .map(|(k, _)| k == *key)
+            .unwrap_or(false)
+    }
+
+    pub fn any(&self, tx: &dyn Transaction, account: &Account) -> bool {
+        let key = PendingKey::new(*account, BlockHash::ZERO);
+        self.iter_range(tx, key..)
+            .next()
+            .map(|(k, _)| k.receiving_account == *account)
+            .unwrap_or(false)
+    }
+}
+
+pub struct ConfiguredPendingDatabaseBuilder {
+    database: ConfiguredDatabase,
+}
+
+impl ConfiguredPendingDatabaseBuilder {
+    pub fn new() -> Self {
+        Self {
+            database: ConfiguredDatabase::new(PENDING_TEST_DATABASE, "pending"),
+        }
+    }
+
+    pub fn pending(mut self, key: &PendingKey, info: &PendingInfo) -> Self {
+        self.database.insert(key.to_bytes(), info.to_bytes());
+        self
+    }
+
+    pub fn build(self) -> ConfiguredDatabase {
+        self.database
+    }
+
+    pub fn create(frontiers: Vec<(PendingKey, PendingInfo)>) -> ConfiguredDatabase {
+        let mut builder = Self::new();
+        for (key, info) in frontiers {
+            builder = builder.pending(&key, &info);
+        }
+        builder.build()
+    }
+}
+
+pub fn read_pending_record(mut key: &[u8], mut value: &[u8]) -> (PendingKey, PendingInfo) {
+    let key = PendingKey::deserialize(&mut key).unwrap();
+    let info = PendingInfo::deserialize(&mut value).unwrap();
+    (key, info)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use rsnano_nullable_lmdb::{DeleteEvent, PutEvent};
+
+    struct Fixture {
+        env: Arc<LmdbEnvironment>,
+        store: LmdbPendingStore,
+    }
+
+    impl Fixture {
+        pub fn new() -> Self {
+            Self::with_stored_data(Vec::new())
+        }
+
+        pub fn with_stored_data(entries: Vec<(PendingKey, PendingInfo)>) -> Self {
+            let env = LmdbEnvironment::null_builder()
+                .configured_database(ConfiguredPendingDatabaseBuilder::create(entries))
+                .build();
+
+            let env = Arc::new(env);
+            Self {
+                env: env.clone(),
+                store: LmdbPendingStore::new(&env).unwrap(),
+            }
+        }
+    }
+
+    #[test]
+    fn not_found() {
+        let fixture = Fixture::new();
+        let txn = fixture.env.begin_read();
+        let result = fixture.store.get(&txn, &PendingKey::new_test_instance());
+        assert!(result.is_none());
+        assert_eq!(
+            fixture.store.exists(&txn, &PendingKey::new_test_instance()),
+            false
+        );
+    }
+
+    #[test]
+    fn load_pending_info() {
+        let key = PendingKey::new_test_instance();
+        let info = PendingInfo::new_test_instance();
+        let fixture = Fixture::with_stored_data(vec![(key.clone(), info.clone())]);
+        let txn = fixture.env.begin_read();
+
+        let result = fixture.store.get(&txn, &key);
+
+        assert_eq!(result, Some(info));
+        assert_eq!(fixture.store.exists(&txn, &key), true);
+    }
+
+    #[test]
+    fn add_pending() {
+        let fixture = Fixture::new();
+        let mut txn = fixture.env.begin_write();
+        let put_tracker = txn.track_puts();
+        let pending_key = PendingKey::new_test_instance();
+        let pending = PendingInfo::new_test_instance();
+
+        fixture.store.put(&mut txn, &pending_key, &pending);
+
+        assert_eq!(
+            put_tracker.output(),
+            vec![PutEvent {
+                database: PENDING_TEST_DATABASE.into(),
+                key: pending_key.to_bytes().to_vec(),
+                value: pending.to_bytes().to_vec(),
+                flags: WriteFlags::empty()
+            }]
+        );
+    }
+
+    #[test]
+    fn delete() {
+        let fixture = Fixture::new();
+        let mut txn = fixture.env.begin_write();
+        let delete_tracker = txn.track_deletions();
+        let pending_key = PendingKey::new_test_instance();
+
+        fixture.store.del(&mut txn, &pending_key);
+
+        assert_eq!(
+            delete_tracker.output(),
+            vec![DeleteEvent {
+                database: PENDING_TEST_DATABASE.into(),
+                key: pending_key.to_bytes().to_vec()
+            }]
+        )
+    }
+
+    #[test]
+    fn iter_empty() {
+        let fixture = Fixture::new();
+        let tx = fixture.env.begin_read();
+        assert!(fixture.store.iter(&tx).next().is_none());
+    }
+
+    #[test]
+    fn iter() {
+        let key = PendingKey::new_test_instance();
+        let info = PendingInfo::new_test_instance();
+        let fixture = Fixture::with_stored_data(vec![(key.clone(), info.clone())]);
+        let tx = fixture.env.begin_read();
+
+        let mut it = fixture.store.iter(&tx);
+        let (k, v) = it.next().unwrap();
+        assert_eq!(k, key);
+        assert_eq!(v, info);
+        assert!(it.next().is_none());
+    }
+
+    #[test]
+    fn tracks_puts() {
+        let fixture = Fixture::new();
+        let mut txn = fixture.env.begin_write();
+        let key = PendingKey::new_test_instance();
+        let info = PendingInfo::new_test_instance();
+        let put_tracker = fixture.store.track_puts();
+
+        fixture.store.put(&mut txn, &key, &info);
+
+        assert_eq!(put_tracker.output(), vec![(key, info)]);
+    }
+
+    #[test]
+    fn tracks_deletions() {
+        let fixture = Fixture::new();
+        let mut txn = fixture.env.begin_write();
+        let key = PendingKey::new_test_instance();
+        let delete_tracker = fixture.store.track_deletions();
+
+        fixture.store.del(&mut txn, &key);
+
+        assert_eq!(delete_tracker.output(), vec![key]);
+    }
+}

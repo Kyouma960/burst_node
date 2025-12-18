@@ -1,0 +1,12 @@
+[package]
+name = "rsnano_rpc_client"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rsnano_types = { path = "../../types" }
+rsnano_rpc_messages = { path = "../messages" }
+anyhow = "1"
+reqwest = { version = "0", default-features = false, features = ["json"]}
+serde = { version = "1" }
+serde_json = { version = "1", features = ["preserve_order"] }
