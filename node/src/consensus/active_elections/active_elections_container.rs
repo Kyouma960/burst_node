@@ -2,12 +2,12 @@ use std::{collections::HashMap, time::Duration};
 
 use strum::EnumCount;
 
-use rsnano_ledger::RepWeights;
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::{
+use burst_ledger::RepWeights;
+use burst_nullable_clock::Timestamp;
+use burst_types::{
     Amount, Block, BlockHash, PublicKey, QualifiedRoot, SavedBlock, TimePriority, VoteError,
 };
-use rsnano_utils::{
+use burst_utils::{
     container_info::{ContainerInfo, ContainerInfoProvider},
     stats::{StatsCollection, StatsSource},
     sync::backpressure_channel::Sender,
@@ -496,7 +496,7 @@ pub struct ApplyVoteArgs<'a> {
 mod tests {
     use super::*;
     use crate::consensus::ReceivedVote;
-    use rsnano_types::{BlockPriority, PrivateKey, TimePriority, Vote, VoteSource};
+    use burst_types::{BlockPriority, PrivateKey, TimePriority, Vote, VoteSource};
     use std::sync::Arc;
 
     #[test]

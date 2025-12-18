@@ -27,7 +27,7 @@ mod verification_store;
 
 use primitive_types::U256;
 
-use rsnano_nullable_lmdb::LmdbDatabase;
+use burst_nullable_lmdb::LmdbDatabase;
 
 pub use account_store::{ConfiguredAccountDatabaseBuilder, LmdbAccountStore};
 pub use block_store::{ConfiguredBlockDatabaseBuilder, LmdbBlockStore};
@@ -40,8 +40,8 @@ pub use online_weight_store::LmdbOnlineWeightStore;
 pub use peer_store::*;
 pub use pending_store::{ConfiguredPendingDatabaseBuilder, LmdbPendingStore, read_pending_record};
 pub use rep_weight_store::*;
-pub use rsnano_nullable_lmdb::EnvironmentFlags;
-pub use rsnano_nullable_lmdb::EnvironmentOptions;
+pub use burst_nullable_lmdb::EnvironmentFlags;
+pub use burst_nullable_lmdb::EnvironmentOptions;
 pub use store::{LedgerCache, LmdbStore, MemoryStats};
 pub use upgrades::create_and_update_lmdb_env;
 pub use vacuum::vacuum;
@@ -87,11 +87,11 @@ pub(crate) fn parallel_traversal(
 
 pub const STORE_VERSION_MINIMUM: i32 = 24;
 
-/// RsNano uses store versions upwards of 10_000 so that there is a clear
-/// distinction between databases from nano_node and RsNano
+/// Burst uses store versions upwards of 10_000 so that there is a clear
+/// distinction between databases from nano_node and Burst
 pub const STORE_VERSION_CURRENT: i32 = 10_001;
 
-/// The first store version where RsNano is incompatible with nano_node
+/// The first store version where Burst is incompatible with nano_node
 pub const FIRST_INCOMPATIBLE_STORE_VERSION: i32 = 10_000;
 
 pub const BLOCK_INDEX_DATABASE: LmdbDatabase = LmdbDatabase::new_null(1);
@@ -109,7 +109,7 @@ pub const VERIFICATION_TEST_DATABASE: LmdbDatabase = LmdbDatabase::new_null(11);
 #[cfg(test)]
 mod test {
     use super::*;
-    use rsnano_nullable_lmdb::{DatabaseFlags, DeleteEvent, LmdbEnvironment};
+    use burst_nullable_lmdb::{DatabaseFlags, DeleteEvent, LmdbEnvironment};
 
     #[test]
     fn tracks_deletes() {

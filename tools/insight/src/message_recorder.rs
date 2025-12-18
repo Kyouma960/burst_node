@@ -3,7 +3,7 @@ use std::sync::{
     atomic::{AtomicBool, Ordering},
 };
 
-use rsnano_nullable_clock::Timestamp;
+use burst_nullable_clock::Timestamp;
 
 use crate::{
     message_collection::{MessageCollection, RecordedMessage},

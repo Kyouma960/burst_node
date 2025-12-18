@@ -1,6 +1,6 @@
 mod telemetry_factory;
 
-use rsnano_ledger::DEV_GENESIS_HASH;
+use burst_ledger::DEV_GENESIS_HASH;
 pub use telemetry_factory::TelemetryFactory;
 
 use std::{
@@ -13,12 +13,12 @@ use std::{
     time::{Duration, Instant},
 };
 
-use rsnano_messages::{Message, TelemetryAck, TelemetryData};
-use rsnano_network::{Channel, ChannelId, DeadChannelCleanupStep, Network, TrafficType};
-use rsnano_nullable_clock::SteadyClock;
-use rsnano_types::BlockHash;
-use rsnano_utils::container_info::{ContainerInfo, ContainerInfoProvider};
-use rsnano_utils::stats::{DetailType, StatType, Stats};
+use burst_messages::{Message, TelemetryAck, TelemetryData};
+use burst_network::{Channel, ChannelId, DeadChannelCleanupStep, Network, TrafficType};
+use burst_nullable_clock::SteadyClock;
+use burst_types::BlockHash;
+use burst_utils::container_info::{ContainerInfo, ContainerInfoProvider};
+use burst_utils::stats::{DetailType, StatType, Stats};
 
 use crate::{
     config::{DEV_NETWORK_PARAMS, NetworkParams},
@@ -302,19 +302,19 @@ impl Telemetry {
 
 build_info::build_info!(fn build_info);
 
-pub fn rsnano_version_string() -> String {
+pub fn burst_version_string() -> String {
     let version = &build_info().crate_info.version;
     if version.pre.is_empty() {
-        format!("RsNano V{}.{}", version.major, version.minor)
+        format!("Burst V{}.{}", version.major, version.minor)
     } else {
         format!(
-            "RsNano V{}.{}-{}",
+            "Burst V{}.{}-{}",
             version.major, version.minor, version.pre
         )
     }
 }
 
-pub fn rsnano_build_info() -> String {
+pub fn burst_build_info() -> String {
     let info = build_info();
     format!(
         "built with {} ({}) at {} from {}",
@@ -330,7 +330,7 @@ pub fn rsnano_build_info() -> String {
 
 pub use build_info::semver::Version;
 
-pub fn rsnano_version() -> Version {
+pub fn burst_version() -> Version {
     build_info().crate_info.version.clone()
 }
 

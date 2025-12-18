@@ -1,4 +1,4 @@
-use rsnano_ledger::{DEV_GENESIS_BLOCK, DEV_GENESIS_HASH};
+use burst_ledger::{DEV_GENESIS_BLOCK, DEV_GENESIS_HASH};
 use test_helpers::{System, setup_rpc_client_and_server};
 
 #[test]

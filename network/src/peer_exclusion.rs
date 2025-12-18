@@ -5,8 +5,8 @@ use std::{
     time::Duration,
 };
 
-use rsnano_nullable_clock::Timestamp;
-use rsnano_utils::container_info::ContainerInfo;
+use burst_nullable_clock::Timestamp;
+use burst_utils::container_info::ContainerInfo;
 
 /// Manages excluded peers.
 /// Peers are excluded for a while if they behave badly

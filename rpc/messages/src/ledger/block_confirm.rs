@@ -1,5 +1,5 @@
 use crate::{RpcCommand, common::HashRpcMessage};
-use rsnano_types::BlockHash;
+use burst_types::BlockHash;
 
 impl RpcCommand {
     pub fn block_confirm(hash: BlockHash) -> Self {
@@ -10,7 +10,7 @@ impl RpcCommand {
 #[cfg(test)]
 mod tests {
     use crate::RpcCommand;
-    use rsnano_types::BlockHash;
+    use burst_types::BlockHash;
     use serde_json::{from_str, to_string_pretty};
 
     #[test]

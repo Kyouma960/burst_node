@@ -6,15 +6,15 @@ use std::{
     time::Duration,
 };
 
-use rsnano_messages::{ConfirmAck, Message};
-use rsnano_network::TrafficType;
-use rsnano_types::Vote;
-use rsnano_utils::stats::{StatsCollection, StatsSource};
+use burst_messages::{ConfirmAck, Message};
+use burst_network::TrafficType;
+use burst_types::Vote;
+use burst_utils::stats::{StatsCollection, StatsSource};
 
 use super::history::{RebroadcastError, RebroadcastHistory, RebroadcastHistoryConfig};
 use crate::{consensus::RepTier, transport::MessageFlooder};
-use rsnano_ledger::RepWeightCache;
-use rsnano_nullable_clock::{SteadyClock, Timestamp};
+use burst_ledger::RepWeightCache;
+use burst_nullable_clock::{SteadyClock, Timestamp};
 use strum::{EnumCount, IntoEnumIterator};
 
 /// Rebroadcasts a given vote if necessary
@@ -156,7 +156,7 @@ impl StatsSource for RebroadcastStats {
 mod tests {
     use super::*;
     use crate::transport::FloodEvent;
-    use rsnano_types::Vote;
+    use burst_types::Vote;
 
     #[test]
     fn rebroadcast_vote() {

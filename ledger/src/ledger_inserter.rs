@@ -1,5 +1,5 @@
 use crate::{AnySet, Ledger, LedgerSet, ledger_constants::LEDGER_CONSTANTS_STUB};
-use rsnano_types::{
+use burst_types::{
     Account, AccountInfo, Amount, Block, BlockHash, ChangeBlockArgs, DEV_GENESIS_KEY, Epoch, Link,
     OpenBlockArgs, PendingInfo, PendingKey, PrivateKey, PublicKey, ReceiveBlockArgs, SavedBlock,
     SendBlockArgs, StateBlockArgs, WorkNonce,
@@ -241,7 +241,7 @@ impl<'a> LedgerBlockInserter<'a> {
 mod tests {
     use super::*;
     use crate::{DEV_GENESIS_ACCOUNT, Ledger};
-    use rsnano_types::BlockType;
+    use burst_types::BlockType;
 
     #[test]
     fn insert_one_block() {

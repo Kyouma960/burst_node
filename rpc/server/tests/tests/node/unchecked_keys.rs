@@ -1,4 +1,4 @@
-use rsnano_types::{Amount, Block, BlockHash, PrivateKey, StateBlockArgs};
+use burst_types::{Amount, Block, BlockHash, PrivateKey, StateBlockArgs};
 use test_helpers::{System, assert_timely2, setup_rpc_client_and_server};
 
 #[test]

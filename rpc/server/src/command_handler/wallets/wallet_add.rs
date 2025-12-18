@@ -1,5 +1,5 @@
 use crate::command_handler::RpcCommandHandler;
-use rsnano_rpc_messages::{AccountResponse, WalletAddArgs};
+use burst_rpc_messages::{AccountResponse, WalletAddArgs};
 
 impl RpcCommandHandler {
     pub(crate) fn wallet_add(&self, args: WalletAddArgs) -> anyhow::Result<AccountResponse> {

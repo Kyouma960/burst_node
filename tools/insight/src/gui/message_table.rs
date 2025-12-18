@@ -5,9 +5,9 @@ use eframe::egui::{
 };
 use egui_extras::{Column, TableBuilder};
 
-use rsnano_messages::{Message, MessageType};
-use rsnano_network::ChannelDirection;
-use rsnano_types::{Account, BlockHash};
+use burst_messages::{Message, MessageType};
+use burst_network::ChannelDirection;
+use burst_types::{Account, BlockHash};
 
 use super::{MessageViewModel, PaletteColor, badge::Badge};
 use crate::message_collection::{MessageCollection, RecordedMessage};

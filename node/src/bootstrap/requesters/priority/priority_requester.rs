@@ -3,9 +3,9 @@ use std::sync::{
     atomic::{AtomicU64, Ordering},
 };
 
-use rsnano_ledger::Ledger;
-use rsnano_network::Channel;
-use rsnano_utils::stats::{StatsCollection, StatsSource};
+use burst_ledger::Ledger;
+use burst_network::Channel;
+use burst_utils::stats::{StatsCollection, StatsSource};
 
 use super::{
     pull_count_decider::PullCountDecider, pull_type_decider::PullTypeDecider,
@@ -156,9 +156,9 @@ impl StatsSource for PriorityRequesterStats {
 mod tests {
     use std::sync::{Arc, Mutex, RwLock};
 
-    use rsnano_ledger::Ledger;
-    use rsnano_network::{Network, token_bucket::TokenBucket};
-    use rsnano_types::Account;
+    use burst_ledger::Ledger;
+    use burst_network::{Network, token_bucket::TokenBucket};
+    use burst_types::Account;
 
     use super::PriorityRequester;
     use crate::{

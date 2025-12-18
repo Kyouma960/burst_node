@@ -1,4 +1,4 @@
-use rsnano_types::WalletId;
+use burst_types::WalletId;
 use test_helpers::{System, setup_rpc_client_and_server};
 
 #[test]

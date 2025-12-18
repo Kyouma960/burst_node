@@ -1,7 +1,7 @@
 use crate::{RpcCommand, common::WalletRpcMessage};
 use crate::{RpcU32, RpcU64};
-use rsnano_types::Amount;
-use rsnano_types::WalletId;
+use burst_types::Amount;
+use burst_types::WalletId;
 use serde::{Deserialize, Serialize};
 
 impl RpcCommand {
@@ -26,7 +26,7 @@ pub struct WalletInfoResponse {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::WalletId;
+    use burst_types::WalletId;
     use serde_json::to_string_pretty;
 
     #[test]

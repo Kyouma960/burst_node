@@ -1,7 +1,7 @@
-use rsnano_ledger::{DEV_GENESIS_ACCOUNT, test_helpers::UnsavedBlockLatticeBuilder};
-use rsnano_node::Node;
-use rsnano_rpc_messages::BlockTypeDto;
-use rsnano_types::{Amount, BlockHash, PrivateKey, WalletId};
+use burst_ledger::{DEV_GENESIS_ACCOUNT, test_helpers::UnsavedBlockLatticeBuilder};
+use burst_node::Node;
+use burst_rpc_messages::BlockTypeDto;
+use burst_types::{Amount, BlockHash, PrivateKey, WalletId};
 use std::sync::Arc;
 use test_helpers::{System, setup_rpc_client_and_server};
 

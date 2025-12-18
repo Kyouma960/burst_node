@@ -1,4 +1,4 @@
-use rsnano_types::{Amount, DEV_GENESIS_KEY, WalletId};
+use burst_types::{Amount, DEV_GENESIS_KEY, WalletId};
 use test_helpers::{System, send_block, setup_rpc_client_and_server};
 
 #[test]

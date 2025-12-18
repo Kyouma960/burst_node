@@ -1,6 +1,6 @@
 use std::path::PathBuf;
 
-use rsnano_nullable_lmdb::{EnvironmentFlags, EnvironmentOptions};
+use burst_nullable_lmdb::{EnvironmentFlags, EnvironmentOptions};
 
 #[derive(PartialEq, Eq, Clone, Copy, Debug)]
 pub enum SyncStrategy {

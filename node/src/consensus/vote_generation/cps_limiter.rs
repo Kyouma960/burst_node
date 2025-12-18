@@ -1,6 +1,6 @@
 use crate::block_rate_calculator::CurrentBlockRates;
-use rsnano_network::token_bucket::TokenBucket;
-use rsnano_nullable_clock::Timestamp;
+use burst_network::token_bucket::TokenBucket;
+use burst_nullable_clock::Timestamp;
 use std::{sync::Arc, time::Duration};
 
 /// Limits the amount of created final votes with the goal of

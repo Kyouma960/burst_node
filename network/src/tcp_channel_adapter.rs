@@ -5,8 +5,8 @@ use std::{
 };
 use tokio::{select, time::sleep};
 
-use rsnano_nullable_clock::{SteadyClock, Timestamp};
-use rsnano_nullable_tcp::TcpStream;
+use burst_nullable_clock::{SteadyClock, Timestamp};
+use burst_nullable_tcp::TcpStream;
 
 use crate::{
     Channel, ChannelDirection, ChannelId, TEST_ENDPOINT_1, TEST_ENDPOINT_2,

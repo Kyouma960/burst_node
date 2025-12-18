@@ -4,15 +4,15 @@ mod election_scheduler {
     use std::time::Duration;
 
     use super::*;
-    use rsnano_ledger::{DEV_GENESIS_ACCOUNT, test_helpers::UnsavedBlockLatticeBuilder};
-    use rsnano_node::{
+    use burst_ledger::{DEV_GENESIS_ACCOUNT, test_helpers::UnsavedBlockLatticeBuilder};
+    use burst_node::{
         config::NodeConfig,
         consensus::{
             AecInsertRequest, election::ElectionBehavior,
             election_schedulers::OptimisticSchedulerConfig,
         },
     };
-    use rsnano_types::{Amount, BlockPriority, DEV_GENESIS_KEY, PrivateKey};
+    use burst_types::{Amount, BlockPriority, DEV_GENESIS_KEY, PrivateKey};
     use test_helpers::{setup_chains, setup_rep};
 
     #[test]
@@ -78,7 +78,7 @@ mod election_scheduler {
         let node = system
             .build_node()
             .config(NodeConfig {
-                active_elections: rsnano_node::consensus::ActiveElectionsConfig {
+                active_elections: burst_node::consensus::ActiveElectionsConfig {
                     max_elections: 1,
                     ..Default::default()
                 },

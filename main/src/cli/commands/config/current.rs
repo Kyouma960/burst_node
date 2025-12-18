@@ -4,13 +4,13 @@ use crate::cli::GlobalArgs;
 use clap::{ArgGroup, Parser};
 use toml::{from_str, to_string};
 
-use rsnano_node::config::{
+use burst_node::config::{
     DaemonConfig, DaemonToml, NetworkConstants, NetworkParams, get_node_toml_config_path,
     get_rpc_toml_config_path,
 };
-use rsnano_rpc_server::{RpcServerConfig, RpcServerToml};
-use rsnano_types::Networks;
-use rsnano_utils::get_cpu_count;
+use burst_rpc_server::{RpcServerConfig, RpcServerToml};
+use burst_types::Networks;
+use burst_utils::get_cpu_count;
 
 #[derive(Parser, PartialEq, Debug)]
 #[command(group = ArgGroup::new("input1")

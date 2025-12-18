@@ -1,7 +1,7 @@
 use std::collections::{HashMap, VecDeque};
 
 use super::election::ConfirmedElection;
-use rsnano_types::BlockHash;
+use burst_types::BlockHash;
 
 pub(crate) struct ConfirmedElectionsCache {
     max_len: usize,
@@ -56,7 +56,7 @@ impl Default for ConfirmedElectionsCache {
 
 #[cfg(test)]
 mod tests {
-    use rsnano_types::{PrivateKey, SavedBlock};
+    use burst_types::{PrivateKey, SavedBlock};
 
     use super::*;
     use crate::consensus::election::ConfirmationType;

@@ -1,5 +1,5 @@
 use crate::command_handler::RpcCommandHandler;
-use rsnano_rpc_messages::{
+use burst_rpc_messages::{
     UncheckedKeyDto, UncheckedKeysArgs, UncheckedKeysResponse, unwrap_u64_or_max,
 };
 
@@ -17,7 +17,7 @@ impl RpcCommandHandler {
                 UncheckedKeyDto {
                     key: *dependency,
                     hash: block.hash(),
-                    modified_timestamp: 0.into(), // not supported in RsNano
+                    modified_timestamp: 0.into(), // not supported in Burst
                     contents: block.json_representation(),
                 }
             })

@@ -1,4 +1,4 @@
-use rsnano_types::DeserializationError;
+use burst_types::DeserializationError;
 use serde_derive::Serialize;
 use std::{
     fmt::Display,

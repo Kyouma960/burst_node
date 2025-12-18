@@ -1,5 +1,5 @@
 use crate::{RpcCommand, common::AccountsRpcMessage};
-use rsnano_types::Account;
+use burst_types::Account;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
@@ -19,7 +19,7 @@ pub struct AccountsRepresentativesResponse {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::Account;
+    use burst_types::Account;
     use serde_json::{from_str, to_string_pretty};
 
     #[test]

@@ -1,5 +1,5 @@
 use crate::RpcCommand;
-use rsnano_types::{Account, WalletId};
+use burst_types::{Account, WalletId};
 use serde::{Deserialize, Serialize};
 
 impl RpcCommand {
@@ -22,7 +22,7 @@ pub struct AccountMoveArgs {
 #[cfg(test)]
 mod tests {
     use crate::RpcCommand;
-    use rsnano_types::Account;
+    use burst_types::Account;
     use serde_json::{Value, from_str, to_string_pretty};
 
     #[test]

@@ -1,5 +1,5 @@
 use anyhow::anyhow;
-use rsnano_output_tracker::{OutputListenerMt, OutputTrackerMt};
+use burst_output_tracker::{OutputListenerMt, OutputTrackerMt};
 use serde::{Serialize, de::DeserializeOwned};
 use std::{collections::HashMap, sync::Arc};
 
@@ -254,7 +254,7 @@ impl From<JsonResponse> for Response {
 mod tests {
     use super::*;
     use reqwest::StatusCode;
-    use rsnano_nullable_tcp::get_available_port;
+    use burst_nullable_tcp::get_available_port;
 
     #[tokio::test]
     async fn make_real_request() {

@@ -1,8 +1,8 @@
 use std::sync::Mutex;
 
-use rsnano_ledger::OwningAnySet;
-use rsnano_types::Frontier;
-use rsnano_utils::stats::{DetailType, StatType, Stats};
+use burst_ledger::OwningAnySet;
+use burst_types::Frontier;
+use burst_utils::stats::{DetailType, StatType, Stats};
 
 use super::frontier_checker::FrontierChecker;
 use crate::bootstrap::state::{BootstrapLogic, frontiers_processor::OutdatedAccounts};
@@ -61,8 +61,8 @@ impl<'a> FrontierWorker<'a> {
 mod tests {
     use super::*;
     use crate::bootstrap::state::CandidateAccounts;
-    use rsnano_ledger::Ledger;
-    use rsnano_types::{Account, AccountInfo, BlockHash};
+    use burst_ledger::Ledger;
+    use burst_types::{Account, AccountInfo, BlockHash};
 
     #[test]
     fn empty() {

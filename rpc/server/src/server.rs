@@ -7,8 +7,8 @@ use axum::{
     middleware::map_request,
     routing::post,
 };
-use rsnano_node::Node;
-use rsnano_rpc_messages::RpcCommand;
+use burst_node::Node;
+use burst_rpc_messages::RpcCommand;
 use std::{future::Future, sync::Arc};
 use tokio::{net::TcpListener, task::spawn_blocking};
 use tracing::{info, warn};

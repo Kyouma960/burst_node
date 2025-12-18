@@ -3,9 +3,9 @@ use std::collections::HashSet;
 use serde_json::Value;
 use tracing::warn;
 
-use rsnano_types::Account;
-use rsnano_wallet::Wallets;
-use rsnano_websocket_messages::ConfirmationJsonOptions;
+use burst_types::Account;
+use burst_wallet::Wallets;
+use burst_websocket_messages::ConfirmationJsonOptions;
 
 #[derive(Clone)]
 pub struct ConfirmationOptions {

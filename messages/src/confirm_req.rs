@@ -2,7 +2,7 @@ use super::MessageVariant;
 use anyhow::Result;
 use bitvec::prelude::BitArray;
 use num_traits::FromPrimitive;
-use rsnano_types::{
+use burst_types::{
     BlockHash, BlockType, BlockTypeId, DeserializationError, Root, serialized_block_size,
 };
 use serde::ser::{SerializeSeq, SerializeStruct};

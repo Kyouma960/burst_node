@@ -1,5 +1,5 @@
 use super::{Message, MessageHeader};
-use rsnano_types::ProtocolInfo;
+use burst_types::ProtocolInfo;
 
 #[derive(Clone)]
 pub struct MessageSerializer {

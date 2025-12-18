@@ -1,4 +1,4 @@
-use rsnano_types::{Account, PublicKey, RawKey};
+use burst_types::{Account, PublicKey, RawKey};
 use serde::{Deserialize, Serialize};
 
 #[derive(PartialEq, Eq, Debug, Serialize, Deserialize)]
@@ -22,7 +22,7 @@ impl KeyPairDto {
 #[cfg(test)]
 mod tests {
     use crate::common::KeyPairDto;
-    use rsnano_types::RawKey;
+    use burst_types::RawKey;
 
     #[test]
     fn serialize_keypair_dto() {

@@ -1,5 +1,5 @@
 use crate::RpcCommand;
-use rsnano_types::JsonBlock;
+use burst_types::JsonBlock;
 use serde::{Deserialize, Serialize};
 
 impl RpcCommand {
@@ -22,7 +22,7 @@ impl BlockHashArgs {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::Block;
+    use burst_types::Block;
 
     #[test]
     fn serialize_block_hash_args() {

@@ -7,9 +7,9 @@ use std::{
     time::Duration,
 };
 
-use rsnano_nullable_clock::SteadyClock;
-use rsnano_types::Account;
-use rsnano_utils::stats::{StatsCollection, StatsSource};
+use burst_nullable_clock::SteadyClock;
+use burst_types::Account;
+use burst_utils::stats::{StatsCollection, StatsSource};
 
 use super::{ActiveElectionsContainer, AecTickerPlugin, election::Election};
 use crate::bootstrap::Bootstrapper;
@@ -101,7 +101,7 @@ impl StatsSource for StaleElectionsStats {
 mod tests {
     use super::*;
     use crate::consensus::AecInsertRequest;
-    use rsnano_types::{BlockPriority, SavedBlock};
+    use burst_types::{BlockPriority, SavedBlock};
 
     #[test]
     fn process_empty() {

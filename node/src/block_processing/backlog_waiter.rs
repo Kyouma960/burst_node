@@ -9,11 +9,11 @@ use std::{
 
 use tracing::warn;
 
-use rsnano_ledger::Ledger;
-use rsnano_nullable_clock::{SteadyClock, Timestamp};
+use burst_ledger::Ledger;
+use burst_nullable_clock::{SteadyClock, Timestamp};
 
 use super::BlockProcessorQueue;
-use rsnano_utils::stats::{StatsCollection, StatsSource};
+use burst_utils::stats::{StatsCollection, StatsSource};
 
 /// Waits for the backlog to fall below the backlog limit
 pub(crate) struct BacklogWaiter {
@@ -138,7 +138,7 @@ fn backlog_factor(backlog_count: u64, max_backlog: u64) -> f64 {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_output_tracker::OutputTrackerMt;
+    use burst_output_tracker::OutputTrackerMt;
     use tracing_test::traced_test;
 
     #[test]

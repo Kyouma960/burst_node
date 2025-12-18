@@ -1,12 +1,12 @@
 use num_traits::FromPrimitive;
 use tracing::{debug, error, info};
 
-use rsnano_nullable_lmdb::{
+use burst_nullable_lmdb::{
     DatabaseFlags, EnvironmentOptions, LmdbEnvironment, LmdbEnvironmentFactory, Transaction,
     WriteFlags,
     sys::{MDB_FIRST, MDB_NEXT},
 };
-use rsnano_types::{BlockType, BlockTypeId, UnixMillisTimestamp, UnixTimestamp};
+use burst_types::{BlockType, BlockTypeId, UnixMillisTimestamp, UnixTimestamp};
 
 use crate::{
     FIRST_INCOMPATIBLE_STORE_VERSION, LmdbVersionStore, STORE_VERSION_CURRENT,
@@ -66,7 +66,7 @@ fn do_upgrades(env: &mut LmdbEnvironment) -> anyhow::Result<bool> {
 
     if version < STORE_VERSION_MINIMUM {
         error!(
-            "The version of the ledger ({version}) is lower than the minimum ({STORE_VERSION_MINIMUM}) which is supported for upgrades. Either upgrade to an older version of RsNano first or delete the ledger."
+            "The version of the ledger ({version}) is lower than the minimum ({STORE_VERSION_MINIMUM}) which is supported for upgrades. Either upgrade to an older version of Burst first or delete the ledger."
         );
         bail!("version too low");
     }
@@ -116,7 +116,7 @@ fn do_upgrades(env: &mut LmdbEnvironment) -> anyhow::Result<bool> {
 
 fn next_version(version: i32) -> i32 {
     if version == 24 {
-        10_000 // switch to RsNano store versions
+        10_000 // switch to Burst store versions
     } else {
         version + 1
     }
@@ -194,7 +194,7 @@ fn remove_successor_from_sideband_and_upgrade_timestamp_and_split_table(
                 }
             }
             Ok((None, _)) => bail!("Block data without key found!"),
-            Err(rsnano_nullable_lmdb::Error::NotFound) => break,
+            Err(burst_nullable_lmdb::Error::NotFound) => break,
             Err(e) => bail!("Could not iter blocks table: {e:?}"),
         }
     }
@@ -285,7 +285,7 @@ fn v24_sideband_len(block_type: BlockType) -> usize {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::{Block, BlockHash, BlockSideband};
+    use burst_types::{Block, BlockHash, BlockSideband};
 
     #[test]
     fn old_sideband_len() {

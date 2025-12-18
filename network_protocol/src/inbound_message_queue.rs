@@ -8,9 +8,9 @@ use std::{
 
 use strum::IntoEnumIterator;
 
-use rsnano_messages::{Message, MessageType};
-use rsnano_network::{Channel, ChannelId, DeadChannelCleanupStep};
-use rsnano_utils::{
+use burst_messages::{Message, MessageType};
+use burst_network::{Channel, ChannelId, DeadChannelCleanupStep};
+use burst_utils::{
     container_info::{ContainerInfo, ContainerInfoProvider},
     fair_queue::FairQueue,
     stats::{StatsCollection, StatsSource},
@@ -190,7 +190,7 @@ impl StatsSource for MsgQueueStats {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_messages::Message;
+    use burst_messages::Message;
 
     #[test]
     fn put_and_get_one_message() {

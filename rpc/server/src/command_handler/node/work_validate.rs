@@ -1,6 +1,6 @@
 use crate::command_handler::RpcCommandHandler;
-use rsnano_rpc_messages::{WorkValidateArgs, WorkValidateResponse};
-use rsnano_types::{BlockDetails, DifficultyV1};
+use burst_rpc_messages::{WorkValidateArgs, WorkValidateResponse};
+use burst_types::{BlockDetails, DifficultyV1};
 
 impl RpcCommandHandler {
     pub(crate) fn work_validate(&self, args: WorkValidateArgs) -> WorkValidateResponse {
@@ -43,7 +43,7 @@ impl RpcCommandHandler {
         };
 
         let receive_difficulty = self.node.network_params.work.threshold(&BlockDetails::new(
-            rsnano_types::Epoch::Epoch2,
+            burst_types::Epoch::Epoch2,
             false,
             true,
             false,

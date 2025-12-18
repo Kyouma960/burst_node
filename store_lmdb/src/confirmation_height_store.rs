@@ -1,10 +1,10 @@
 use std::ops::RangeBounds;
 
-use rsnano_nullable_lmdb::{
+use burst_nullable_lmdb::{
     ConfiguredDatabase, DatabaseFlags, Error, LmdbDatabase, LmdbEnvironment, Transaction,
     WriteFlags, WriteTransaction,
 };
-use rsnano_types::{Account, ConfirmationHeightInfo};
+use burst_types::{Account, ConfirmationHeightInfo};
 
 use crate::{
     CONFIRMATION_HEIGHT_TEST_DATABASE, LmdbIterator, LmdbRangeIterator, parallel_traversal,
@@ -154,8 +154,8 @@ fn read_conf_height_record(key: &[u8], mut value: &[u8]) -> (Account, Confirmati
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_nullable_lmdb::PutEvent;
-    use rsnano_types::BlockHash;
+    use burst_nullable_lmdb::PutEvent;
+    use burst_types::BlockHash;
     use std::sync::Arc;
 
     struct Fixture {

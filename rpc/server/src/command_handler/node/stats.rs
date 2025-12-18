@@ -1,7 +1,7 @@
 use std::time::SystemTime;
 
-use rsnano_rpc_messages::{StatsArgs, StatsType, SuccessResponse};
-use rsnano_utils::{
+use burst_rpc_messages::{StatsArgs, StatsType, SuccessResponse};
+use burst_utils::{
     container_info::ContainerInfo,
     stats::{StatsJsonWriter, StatsLogSink},
 };

@@ -3,9 +3,9 @@ use std::{
     sync::{Arc, RwLock},
 };
 
-use rsnano_messages::{Keepalive, Message};
-use rsnano_network::{NULL_ENDPOINT, Network};
-use rsnano_types::Peer;
+use burst_messages::{Keepalive, Message};
+use burst_network::{NULL_ENDPOINT, Network};
+use burst_types::Peer;
 
 #[derive(Clone)]
 pub struct KeepaliveMessageFactory {

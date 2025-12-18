@@ -1,4 +1,4 @@
-use rsnano_nullable_clock::Timestamp;
+use burst_nullable_clock::Timestamp;
 use std::collections::VecDeque;
 
 #[derive(Default)]

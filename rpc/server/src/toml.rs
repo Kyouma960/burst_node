@@ -80,8 +80,8 @@ impl From<&RpcServerLoggingToml> for RpcServerLoggingConfig {
 #[cfg(test)]
 mod tests {
     use crate::{RpcServerConfig, RpcServerToml};
-    use rsnano_node::config::NetworkConstants;
-    use rsnano_types::Networks;
+    use burst_node::config::NetworkConstants;
+    use burst_types::Networks;
     use toml::{from_str, to_string};
 
     static DEFAULT_TOML_STR: &str = r#"

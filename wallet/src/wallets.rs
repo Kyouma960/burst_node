@@ -10,23 +10,23 @@ use std::{
 use rand::{Rng, seq::IndexedRandom};
 use tracing::{debug, info, warn};
 
-use rsnano_ledger::{AnySet, Ledger, LedgerSet};
-use rsnano_nullable_clock::SteadyClock;
-use rsnano_nullable_lmdb::{
+use burst_ledger::{AnySet, Ledger, LedgerSet};
+use burst_nullable_clock::SteadyClock;
+use burst_nullable_lmdb::{
     DatabaseFlags, LmdbDatabase, LmdbEnvironment, Transaction, WriteFlags, WriteTransaction,
 };
-use rsnano_store_lmdb::{KeyType, LmdbIterator, LmdbWalletStore};
-use rsnano_types::{
+use burst_store_lmdb::{KeyType, LmdbIterator, LmdbWalletStore};
+use burst_types::{
     Account, Amount, Block, BlockDetails, BlockHash, Epoch, KeyDerivationFunction, Link, Networks,
     PendingKey, PrivateKey, PublicKey, RawKey, Root, SavedBlock, StateBlockArgs, WalletId,
     WorkNonce, WorkRequest,
 };
-use rsnano_utils::{
+use burst_utils::{
     CancellationToken,
     container_info::{ContainerInfo, ContainerInfoProvider},
     ticker::Tickable,
 };
-use rsnano_work::WorkThresholds;
+use burst_work::WorkThresholds;
 
 use super::{
     BlockPromise, MultiBlockPromise, Wallet, WalletsConfig, WalletsError,
@@ -242,7 +242,7 @@ impl Wallets {
             Ok(bytes) => Ok(Some(
                 BlockHash::from_slice(bytes).ok_or_else(|| anyhow!("invalid block hash"))?,
             )),
-            Err(rsnano_nullable_lmdb::Error::NotFound) => Ok(None),
+            Err(burst_nullable_lmdb::Error::NotFound) => Ok(None),
             Err(e) => Err(e.into()),
         }
     }
@@ -1585,7 +1585,7 @@ impl Tickable for WalletsTicker {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::PendingInfo;
+    use burst_types::PendingInfo;
     use std::time::Duration;
 
     #[test]

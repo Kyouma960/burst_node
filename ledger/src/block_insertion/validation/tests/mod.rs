@@ -9,7 +9,7 @@ mod validate_state_open;
 mod validate_state_receive;
 mod validate_state_send;
 
-use rsnano_types::{
+use burst_types::{
     Account, Amount, Block, Epoch, PendingInfo, SavedAccountChain, UnixMillisTimestamp,
 };
 

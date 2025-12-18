@@ -1,9 +1,9 @@
 use std::ops::RangeBounds;
 
-use rsnano_nullable_lmdb::{
+use burst_nullable_lmdb::{
     DatabaseFlags, Error, LmdbDatabase, LmdbEnvironment, Transaction, WriteFlags, WriteTransaction,
 };
-use rsnano_types::{BlockHash, QualifiedRoot};
+use burst_types::{BlockHash, QualifiedRoot};
 
 use crate::{LmdbIterator, LmdbRangeIterator};
 
@@ -101,7 +101,7 @@ fn read_final_vote_record(mut key: &[u8], mut value: &[u8]) -> (QualifiedRoot, B
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_nullable_lmdb::DeleteEvent;
+    use burst_nullable_lmdb::DeleteEvent;
     use std::sync::Arc;
 
     const TEST_DATABASE: LmdbDatabase = LmdbDatabase::new_null(100);

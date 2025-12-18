@@ -1,6 +1,6 @@
 use crate::representatives::ConsensusParams;
-use rsnano_messages::Aggregatable;
-use rsnano_types::{Amount, Blake2Hash, PublicKey};
+use burst_messages::Aggregatable;
+use burst_types::{Amount, Blake2Hash, PublicKey};
 use std::collections::{HashMap, HashSet};
 
 pub(super) struct Aggregator<T: Aggregatable> {
@@ -62,9 +62,9 @@ impl<T: Aggregatable> Aggregator<T> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_ledger::RepWeights;
-    use rsnano_messages::{Preproposal, PreproposalHash};
-    use rsnano_types::{Account, BlockHash, PrivateKey};
+    use burst_ledger::RepWeights;
+    use burst_messages::{Preproposal, PreproposalHash};
+    use burst_types::{Account, BlockHash, PrivateKey};
 
     #[test]
     fn a_new_aggregator_is_empty() {

@@ -2,8 +2,8 @@ use std::sync::{Arc, RwLock};
 
 use super::{ActiveElectionsContainer, election::ConfirmedElection};
 use crate::cementation::ConfirmingSet;
-use rsnano_nullable_clock::SteadyClock;
-use rsnano_types::{BlockHash, SavedBlock};
+use burst_nullable_clock::SteadyClock;
+use burst_types::{BlockHash, SavedBlock};
 
 pub(crate) struct DependentElectionsConfirmer {
     pub(crate) confirming_set: Arc<ConfirmingSet>,

@@ -1,4 +1,4 @@
-use rsnano_types::{Amount, PendingKey, PrivateKey, SavedBlock};
+use burst_types::{Amount, PendingKey, PrivateKey, SavedBlock};
 
 use crate::{AnySet, Ledger, LedgerInserter, LedgerSet};
 

@@ -1,10 +1,10 @@
 use std::time::Duration;
 
-use rsnano_ledger::test_helpers::UnsavedBlockLatticeBuilder;
-use rsnano_network::ChannelId;
-use rsnano_types::{Amount, BlockSideband, PrivateKey, SavedBlock};
+use burst_ledger::test_helpers::UnsavedBlockLatticeBuilder;
+use burst_network::ChannelId;
+use burst_types::{Amount, BlockSideband, PrivateKey, SavedBlock};
 
-use rsnano_node::block_processing::{BlockContext, BlockSource};
+use burst_node::block_processing::{BlockContext, BlockSource};
 use test_helpers::{System, assert_timely, assert_timely2, start_election, start_elections};
 
 #[test]

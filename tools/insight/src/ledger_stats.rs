@@ -1,4 +1,4 @@
-use rsnano_node::Node;
+use burst_node::Node;
 
 pub(crate) struct LedgerStats {
     pub total_blocks: u64,

@@ -11,8 +11,8 @@ mod local_block_broadcaster;
 mod process_queue;
 mod unchecked_map;
 
-use rsnano_ledger::{BlockError, RollbackResults};
-use rsnano_types::{Block, BlockHash, SavedBlock};
+use burst_ledger::{BlockError, RollbackResults};
+use burst_types::{Block, BlockHash, SavedBlock};
 
 pub use backlog_scan::{BacklogScan, BacklogScanConfig};
 pub(crate) use backlog_waiter::BacklogWaiter;
@@ -23,7 +23,7 @@ pub use bounded_backlog::*;
 pub(crate) use bounded_backlog_plugin::*;
 pub(crate) use local_block_broadcaster::*;
 pub use process_queue::ProcessQueueConfig;
-use rsnano_utils::stats::DetailType;
+use burst_utils::stats::DetailType;
 use strum_macros::{EnumCount, EnumIter, IntoStaticStr};
 pub use unchecked_map::*;
 

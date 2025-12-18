@@ -2,7 +2,7 @@ use rand::{
     rng,
     seq::{IndexedRandom, IteratorRandom},
 };
-use rsnano_types::{Account, Amount, BlockHash, PrivateKey};
+use burst_types::{Account, Amount, BlockHash, PrivateKey};
 use rustc_hash::{FxHashMap, FxHashSet};
 
 #[derive(Default)]

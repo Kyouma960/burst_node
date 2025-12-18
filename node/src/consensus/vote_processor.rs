@@ -11,9 +11,9 @@ use std::{
 
 use tracing::debug;
 
-use rsnano_network::Channel;
-use rsnano_types::{BlockHash, Vote, VoteError, VoteSource};
-use rsnano_utils::{
+use burst_network::Channel;
+use burst_types::{BlockHash, Vote, VoteError, VoteSource};
+use burst_utils::{
     stats::{DetailType, StatType, Stats},
     sync::backpressure_channel::Sender,
 };

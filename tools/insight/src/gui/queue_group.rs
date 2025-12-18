@@ -5,7 +5,7 @@ use egui_extras::{Size, StripBuilder};
 use num_format::{Locale, ToFormattedString};
 use strum::IntoEnumIterator;
 
-use rsnano_utils::fair_queue::{FairQueueInfo, QueueInfo};
+use burst_utils::fair_queue::{FairQueueInfo, QueueInfo};
 
 use crate::gui::PaletteColor;
 

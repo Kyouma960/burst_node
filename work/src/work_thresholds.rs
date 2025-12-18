@@ -1,4 +1,4 @@
-use rsnano_types::{
+use burst_types::{
     Block, BlockDetails, BlockType, Difficulty, DifficultyV1, Epoch, Networks, Root,
     StubDifficulty, WORK_THRESHOLD_EPOCH1, WORK_THRESHOLD_EPOCH2, WORK_THRESHOLD_EPOCH2_RECEIVE,
     WorkNonce,
@@ -283,7 +283,7 @@ pub fn dev_difficulty() -> u64 {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::{Amount, BlockHash, JsonBlock};
+    use burst_types::{Amount, BlockHash, JsonBlock};
 
     #[test]
     fn test_parse_threshold() {

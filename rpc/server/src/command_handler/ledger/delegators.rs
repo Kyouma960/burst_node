@@ -1,6 +1,6 @@
 use crate::command_handler::RpcCommandHandler;
-use rsnano_rpc_messages::{DelegatorsArgs, DelegatorsResponse, unwrap_u64_or};
-use rsnano_types::{Account, Amount, PublicKey};
+use burst_rpc_messages::{DelegatorsArgs, DelegatorsResponse, unwrap_u64_or};
+use burst_types::{Account, Amount, PublicKey};
 
 impl RpcCommandHandler {
     pub(crate) fn delegators(&self, args: DelegatorsArgs) -> DelegatorsResponse {

@@ -8,8 +8,8 @@ use std::{
 use bitvec::prelude::BitArray;
 use serde_derive::Serialize;
 
-use rsnano_types::{Account, BlockHash, NodeId, PrivateKey, Signature, to_hex_string};
-use rsnano_types::{DeserializationError, read_u8, read_u32_be, read_u64_be};
+use burst_types::{Account, BlockHash, NodeId, PrivateKey, Signature, to_hex_string};
+use burst_types::{DeserializationError, read_u8, read_u32_be, read_u64_be};
 
 use super::MessageVariant;
 
@@ -19,7 +19,7 @@ pub enum TelemetryMaker {
     NfNode = 0,
     NfPrunedNode = 1,
     NanoNodeLight = 2,
-    RsNano = 3,
+    Burst = 3,
 }
 
 #[derive(Clone, PartialEq, Eq, Debug)]
@@ -87,7 +87,7 @@ impl TelemetryData {
             minor_version: 0,
             patch_version: 0,
             pre_release_version: 0,
-            maker: TelemetryMaker::RsNano as u8,
+            maker: TelemetryMaker::Burst as u8,
             timestamp: SystemTime::UNIX_EPOCH,
             active_difficulty: 0,
             unknown_data: Vec::new(),
@@ -101,7 +101,7 @@ impl TelemetryData {
         data.minor_version = 1;
         data.patch_version = 5;
         data.pre_release_version = 2;
-        data.maker = TelemetryMaker::RsNano as u8;
+        data.maker = TelemetryMaker::Burst as u8;
         data.timestamp = SystemTime::UNIX_EPOCH + Duration::from_millis(100);
         data
     }

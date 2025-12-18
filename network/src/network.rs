@@ -10,10 +10,10 @@ use std::{
 use rand::seq::SliceRandom;
 use tracing::{debug, warn};
 
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::{Networks, NodeId, ProtocolInfo};
-use rsnano_utils::container_info::{ContainerInfo, ContainerInfoProvider};
-use rsnano_utils::stats::{StatsCollection, StatsSource};
+use burst_nullable_clock::Timestamp;
+use burst_types::{Networks, NodeId, ProtocolInfo};
+use burst_utils::container_info::{ContainerInfo, ContainerInfoProvider};
+use burst_utils::stats::{StatsCollection, StatsSource};
 
 use super::ChannelDirection;
 use crate::{

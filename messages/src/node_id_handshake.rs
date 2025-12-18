@@ -4,10 +4,11 @@ use std::{
 };
 
 use bitvec::prelude::BitArray;
+use burst_nullable_random::NullableRng;
 use rand::Rng;
 use serde::ser::SerializeStruct;
 
-use rsnano_types::{
+use burst_types::{
     Account, BlockHash, DeserializationError, NodeId, PrivateKey, PublicKey, Signature,
     write_hex_bytes,
 };
@@ -56,7 +57,7 @@ impl NodeIdHandshakeResponse {
 
     pub fn new_v2(cookie: &Cookie, node_id: &PrivateKey, genesis: BlockHash) -> Self {
         let mut salt = [0; 32];
-        rand::rng().fill(&mut salt);
+        NullableRng::rng().fill(&mut salt);
 
         let mut response = Self {
             node_id: node_id.public_key().into(),

@@ -1,4 +1,4 @@
-use rsnano_types::{BlockHash, DifficultyV1, WorkNonce};
+use burst_types::{BlockHash, DifficultyV1, WorkNonce};
 use test_helpers::{System, setup_rpc_client_and_server};
 
 #[test]

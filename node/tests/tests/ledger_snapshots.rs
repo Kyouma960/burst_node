@@ -1,7 +1,7 @@
-use rsnano_messages::MessageType;
-use rsnano_node::{Node, config::NodeConfig};
-use rsnano_types::{Amount, DEV_GENESIS_KEY};
-use rsnano_utils::stats::{Direction, StatType};
+use burst_messages::MessageType;
+use burst_node::{Node, config::NodeConfig};
+use burst_types::{Amount, DEV_GENESIS_KEY};
+use burst_utils::stats::{Direction, StatType};
 use test_helpers::{System, assert_timely_eq2, assert_timely2, setup_rep};
 
 #[test]

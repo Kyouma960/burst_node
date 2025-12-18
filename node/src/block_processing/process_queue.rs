@@ -4,9 +4,9 @@ use std::{
     sync::Arc,
 };
 
-use rsnano_network::ChannelId;
-use rsnano_types::Block;
-use rsnano_utils::{
+use burst_network::ChannelId;
+use burst_types::Block;
+use burst_utils::{
     container_info::ContainerInfo,
     fair_queue::{FairQueue, FairQueueInfo},
 };

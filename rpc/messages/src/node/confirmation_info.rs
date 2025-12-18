@@ -1,6 +1,6 @@
 use indexmap::IndexMap;
-use rsnano_types::QualifiedRoot;
-use rsnano_types::{Account, Amount, BlockHash, JsonBlock};
+use burst_types::QualifiedRoot;
+use burst_types::{Account, Amount, BlockHash, JsonBlock};
 use serde::{Deserialize, Serialize};
 
 use crate::{RpcBool, RpcU32};

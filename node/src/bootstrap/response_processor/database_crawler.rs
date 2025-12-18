@@ -1,5 +1,5 @@
-use rsnano_ledger::OwningAnySet;
-use rsnano_types::{Account, AccountInfo, BlockHash, PendingInfo, PendingKey};
+use burst_ledger::OwningAnySet;
+use burst_types::{Account, AccountInfo, BlockHash, PendingInfo, PendingKey};
 
 pub(super) struct DatabaseCrawler<'a, T>
 where
@@ -126,7 +126,7 @@ impl<'a> CrawlSource<'a> for PendingCrawlSource<'a> {
 
 #[cfg(test)]
 mod tests {
-    use rsnano_ledger::{DEV_GENESIS_ACCOUNT, Ledger, LedgerSet};
+    use burst_ledger::{DEV_GENESIS_ACCOUNT, Ledger, LedgerSet};
 
     use super::*;
 

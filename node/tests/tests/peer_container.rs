@@ -1,4 +1,4 @@
-use rsnano_network::ChannelMode;
+use burst_network::ChannelMode;
 use std::time::Duration;
 use test_helpers::{System, assert_never};
 

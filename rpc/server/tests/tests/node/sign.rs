@@ -1,6 +1,6 @@
-use rsnano_ledger::test_helpers::UnsavedBlockLatticeBuilder;
-use rsnano_rpc_messages::SignArgs;
-use rsnano_types::{Account, Amount, Block, DEV_GENESIS_KEY, WalletId};
+use burst_ledger::test_helpers::UnsavedBlockLatticeBuilder;
+use burst_rpc_messages::SignArgs;
+use burst_types::{Account, Amount, Block, DEV_GENESIS_KEY, WalletId};
 use test_helpers::{System, setup_rpc_client_and_server};
 
 #[test]
@@ -10,7 +10,7 @@ fn sign() {
 
     let server = setup_rpc_client_and_server(node.clone(), false);
 
-    let key = rsnano_types::PrivateKey::new();
+    let key = burst_types::PrivateKey::new();
 
     let wallet_id = WalletId::random();
     node.wallets.create(wallet_id);

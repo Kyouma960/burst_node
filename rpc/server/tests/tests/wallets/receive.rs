@@ -1,6 +1,6 @@
-use rsnano_ledger::{AnySet, DEV_GENESIS_ACCOUNT, DEV_GENESIS_HASH, LedgerSet};
-use rsnano_rpc_messages::ReceiveArgs;
-use rsnano_types::{Amount, BlockHash, DEV_GENESIS_KEY, WalletId};
+use burst_ledger::{AnySet, DEV_GENESIS_ACCOUNT, DEV_GENESIS_HASH, LedgerSet};
+use burst_rpc_messages::ReceiveArgs;
+use burst_types::{Amount, BlockHash, DEV_GENESIS_KEY, WalletId};
 use test_helpers::{System, assert_timely2, setup_rpc_client_and_server};
 
 #[test]
@@ -14,7 +14,7 @@ fn receive() {
         .insert_adhoc2(&wallet, &DEV_GENESIS_KEY.raw_key(), false)
         .unwrap();
 
-    let key1 = rsnano_types::PrivateKey::new();
+    let key1 = burst_types::PrivateKey::new();
     node.wallets
         .insert_adhoc2(&wallet, &key1.raw_key(), false)
         .unwrap();

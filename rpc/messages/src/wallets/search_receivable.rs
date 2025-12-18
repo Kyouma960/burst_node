@@ -1,5 +1,5 @@
 use crate::{RpcCommand, common::WalletRpcMessage};
-use rsnano_types::WalletId;
+use burst_types::WalletId;
 
 impl RpcCommand {
     pub fn search_receivable(wallet: WalletId) -> Self {

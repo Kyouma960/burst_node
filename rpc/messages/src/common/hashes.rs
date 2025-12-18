@@ -1,4 +1,4 @@
-use rsnano_types::BlockHash;
+use burst_types::BlockHash;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize, PartialEq, Eq)]

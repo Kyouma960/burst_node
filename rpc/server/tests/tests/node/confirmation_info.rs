@@ -1,6 +1,6 @@
-use rsnano_ledger::{DEV_GENESIS_HASH, test_helpers::UnsavedBlockLatticeBuilder};
-use rsnano_rpc_messages::ConfirmationInfoArgs;
-use rsnano_types::{Account, Amount, JsonBlock};
+use burst_ledger::{DEV_GENESIS_HASH, test_helpers::UnsavedBlockLatticeBuilder};
+use burst_rpc_messages::ConfirmationInfoArgs;
+use burst_types::{Account, Amount, JsonBlock};
 use test_helpers::{System, assert_timely2, setup_rpc_client_and_server};
 
 #[test]

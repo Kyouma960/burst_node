@@ -6,7 +6,7 @@ mod unconfirmed;
 
 use clap::{CommandFactory, Parser, Subcommand};
 
-use rsnano_nullable_lmdb::LmdbEnvironmentFactory;
+use burst_nullable_lmdb::LmdbEnvironmentFactory;
 
 use crate::cli::{
     GlobalArgs,
@@ -18,7 +18,7 @@ use crate::cli::{
 use clear::ClearCommand;
 use info::InfoCommand;
 use roll_back::roll_back;
-use rsnano_store_lmdb::default_ledger_lmdb_options;
+use burst_store_lmdb::default_ledger_lmdb_options;
 
 #[derive(Parser, PartialEq, Debug)]
 pub(crate) struct LedgerCommand {
@@ -73,7 +73,7 @@ fn vacuum(global_args: GlobalArgs) -> anyhow::Result<()> {
     let ledger_path = global_args.data_path.join("data.ldb");
     let options = default_ledger_lmdb_options(ledger_path);
     let env = LmdbEnvironmentFactory::default().create(options)?;
-    rsnano_store_lmdb::vacuum(env)
+    burst_store_lmdb::vacuum(env)
 }
 
 fn snapshot(global_args: GlobalArgs) -> anyhow::Result<()> {

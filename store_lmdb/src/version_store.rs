@@ -1,4 +1,4 @@
-use rsnano_nullable_lmdb::{
+use burst_nullable_lmdb::{
     DatabaseFlags, Error, LmdbEnvironment, Transaction, WriteFlags, WriteTransaction,
 };
 

@@ -1,6 +1,6 @@
 use crate::{RpcBool, RpcCommand, RpcU8, RpcU16, RpcU32, RpcU64};
-use rsnano_messages::TelemetryData;
-use rsnano_types::{BlockHash, NodeId, Signature, to_hex_string};
+use burst_messages::TelemetryData;
+use burst_types::{BlockHash, NodeId, Signature, to_hex_string};
 use serde::{Deserialize, Serialize};
 use std::net::{Ipv6Addr, SocketAddrV6};
 
@@ -129,8 +129,8 @@ pub struct RawTelemetryResponse {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_messages::TelemetryData;
-    use rsnano_types::{BlockHash, Signature, to_hex_string};
+    use burst_messages::TelemetryData;
+    use burst_types::{BlockHash, Signature, to_hex_string};
     use std::time::UNIX_EPOCH;
 
     fn create_test_telemetry_data() -> TelemetryData {

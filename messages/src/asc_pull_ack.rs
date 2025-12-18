@@ -5,11 +5,11 @@ use num_traits::FromPrimitive;
 use serde::ser::SerializeStruct;
 use serde_derive::Serialize;
 
-use rsnano_types::{
+use burst_types::{
     Account, Block, BlockHash, BlockType, BlockTypeId, DeserializationError, Frontier, read_u8,
     read_u64_be,
 };
-use rsnano_utils::stats::DetailType;
+use burst_utils::stats::DetailType;
 
 use super::{AscPullPayloadId, MessageVariant};
 
@@ -308,7 +308,7 @@ impl From<&AscPullAckType> for DetailType {
 mod tests {
     use super::*;
     use crate::{Message, assert_deserializable};
-    use rsnano_types::TestBlockBuilder;
+    use burst_types::TestBlockBuilder;
 
     #[test]
     fn serialize_blocks() {

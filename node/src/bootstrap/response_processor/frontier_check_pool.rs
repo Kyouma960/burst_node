@@ -1,7 +1,7 @@
 use std::sync::{Arc, Mutex};
 
-use rsnano_ledger::Ledger;
-use rsnano_utils::{stats::Stats, thread_pool::ThreadPool};
+use burst_ledger::Ledger;
+use burst_utils::{stats::Stats, thread_pool::ThreadPool};
 
 use crate::bootstrap::{
     response_processor::frontier_worker::FrontierWorker, state::BootstrapLogic,

@@ -1,6 +1,6 @@
 use crate::{Aggregatable, MessageVariant, ProposalHash};
 use bitvec::prelude::BitArray;
-use rsnano_types::{
+use burst_types::{
     Blake2Hash, Blake2HashBuilder, DeserializationError, PrivateKey, PublicKey, Signature,
     SnapshotNumber, read_u32_be,
 };

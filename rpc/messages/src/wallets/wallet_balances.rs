@@ -1,5 +1,5 @@
 use crate::RpcCommand;
-use rsnano_types::{Amount, WalletId};
+use burst_types::{Amount, WalletId};
 use serde::{Deserialize, Serialize};
 
 impl RpcCommand {
@@ -57,7 +57,7 @@ impl WalletBalancesArgsBuilder {
 #[cfg(test)]
 mod tests {
     use crate::{RpcCommand, wallets::WalletBalancesArgs};
-    use rsnano_types::{Amount, WalletId};
+    use burst_types::{Amount, WalletId};
     use serde_json::to_string_pretty;
 
     #[test]

@@ -1,6 +1,6 @@
-use rsnano_ledger::DEV_GENESIS_ACCOUNT;
-use rsnano_rpc_messages::ChainArgs;
-use rsnano_types::{Amount, DEV_GENESIS_KEY, PrivateKey, WalletId};
+use burst_ledger::DEV_GENESIS_ACCOUNT;
+use burst_rpc_messages::ChainArgs;
+use burst_types::{Amount, DEV_GENESIS_KEY, PrivateKey, WalletId};
 use test_helpers::{System, assert_timely2, setup_rpc_client_and_server};
 
 #[test]

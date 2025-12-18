@@ -1,4 +1,4 @@
-use rsnano_types::Account;
+use burst_types::Account;
 use test_helpers::{System, setup_rpc_client_and_server};
 
 #[test]

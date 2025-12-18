@@ -6,7 +6,7 @@ pub use any::*;
 pub use confirmed::*;
 pub(crate) use unconfirmed::*;
 
-use rsnano_types::{Account, AccountInfo, Amount, BlockHash};
+use burst_types::{Account, AccountInfo, Amount, BlockHash};
 
 pub trait LedgerSet {
     fn block_exists(&self, hash: &BlockHash) -> bool;

@@ -1,9 +1,9 @@
 use std::{sync::Arc, time::Duration};
 
-use rsnano_ledger::{DEV_GENESIS_PUB_KEY, test_helpers::UnsavedBlockLatticeBuilder};
-use rsnano_messages::ConfirmReq;
-use rsnano_network::Channel;
-use rsnano_node::{
+use burst_ledger::{DEV_GENESIS_PUB_KEY, test_helpers::UnsavedBlockLatticeBuilder};
+use burst_messages::ConfirmReq;
+use burst_network::Channel;
+use burst_node::{
     config::NodeFlags,
     consensus::{
         ConfirmationSolicitor,
@@ -11,8 +11,8 @@ use rsnano_node::{
     },
     representatives::PeeredRepInfo,
 };
-use rsnano_types::{Account, Amount, Block, PublicKey, UnixMillisTimestamp};
-use rsnano_utils::stats::{DetailType, Direction, StatType};
+use burst_types::{Account, Amount, Block, PublicKey, UnixMillisTimestamp};
+use burst_utils::stats::{DetailType, Direction, StatType};
 use test_helpers::System;
 
 #[test]

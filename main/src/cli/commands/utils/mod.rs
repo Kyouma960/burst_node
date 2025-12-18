@@ -1,7 +1,7 @@
 use crate::cli::CliInfrastructure;
 use anyhow::anyhow;
 use clap::{CommandFactory, Parser, Subcommand};
-use rsnano_types::{Account, PrivateKey, PublicKey};
+use burst_types::{Account, PrivateKey, PublicKey};
 
 #[derive(Parser, PartialEq, Debug)]
 pub(crate) struct UtilsCommand {

@@ -2,8 +2,8 @@
 
 use super::BlockValidator;
 use crate::{BlockError, burst_helpers};
-use rsnano_nullable_lmdb::ReadTransaction;
-use rsnano_types::{
+use burst_nullable_lmdb::ReadTransaction;
+use burst_types::{
     TransactionMethod, UnixTimestamp,
 };
 
@@ -37,7 +37,7 @@ impl<'a> BlockValidator<'a> {
                     .unwrap_or(verification_info.account_creation_timestamp);
                 let current_timestamp = UnixTimestamp::from(self.now.as_u64() / 1000); // Convert milliseconds to seconds
                 let total_trst_created = burst_helpers::calculate_total_trst_created(store, &txn, &self.account);
-                let current_brn = rsnano_types::calculate_brn(verified_timestamp, current_timestamp, total_trst_created);
+                let current_brn = burst_types::calculate_brn(verified_timestamp, current_timestamp, total_trst_created);
 
                 // Check if BRN is sufficient
                 let amount = self.block.balance_field().unwrap_or_default();

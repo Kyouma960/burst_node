@@ -1,4 +1,4 @@
-use rsnano_types::{
+use burst_types::{
     AccountInfo, Amount, Block, BlockBase, BlockDetails, BlockHash, BlockSideband, Epoch,
     PendingInfo, PendingKey, PublicKey, StateBlock,
 };
@@ -210,7 +210,7 @@ impl<'a> BlockValidator<'a> {
         // Try to derive Burst metadata if this is a Burst transaction
         let burst_metadata = if let Some(store) = self.store {
             let txn = store.begin_read();
-            let current_timestamp = rsnano_types::UnixTimestamp::from(self.now.as_u64() / 1000);
+            let current_timestamp = burst_types::UnixTimestamp::from(self.now.as_u64() / 1000);
             crate::block_insertion::burst_metadata_builder::derive_burst_metadata(
                 store,
                 &txn,

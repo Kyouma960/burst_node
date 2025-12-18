@@ -1,6 +1,6 @@
-use rsnano_ledger::{DEV_GENESIS_ACCOUNT, DEV_GENESIS_HASH, DEV_GENESIS_PUB_KEY};
-use rsnano_rpc_messages::{AccountHistoryArgs, BlockTypeDto};
-use rsnano_types::{Account, Amount, DEV_GENESIS_KEY, PublicKey, WalletId};
+use burst_ledger::{DEV_GENESIS_ACCOUNT, DEV_GENESIS_HASH, DEV_GENESIS_PUB_KEY};
+use burst_rpc_messages::{AccountHistoryArgs, BlockTypeDto};
+use burst_types::{Account, Amount, DEV_GENESIS_KEY, PublicKey, WalletId};
 use test_helpers::{System, setup_rpc_client_and_server};
 
 #[test]

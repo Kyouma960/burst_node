@@ -1,6 +1,6 @@
 use super::MessageVariant;
 use bitvec::prelude::BitArray;
-use rsnano_types::{Account, DeserializationError};
+use burst_types::{Account, DeserializationError};
 use serde_derive::Serialize;
 use std::{fmt::Display, io::Read};
 

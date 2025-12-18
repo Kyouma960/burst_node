@@ -1,4 +1,4 @@
-use rsnano_ledger::DEV_GENESIS_ACCOUNT;
+use burst_ledger::DEV_GENESIS_ACCOUNT;
 use test_helpers::{System, setup_rpc_client_and_server};
 
 #[test]

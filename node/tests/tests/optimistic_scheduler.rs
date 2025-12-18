@@ -1,7 +1,7 @@
 use std::time::Duration;
 
-use rsnano_node::consensus::election::ElectionBehavior;
-use rsnano_types::DEV_GENESIS_KEY;
+use burst_node::consensus::election::ElectionBehavior;
+use burst_types::DEV_GENESIS_KEY;
 use test_helpers::{System, assert_never, assert_timely, assert_timely2, setup_chains};
 
 /*

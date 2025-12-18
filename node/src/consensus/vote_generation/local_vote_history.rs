@@ -4,8 +4,8 @@ use std::{
     sync::{Arc, Mutex},
 };
 
-use rsnano_types::{BlockHash, Networks, Root, Vote};
-use rsnano_utils::container_info::{ContainerInfo, ContainerInfoProvider};
+use burst_types::{BlockHash, Networks, Root, Vote};
+use burst_utils::container_info::{ContainerInfo, ContainerInfoProvider};
 
 pub struct LocalVoteHistory {
     data: Mutex<LocalVoteHistoryData>,
@@ -185,7 +185,7 @@ fn clean(data: &mut LocalVoteHistoryData, max_cache: usize) {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::{PrivateKey, UnixMillisTimestamp};
+    use burst_types::{PrivateKey, UnixMillisTimestamp};
 
     #[test]
     fn empty_history() {

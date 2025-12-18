@@ -1,5 +1,5 @@
 use crate::{RpcCommand, RpcU32};
-use rsnano_types::{Account, RawKey, WalletId};
+use burst_types::{Account, RawKey, WalletId};
 use serde::{Deserialize, Serialize};
 
 impl RpcCommand {
@@ -32,7 +32,7 @@ pub struct WalletCreateResponse {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::RawKey;
+    use burst_types::RawKey;
     use serde_json::{from_str, to_string, to_string_pretty};
 
     #[test]

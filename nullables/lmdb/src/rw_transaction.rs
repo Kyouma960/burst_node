@@ -5,7 +5,7 @@ use std::{
 };
 
 use lmdb::DatabaseFlags;
-use rsnano_output_tracker::{OutputListener, OutputTracker};
+use burst_output_tracker::{OutputListener, OutputTracker};
 
 use super::{ConfiguredDatabase, LmdbDatabase, RoCursor};
 use crate::{RwCursor, Transaction};

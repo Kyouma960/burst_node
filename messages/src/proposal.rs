@@ -1,6 +1,6 @@
 use crate::{Aggregatable, MessageVariant, Preproposal, PreproposalHash};
 use bitvec::array::BitArray;
-use rsnano_types::{
+use burst_types::{
     Blake2Hash, Blake2HashBuilder, DeserializationError, PrivateKey, PublicKey, Signature,
     SnapshotNumber, read_u32_be,
 };
@@ -120,7 +120,7 @@ impl Aggregatable for Proposal {
 mod tests {
     use super::*;
     use crate::{Message, Preproposal, assert_deserializable};
-    use rsnano_types::{Account, BlockHash};
+    use burst_types::{Account, BlockHash};
 
     #[test]
     fn hash_preproposals_is_order_invariant() {

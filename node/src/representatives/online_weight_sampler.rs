@@ -3,9 +3,9 @@ use std::{
     time::{Duration, SystemTime},
 };
 
-use rsnano_ledger::Ledger;
-use rsnano_nullable_lmdb::WriteTransaction;
-use rsnano_types::{Amount, Networks};
+use burst_ledger::Ledger;
+use burst_nullable_lmdb::WriteTransaction;
+use burst_types::{Amount, Networks};
 
 pub struct TrendResult {
     pub trended: Amount,

@@ -2,7 +2,7 @@
 use std::sync::{Arc, Mutex};
 use std::{thread, time::Duration};
 
-use rsnano_types::{Difficulty, DifficultyV1, Root, WorkNonce};
+use burst_types::{Difficulty, DifficultyV1, Root, WorkNonce};
 
 use super::{WorkGenerator, WorkRng, WorkTicket, XorShift1024Star};
 
@@ -197,7 +197,7 @@ impl WorkRng for StubWorkRng {
 
 #[cfg(test)]
 mod tests {
-    use rsnano_types::StubDifficulty;
+    use burst_types::StubDifficulty;
 
     use super::*;
 

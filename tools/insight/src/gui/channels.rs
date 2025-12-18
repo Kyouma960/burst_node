@@ -1,10 +1,10 @@
 use eframe::egui::{Align, Label, Layout, Sense, Ui};
 use egui_extras::{Column, TableBuilder};
-use rsnano_network::ChannelDirection;
+use burst_network::ChannelDirection;
 
 use super::{formatted_number, view_rep_state};
 use crate::channels::{Channels, RepState};
-use rsnano_messages::TelemetryData;
+use burst_messages::TelemetryData;
 
 pub(crate) struct ChannelsView<'a> {
     model: ChannelsViewModel<'a>,
@@ -96,7 +96,7 @@ impl<'a> ChannelsViewModel<'a> {
             result.unchecked_count = formatted_number(telemetry.unchecked_count);
             result.maker = match telemetry.maker {
                 0 | 1 => "NF",
-                3 => "RsNano",
+                3 => "Burst",
                 _ => "unknown",
             };
             result.version = version_string(telemetry);

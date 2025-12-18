@@ -3,7 +3,7 @@ use std::{
     collections::{BTreeSet, HashSet},
 };
 
-use rsnano_types::{BlockHash, BlockPriority, SavedBlock};
+use burst_types::{BlockHash, BlockPriority, SavedBlock};
 
 #[derive(Debug, Eq)]
 pub(super) struct BlockEntry {
@@ -100,7 +100,7 @@ impl OrderedBlocks {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::{Amount, PrivateKey, UnixMillisTimestamp};
+    use burst_types::{Amount, PrivateKey, UnixMillisTimestamp};
 
     #[test]
     fn empty() {

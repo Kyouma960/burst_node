@@ -1,3 +1,4 @@
+use burst_nullable_random::NullableRng;
 use rand::Rng;
 use siphasher::{prelude::*, sip128::SipHasher};
 use std::sync::{
@@ -138,8 +139,9 @@ pub struct DefaultNetworkFilterHasher {
 
 impl DefaultNetworkFilterHasher {
     pub fn new() -> Self {
+        let mut rng = NullableRng::rng();
         Self {
-            key: rand::rng().random::<[u8; 16]>(),
+            key: rng.random::<[u8; 16]>(),
         }
     }
 }

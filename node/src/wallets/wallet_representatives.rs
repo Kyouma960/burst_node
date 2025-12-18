@@ -1,9 +1,9 @@
 use std::sync::{Arc, Mutex};
 
-use rsnano_ledger::RepWeightCache;
-use rsnano_types::{Account, Amount, PrivateKey, PublicKey};
-use rsnano_utils::{CancellationToken, ticker::Tickable};
-use rsnano_wallet::Wallets;
+use burst_ledger::RepWeightCache;
+use burst_types::{Account, Amount, PrivateKey, PublicKey};
+use burst_utils::{CancellationToken, ticker::Tickable};
+use burst_wallet::Wallets;
 
 use crate::representatives::OnlineReps;
 

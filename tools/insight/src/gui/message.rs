@@ -1,5 +1,5 @@
 use eframe::egui::{Grid, ScrollArea, Ui};
-use rsnano_network::ChannelDirection;
+use burst_network::ChannelDirection;
 
 use crate::message_collection::RecordedMessage;
 

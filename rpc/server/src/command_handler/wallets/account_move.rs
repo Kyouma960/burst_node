@@ -1,6 +1,6 @@
 use crate::command_handler::RpcCommandHandler;
-use rsnano_rpc_messages::{AccountMoveArgs, MovedResponse};
-use rsnano_types::PublicKey;
+use burst_rpc_messages::{AccountMoveArgs, MovedResponse};
+use burst_types::PublicKey;
 
 impl RpcCommandHandler {
     pub(crate) fn account_move(&self, args: AccountMoveArgs) -> anyhow::Result<MovedResponse> {

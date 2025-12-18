@@ -6,12 +6,12 @@ use std::{
     },
 };
 
-use rsnano_nullable_lmdb::{
+use burst_nullable_lmdb::{
     ConfiguredDatabase, DatabaseFlags, Error, LmdbDatabase, LmdbEnvironment, Transaction,
     WriteFlags, WriteTransaction, sys::MDB_LAST,
 };
-use rsnano_output_tracker::{OutputListenerMt, OutputTrackerMt};
-use rsnano_types::{BlockHash, SavedBlock};
+use burst_output_tracker::{OutputListenerMt, OutputTrackerMt};
+use burst_types::{BlockHash, SavedBlock};
 
 use crate::{BLOCK_DATA_DATABASE, BLOCK_INDEX_DATABASE, LmdbIterator, LmdbRangeIterator};
 
@@ -216,7 +216,7 @@ fn get_block_id(id_bytes: &[u8]) -> u64 {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_nullable_lmdb::PutEvent;
+    use burst_nullable_lmdb::PutEvent;
 
     struct Fixture {
         env: Arc<LmdbEnvironment>,

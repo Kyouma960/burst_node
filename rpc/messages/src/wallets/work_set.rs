@@ -1,5 +1,5 @@
 use crate::RpcCommand;
-use rsnano_types::{Account, WalletId, WorkNonce};
+use burst_types::{Account, WalletId, WorkNonce};
 use serde::{Deserialize, Serialize};
 
 impl RpcCommand {
@@ -28,7 +28,7 @@ impl WorkSetArgs {
 #[cfg(test)]
 mod tests {
     use crate::RpcCommand;
-    use rsnano_types::{Account, WalletId};
+    use burst_types::{Account, WalletId};
     use serde_json::to_string_pretty;
 
     #[test]

@@ -1,6 +1,6 @@
 use crate::command_handler::RpcCommandHandler;
 use anyhow::{anyhow, bail};
-use rsnano_rpc_messages::{RawTelemetryResponse, TelemetryArgs, TelemetryDto, TelemetryResponse};
+use burst_rpc_messages::{RawTelemetryResponse, TelemetryArgs, TelemetryDto, TelemetryResponse};
 use std::net::SocketAddrV6;
 
 impl RpcCommandHandler {
@@ -65,9 +65,9 @@ impl RpcCommandHandler {
 mod tests {
     use std::{net::Ipv6Addr, sync::Arc};
 
-    use rsnano_messages::TelemetryData;
-    use rsnano_node::Node;
-    use rsnano_rpc_messages::{RpcCommand, RpcError, TelemetryArgs, TelemetryDto};
+    use burst_messages::TelemetryData;
+    use burst_node::Node;
+    use burst_rpc_messages::{RpcCommand, RpcError, TelemetryArgs, TelemetryDto};
 
     use crate::command_handler::{test_rpc_command, test_rpc_command_with_node};
 

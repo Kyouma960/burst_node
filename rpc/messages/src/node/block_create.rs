@@ -2,7 +2,7 @@ use crate::{
     RpcCommand, RpcU64,
     common::{BlockTypeDto, WorkVersionDto},
 };
-use rsnano_types::{Account, Amount, BlockHash, JsonBlock, Link, RawKey, WalletId, WorkNonce};
+use burst_types::{Account, Amount, BlockHash, JsonBlock, Link, RawKey, WalletId, WorkNonce};
 use serde::{Deserialize, Serialize};
 
 impl RpcCommand {
@@ -95,7 +95,7 @@ impl BlockCreateResponse {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::{Block, PrivateKey, PublicKey, RawKey};
+    use burst_types::{Block, PrivateKey, PublicKey, RawKey};
     use serde_json::json;
 
     #[test]

@@ -1,4 +1,4 @@
-use rsnano_types::{
+use burst_types::{
     AccountInfo, Amount, BlockDetails, BlockSideband, Epoch, PendingInfo, PendingKey,
 };
 

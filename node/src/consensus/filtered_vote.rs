@@ -1,5 +1,5 @@
-use rsnano_network::Channel;
-use rsnano_types::{BlockHash, Vote, VoteSource};
+use burst_network::Channel;
+use burst_types::{BlockHash, Vote, VoteSource};
 use std::{ops::Deref, sync::Arc};
 
 #[derive(Clone)]

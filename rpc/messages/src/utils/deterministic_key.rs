@@ -1,5 +1,5 @@
 use crate::{RpcCommand, RpcU32};
-use rsnano_types::RawKey;
+use burst_types::RawKey;
 use serde::{Deserialize, Serialize};
 
 impl RpcCommand {
@@ -26,7 +26,7 @@ impl DeterministicKeyArgs {
 #[cfg(test)]
 mod tests {
     use super::{DeterministicKeyArgs, RpcCommand};
-    use rsnano_types::RawKey;
+    use burst_types::RawKey;
     use serde_json::to_string_pretty;
 
     #[test]

@@ -4,8 +4,8 @@ use bitvec::prelude::BitArray;
 use num_traits::FromPrimitive;
 use serde_derive::Serialize;
 
-use rsnano_types::{Account, BlockHash, DeserializationError, HashOrAccount, read_u8, read_u64_be};
-use rsnano_utils::stats::DetailType;
+use burst_types::{Account, BlockHash, DeserializationError, HashOrAccount, read_u8, read_u64_be};
+use burst_utils::stats::DetailType;
 
 use super::MessageVariant;
 

@@ -6,7 +6,7 @@ use std::{
 use bounded_vec_deque::BoundedVecDeque;
 use chrono::Utc;
 
-use rsnano_utils::stats::{StatsCollection, StatsSource};
+use burst_utils::stats::{StatsCollection, StatsSource};
 
 use crate::{block_processing::LedgerEvent, ledger_event_processor::LedgerEventProcessorPlugin};
 

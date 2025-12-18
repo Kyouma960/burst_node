@@ -1,7 +1,7 @@
 use std::{collections::HashMap, mem::size_of};
 
-use rsnano_types::{BlockHash, QualifiedRoot};
-use rsnano_utils::container_info::ContainerInfo;
+use burst_types::{BlockHash, QualifiedRoot};
+use burst_utils::container_info::ContainerInfo;
 
 use crate::consensus::election::Election;
 

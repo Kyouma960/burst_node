@@ -1,7 +1,7 @@
 use std::sync::Mutex;
 
-use rsnano_nullable_clock::SteadyClock;
-use rsnano_utils::container_info::ContainerInfo;
+use burst_nullable_clock::SteadyClock;
+use burst_utils::container_info::ContainerInfo;
 
 use crate::{TrafficType, token_bucket::TokenBucket};
 

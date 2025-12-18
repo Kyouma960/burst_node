@@ -1,8 +1,8 @@
 use std::{sync::Arc, time::Duration};
 
-use rsnano_ledger::test_helpers::UnsavedBlockLatticeBuilder;
-use rsnano_node::{config::NodeConfig, consensus::ReceivedVote};
-use rsnano_types::{Amount, DEV_GENESIS_KEY, PrivateKey, Vote, VoteSource};
+use burst_ledger::test_helpers::UnsavedBlockLatticeBuilder;
+use burst_node::{config::NodeConfig, consensus::ReceivedVote};
+use burst_types::{Amount, DEV_GENESIS_KEY, PrivateKey, Vote, VoteSource};
 use test_helpers::{System, assert_timely2};
 
 // checks that block cannot be confirmed if there is no enough votes to reach quorum

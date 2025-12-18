@@ -1,6 +1,6 @@
 use std::time::Duration;
 
-use rsnano_utils::stats::{DetailType, Direction, StatType};
+use burst_utils::stats::{DetailType, Direction, StatType};
 use test_helpers::{System, setup_rpc_client_and_server};
 
 #[test]

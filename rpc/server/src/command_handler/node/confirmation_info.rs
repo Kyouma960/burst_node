@@ -1,10 +1,10 @@
 use crate::command_handler::RpcCommandHandler;
 use anyhow::anyhow;
 use indexmap::IndexMap;
-use rsnano_rpc_messages::{
+use burst_rpc_messages::{
     ConfirmationBlockInfoDto, ConfirmationInfoArgs, ConfirmationInfoResponse,
 };
-use rsnano_types::{Account, Amount};
+use burst_types::{Account, Amount};
 
 impl RpcCommandHandler {
     pub(crate) fn confirmation_info(
@@ -18,7 +18,7 @@ impl RpcCommandHandler {
             .election_for_root(&args.root)
             .ok_or_else(|| anyhow!("Active confirmation not found"))?;
 
-        let announcements = 0; // not supported in RsNano
+        let announcements = 0; // not supported in Burst
         let voters = election.votes().len();
         let last_winner = election.winner().hash();
         let final_tally = election.winner_final_tally();

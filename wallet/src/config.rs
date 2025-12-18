@@ -1,5 +1,5 @@
-use rsnano_ledger::DEV_GENESIS_PUB_KEY;
-use rsnano_types::{
+use burst_ledger::DEV_GENESIS_PUB_KEY;
+use burst_types::{
     Account, Amount, Networks, PRECONFIGURED_REPRESENTATIVES_BETA,
     PRECONFIGURED_REPRESENTATIVES_LIVE, PublicKey,
 };

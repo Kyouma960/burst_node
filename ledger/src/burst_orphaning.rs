@@ -1,8 +1,8 @@
 // Logic for handling illegitimate tokens and orphaning TRST
 
-use rsnano_nullable_lmdb::{Transaction, WriteTransaction};
-use rsnano_store_lmdb::LmdbStore;
-use rsnano_types::{Account, BlockHash};
+use burst_nullable_lmdb::{Transaction, WriteTransaction};
+use burst_store_lmdb::LmdbStore;
+use burst_types::{Account, BlockHash};
 
 /// Mark a wallet as illegitimate and orphan all its TRST tokens
 /// This should be called when a wallet is unverified after a revote

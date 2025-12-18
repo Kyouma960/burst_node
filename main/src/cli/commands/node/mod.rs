@@ -4,7 +4,7 @@ mod run_daemon;
 use crate::cli::{GlobalArgs, build_node};
 use clap::{CommandFactory, Parser, Subcommand};
 use generate_config::GenerateConfigArgs;
-use rsnano_node::telemetry::{rsnano_build_info, rsnano_version_string};
+use burst_node::telemetry::{burst_build_info, burst_version_string};
 use run_daemon::RunDaemonArgs;
 
 #[derive(Parser, PartialEq, Debug)]
@@ -45,8 +45,8 @@ impl NodeCommand {
 }
 
 fn print_version() {
-    println!("{}", rsnano_version_string());
-    println!("{}", rsnano_build_info());
+    println!("{}", burst_version_string());
+    println!("{}", burst_build_info());
 }
 
 fn initialize(global_args: GlobalArgs) -> anyhow::Result<()> {

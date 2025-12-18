@@ -1,8 +1,8 @@
 use std::{sync::Arc, time::Duration};
 
-use rsnano_nullable_clock::{SteadyClock, Timestamp};
-use rsnano_types::QualifiedRoot;
-use rsnano_utils::stats::{DetailType, StatType, Stats};
+use burst_nullable_clock::{SteadyClock, Timestamp};
+use burst_types::QualifiedRoot;
+use burst_utils::stats::{DetailType, StatType, Stats};
 
 use super::{
     ConfirmationSolicitor,

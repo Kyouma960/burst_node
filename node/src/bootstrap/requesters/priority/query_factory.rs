@@ -1,9 +1,9 @@
 use std::sync::Arc;
 
-use rsnano_ledger::{AnySet, ConfirmedSet, Ledger, LedgerSet};
-use rsnano_messages::{AscPullReqType, BlocksReqPayload, HashType};
-use rsnano_network::Channel;
-use rsnano_types::{Account, BlockHash, HashOrAccount};
+use burst_ledger::{AnySet, ConfirmedSet, Ledger, LedgerSet};
+use burst_messages::{AscPullReqType, BlocksReqPayload, HashType};
+use burst_network::Channel;
+use burst_types::{Account, BlockHash, HashOrAccount};
 
 use super::{
     pull_count_decider::PullCountDecider,
@@ -137,7 +137,7 @@ impl PullStart {
 mod tests {
     use super::*;
     use crate::bootstrap::state::BootstrapLogic;
-    use rsnano_types::{AccountInfo, ConfirmationHeightInfo};
+    use burst_types::{AccountInfo, ConfirmationHeightInfo};
 
     #[test]
     fn empty() {

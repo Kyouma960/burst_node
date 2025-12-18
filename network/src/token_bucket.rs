@@ -1,4 +1,4 @@
-use rsnano_nullable_clock::Timestamp;
+use burst_nullable_clock::Timestamp;
 
 /**
  * Token bucket based rate limiting. This is suitable for rate limiting ipc/api calls

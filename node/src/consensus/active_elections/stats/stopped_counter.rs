@@ -1,6 +1,6 @@
 use strum::{EnumCount, IntoEnumIterator};
 
-use rsnano_utils::stats::{StatsCollection, StatsSource};
+use burst_utils::stats::{StatsCollection, StatsSource};
 
 use crate::consensus::election::{Election, ElectionBehavior, ElectionState};
 
@@ -80,8 +80,8 @@ impl StatsSource for StoppedCounter {
 mod tests {
 
     use super::*;
-    use rsnano_nullable_clock::Timestamp;
-    use rsnano_types::SavedBlock;
+    use burst_nullable_clock::Timestamp;
+    use burst_types::SavedBlock;
     use std::time::Duration;
 
     #[test]

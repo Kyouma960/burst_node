@@ -1,4 +1,4 @@
-use rsnano_types::BlockHash;
+use burst_types::BlockHash;
 use std::collections::{HashMap, VecDeque};
 
 use super::CementingEntry;

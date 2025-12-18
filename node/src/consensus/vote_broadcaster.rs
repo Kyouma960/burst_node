@@ -3,10 +3,10 @@ use std::{
     sync::{Arc, Mutex},
 };
 
-use rsnano_messages::{ConfirmAck, Message};
-use rsnano_network::TrafficType;
-use rsnano_types::{Vote, VoteSource};
-use rsnano_utils::stats::{DetailType, StatType, Stats};
+use burst_messages::{ConfirmAck, Message};
+use burst_network::TrafficType;
+use burst_types::{Vote, VoteSource};
+use burst_utils::stats::{DetailType, StatType, Stats};
 
 use super::{VoteProcessorConfig, VoteProcessorQueue};
 use crate::transport::MessageFlooder;

@@ -2,12 +2,12 @@
 use std::sync::Arc;
 
 #[cfg(test)]
-use rsnano_nullable_http_client::{ConfiguredHttpResponse, JsonResponse, Method, StatusCode};
-use rsnano_nullable_http_client::{HttpClient, IntoUrl, NulledHttpClientBuilder, Url};
-use rsnano_output_tracker::OutputListenerMt;
+use burst_nullable_http_client::{ConfiguredHttpResponse, JsonResponse, Method, StatusCode};
+use burst_nullable_http_client::{HttpClient, IntoUrl, NulledHttpClientBuilder, Url};
+use burst_output_tracker::OutputListenerMt;
 #[cfg(test)]
-use rsnano_output_tracker::OutputTrackerMt;
-use rsnano_types::{Root, WorkNonce, WorkRequest, to_hex_string};
+use burst_output_tracker::OutputTrackerMt;
+use burst_types::{Root, WorkNonce, WorkRequest, to_hex_string};
 
 #[derive(serde::Serialize)]
 struct HttpWorkRequest {
@@ -144,7 +144,7 @@ impl From<ConfiguredWorkResponse> for ConfiguredHttpResponse {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_nullable_http_client::{JsonResponse, Method};
+    use burst_nullable_http_client::{JsonResponse, Method};
     use std::time::Duration;
     use tokio::time::timeout;
 

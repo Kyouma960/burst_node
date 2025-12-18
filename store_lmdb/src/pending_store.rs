@@ -1,11 +1,11 @@
 use std::{ops::RangeBounds, sync::Arc};
 
-use rsnano_nullable_lmdb::{
+use burst_nullable_lmdb::{
     ConfiguredDatabase, DatabaseFlags, Error, LmdbDatabase, LmdbEnvironment, Transaction,
     WriteFlags, WriteTransaction,
 };
-use rsnano_output_tracker::{OutputListenerMt, OutputTrackerMt};
-use rsnano_types::{Account, BlockHash, PendingInfo, PendingKey};
+use burst_output_tracker::{OutputListenerMt, OutputTrackerMt};
+use burst_types::{Account, BlockHash, PendingInfo, PendingKey};
 
 use crate::{LmdbIterator, PENDING_TEST_DATABASE, iterator::LmdbRangeIterator};
 
@@ -146,7 +146,7 @@ pub fn read_pending_record(mut key: &[u8], mut value: &[u8]) -> (PendingKey, Pen
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_nullable_lmdb::{DeleteEvent, PutEvent};
+    use burst_nullable_lmdb::{DeleteEvent, PutEvent};
 
     struct Fixture {
         env: Arc<LmdbEnvironment>,

@@ -2,9 +2,9 @@ use std::{net::SocketAddrV6, sync::Arc, time::Duration};
 
 use tracing::info;
 
-use rsnano_ledger::Ledger;
-use rsnano_network::PeerConnector;
-use rsnano_utils::{
+use burst_ledger::Ledger;
+use burst_network::PeerConnector;
+use burst_utils::{
     CancellationToken,
     stats::{DetailType, StatType, Stats},
     ticker::Tickable,
@@ -76,9 +76,9 @@ mod tests {
 
     use tracing_test::traced_test;
 
-    use rsnano_network::{TEST_ENDPOINT_1, TEST_ENDPOINT_2, TEST_ENDPOINT_3};
-    use rsnano_output_tracker::OutputTrackerMt;
-    use rsnano_utils::stats::Direction;
+    use burst_network::{TEST_ENDPOINT_1, TEST_ENDPOINT_2, TEST_ENDPOINT_3};
+    use burst_output_tracker::OutputTrackerMt;
+    use burst_utils::stats::Direction;
 
     use super::*;
 

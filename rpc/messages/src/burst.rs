@@ -1,7 +1,7 @@
 // Burst-specific RPC messages
 
 use serde::{Deserialize, Serialize};
-use rsnano_types::Account;
+use burst_types::Account;
 
 #[derive(Serialize, Deserialize, PartialEq, Debug)]
 pub struct BrnBalanceArgs {

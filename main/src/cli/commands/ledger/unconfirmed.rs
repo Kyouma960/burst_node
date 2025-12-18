@@ -1,6 +1,6 @@
 use crate::cli::GlobalArgs;
-use rsnano_nullable_lmdb::LmdbEnvironmentFactory;
-use rsnano_store_lmdb::{EnvironmentFlags, EnvironmentOptions, LmdbStore};
+use burst_nullable_lmdb::LmdbEnvironmentFactory;
+use burst_store_lmdb::{EnvironmentFlags, EnvironmentOptions, LmdbStore};
 
 pub(crate) fn print_unconfirmed_accounts(args: GlobalArgs) -> anyhow::Result<()> {
     let env_factory = LmdbEnvironmentFactory::default();

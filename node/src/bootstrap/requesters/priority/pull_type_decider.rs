@@ -1,5 +1,5 @@
 use rand::Rng;
-use rsnano_nullable_random::NullableRng;
+use burst_nullable_random::NullableRng;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub(super) enum PullType {

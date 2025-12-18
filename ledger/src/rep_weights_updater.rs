@@ -3,9 +3,9 @@ use std::{
     sync::{Arc, RwLock},
 };
 
-use rsnano_nullable_lmdb::WriteTransaction;
-use rsnano_store_lmdb::LmdbRepWeightStore;
-use rsnano_types::{Amount, PublicKey};
+use burst_nullable_lmdb::WriteTransaction;
+use burst_store_lmdb::LmdbRepWeightStore;
+use burst_types::{Amount, PublicKey};
 
 use crate::{RepWeightCache, RepWeights};
 
@@ -135,8 +135,8 @@ impl RepWeightsUpdater {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_nullable_lmdb::LmdbEnvironment;
-    use rsnano_store_lmdb::ConfiguredRepWeightDatabaseBuilder;
+    use burst_nullable_lmdb::LmdbEnvironment;
+    use burst_store_lmdb::ConfiguredRepWeightDatabaseBuilder;
 
     #[test]
     fn representation_changes() {

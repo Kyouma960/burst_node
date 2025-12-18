@@ -5,31 +5,31 @@ use std::{
     time::Duration,
 };
 
-use rsnano_ledger::{
+use burst_ledger::{
     DEV_GENESIS_ACCOUNT, DEV_GENESIS_HASH, test_helpers::UnsavedBlockLatticeBuilder,
 };
-use rsnano_messages::{Message, Publish};
-use rsnano_node::{
+use burst_messages::{Message, Publish};
+use burst_node::{
     CompositeNodeEventHandler, Node,
     config::{NetworkConstants, NodeConfig, WebsocketConfig},
 };
-use rsnano_nullable_tcp::get_available_port;
-use rsnano_types::{
+use burst_nullable_tcp::get_available_port;
+use burst_types::{
     Amount, DEV_GENESIS_KEY, JsonBlock, Networks, PrivateKey, UnixMillisTimestamp, Vote, VoteError,
 };
-use rsnano_websocket_client::{
+use burst_websocket_client::{
     ConfirmationSubArgs, ConfirmationTypeFilter, NanoWebSocketClient, NanoWebSocketClientFactory,
     SubscribeArgs, TopicSub, UnsubscribeArgs,
 };
-use rsnano_websocket_messages::{BlockConfirmed, Topic};
-use rsnano_websocket_server::{
+use burst_websocket_messages::{BlockConfirmed, Topic};
+use burst_websocket_server::{
     TelemetryReceived, VoteReceived, WebsocketListener, WebsocketListenerExt,
     create_websocket_server, vote_received,
 };
 use test_helpers::{System, assert_timely2, make_fake_channel};
 use tokio::{task::spawn_blocking, time::timeout};
 
-pub type WsMessage = rsnano_websocket_client::Message;
+pub type WsMessage = burst_websocket_client::Message;
 
 /// Tests getting notification of a started election
 #[test]

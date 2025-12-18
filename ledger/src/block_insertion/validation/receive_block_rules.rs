@@ -1,6 +1,6 @@
 use super::BlockValidator;
 use crate::BlockError;
-use rsnano_types::{Block, Epoch};
+use burst_types::{Block, Epoch};
 
 impl<'a> BlockValidator<'a> {
     pub fn ensure_pending_receive_is_correct(&self) -> Result<(), BlockError> {

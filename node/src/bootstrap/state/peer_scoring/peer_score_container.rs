@@ -1,5 +1,5 @@
 use super::peer_score::PeerScore;
-use rsnano_network::ChannelId;
+use burst_network::ChannelId;
 use std::collections::HashMap;
 
 #[derive(Default)]

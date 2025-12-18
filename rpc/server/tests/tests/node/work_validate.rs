@@ -1,5 +1,5 @@
-use rsnano_ledger::DEV_GENESIS_HASH;
-use rsnano_rpc_messages::WorkValidateArgs;
+use burst_ledger::DEV_GENESIS_HASH;
+use burst_rpc_messages::WorkValidateArgs;
 use test_helpers::{System, setup_rpc_client_and_server};
 
 #[test]

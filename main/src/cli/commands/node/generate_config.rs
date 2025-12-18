@@ -3,10 +3,10 @@ use std::io::BufRead;
 use anyhow::Result;
 use clap::{ArgGroup, Parser};
 
-use rsnano_node::config::{DaemonConfig, DaemonToml, NetworkParams};
-use rsnano_rpc_server::{RpcServerConfig, RpcServerToml};
-use rsnano_types::Networks;
-use rsnano_utils::get_cpu_count;
+use burst_node::config::{DaemonConfig, DaemonToml, NetworkParams};
+use burst_rpc_server::{RpcServerConfig, RpcServerToml};
+use burst_types::Networks;
+use burst_utils::get_cpu_count;
 
 #[derive(Parser, PartialEq, Debug)]
 #[command(group = ArgGroup::new("input1")

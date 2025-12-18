@@ -6,7 +6,7 @@ impl RpcCommand {
     }
 }
 
-use rsnano_types::{Account, NodeId, PublicKey};
+use burst_types::{Account, NodeId, PublicKey};
 use serde::{Deserialize, Serialize};
 
 #[derive(PartialEq, Eq, Debug, Serialize, Deserialize)]

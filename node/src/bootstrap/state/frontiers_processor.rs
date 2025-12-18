@@ -2,9 +2,9 @@ use crate::bootstrap::{
     FrontierHeadInfo, FrontierScanConfig,
     state::{CandidateAccounts, FrontierScan, RunningQuery, VerifyResult},
 };
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::{Account, Frontier};
-use rsnano_utils::{
+use burst_nullable_clock::Timestamp;
+use burst_types::{Account, Frontier};
+use burst_utils::{
     container_info::{ContainerInfo, ContainerInfoProvider},
     stats::{StatsCollection, StatsSource},
 };

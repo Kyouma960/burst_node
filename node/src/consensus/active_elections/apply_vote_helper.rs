@@ -1,7 +1,7 @@
 use std::{collections::HashMap, ops::Deref};
 
-use rsnano_types::{Amount, BlockHash, VoteError, VoteSource};
-use rsnano_utils::sync::backpressure_channel::Sender;
+use burst_types::{Amount, BlockHash, VoteError, VoteSource};
+use burst_utils::sync::backpressure_channel::Sender;
 
 use super::{
     AecEvent, ApplyVoteArgs,
@@ -182,13 +182,13 @@ mod tests {
         },
         representatives::QuorumSpecs,
     };
-    use rsnano_ledger::RepWeights;
-    use rsnano_nullable_clock::Timestamp;
-    use rsnano_types::{
+    use burst_ledger::RepWeights;
+    use burst_nullable_clock::Timestamp;
+    use burst_types::{
         Block, BlockPriority, PrivateKey, QualifiedRoot, SavedBlock, StateBlockArgs,
         UnixMillisTimestamp, Vote,
     };
-    use rsnano_utils::sync::backpressure_channel::channel;
+    use burst_utils::sync::backpressure_channel::channel;
     use std::time::Duration;
 
     #[test]

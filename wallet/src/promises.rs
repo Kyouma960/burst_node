@@ -3,7 +3,7 @@ use std::{
     time::{Duration, Instant},
 };
 
-use rsnano_types::SavedBlock;
+use burst_types::SavedBlock;
 
 use super::WalletsError;
 

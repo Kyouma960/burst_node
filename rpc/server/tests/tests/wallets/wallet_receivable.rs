@@ -1,5 +1,5 @@
-use rsnano_rpc_messages::{AccountsReceivableResponse, WalletReceivableArgs};
-use rsnano_types::{Account, Amount, PublicKey, RawKey, WalletId};
+use burst_rpc_messages::{AccountsReceivableResponse, WalletReceivableArgs};
+use burst_types::{Account, Amount, PublicKey, RawKey, WalletId};
 use test_helpers::{System, send_block_to, setup_rpc_client_and_server};
 
 #[test]

@@ -1,7 +1,7 @@
 use std::fs;
 
 use anyhow::Context;
-use rsnano_nullable_lmdb::LmdbEnvironment;
+use burst_nullable_lmdb::LmdbEnvironment;
 use tracing::info;
 
 pub fn vacuum(env: LmdbEnvironment) -> anyhow::Result<()> {

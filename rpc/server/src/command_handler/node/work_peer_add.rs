@@ -1,6 +1,6 @@
 use crate::command_handler::RpcCommandHandler;
-use rsnano_rpc_messages::{AddressWithPortArgs, SuccessResponse};
-use rsnano_types::Peer;
+use burst_rpc_messages::{AddressWithPortArgs, SuccessResponse};
+use burst_types::Peer;
 
 impl RpcCommandHandler {
     pub(crate) fn work_peer_add(&self, args: AddressWithPortArgs) -> SuccessResponse {

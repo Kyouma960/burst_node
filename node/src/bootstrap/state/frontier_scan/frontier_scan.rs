@@ -1,8 +1,8 @@
 use primitive_types::U512;
 
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::{Account, Frontier};
-use rsnano_utils::container_info::ContainerInfo;
+use burst_nullable_clock::Timestamp;
+use burst_types::{Account, Frontier};
+use burst_utils::container_info::ContainerInfo;
 
 use super::{FrontierScanConfig, heads_container::HeadsContainer};
 
@@ -121,7 +121,7 @@ impl FrontierHeadInfo {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::BlockHash;
+    use burst_types::BlockHash;
     use std::time::Duration;
 
     #[test]

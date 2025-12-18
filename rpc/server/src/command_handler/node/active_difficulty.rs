@@ -1,5 +1,5 @@
 use crate::command_handler::RpcCommandHandler;
-use rsnano_rpc_messages::ActiveDifficultyResponse;
+use burst_rpc_messages::ActiveDifficultyResponse;
 
 impl RpcCommandHandler {
     pub(crate) fn active_difficulty(&self) -> ActiveDifficultyResponse {

@@ -1,11 +1,11 @@
 use anyhow::anyhow;
 
-use rsnano_ledger::{AnySet, Ledger, LedgerSet};
-use rsnano_rpc_messages::{
+use burst_ledger::{AnySet, Ledger, LedgerSet};
+use burst_rpc_messages::{
     AccountHistoryArgs, AccountHistoryResponse, BlockSubTypeDto, BlockTypeDto, HistoryEntry,
     unwrap_bool_or_false, unwrap_u64_or_zero,
 };
-use rsnano_types::{Account, Block, BlockBase, BlockHash, SavedBlock, UnixTimestamp};
+use burst_types::{Account, Block, BlockBase, BlockHash, SavedBlock, UnixTimestamp};
 
 use crate::command_handler::RpcCommandHandler;
 
@@ -325,7 +325,7 @@ fn empty_entry() -> HistoryEntry {
 mod tests {
     use super::*;
     use crate::command_handler::test_rpc_command;
-    use rsnano_rpc_messages::{RpcCommand, RpcError};
+    use burst_rpc_messages::{RpcCommand, RpcError};
 
     #[test]
     fn history_rpc_call() {

@@ -1,5 +1,5 @@
-use rsnano_rpc_messages::WalletWithSeedArgs;
-use rsnano_types::{RawKey, WalletId};
+use burst_rpc_messages::WalletWithSeedArgs;
+use burst_types::{RawKey, WalletId};
 use test_helpers::{System, setup_rpc_client_and_server};
 
 #[test]

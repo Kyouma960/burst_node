@@ -1,5 +1,5 @@
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::BlockHash;
+use burst_nullable_clock::Timestamp;
+use burst_types::BlockHash;
 use std::{
     collections::{HashMap, HashSet},
     time::Duration,

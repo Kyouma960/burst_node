@@ -1,7 +1,7 @@
 use crate::bootstrap::{BootstrapPromise, PollResult, PromiseContext, state::BootstrapLogic};
 use rand::RngCore;
-use rsnano_nullable_clock::{SteadyClock, Timestamp};
-use rsnano_nullable_random::NullableRngFactory;
+use burst_nullable_clock::{SteadyClock, Timestamp};
+use burst_nullable_random::NullableRngFactory;
 use std::{
     cmp::min,
     sync::{Arc, Condvar, Mutex},
@@ -97,7 +97,7 @@ impl BootstrapPromiseRunner {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_utils::sync::OneShotNotification;
+    use burst_utils::sync::OneShotNotification;
     use std::{
         sync::atomic::{AtomicU64, Ordering},
         thread::spawn,

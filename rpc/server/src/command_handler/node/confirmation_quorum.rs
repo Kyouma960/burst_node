@@ -1,6 +1,6 @@
 use crate::command_handler::RpcCommandHandler;
-use rsnano_node::representatives::OnlineReps;
-use rsnano_rpc_messages::{ConfirmationQuorumArgs, ConfirmationQuorumResponse, PeerDetailsDto};
+use burst_node::representatives::OnlineReps;
+use burst_rpc_messages::{ConfirmationQuorumArgs, ConfirmationQuorumResponse, PeerDetailsDto};
 
 impl RpcCommandHandler {
     pub(crate) fn confirmation_quorum(
@@ -47,9 +47,9 @@ fn create_response(
 mod tests {
     use super::create_response;
     use crate::command_handler::test_rpc_command;
-    use rsnano_node::representatives::OnlineReps;
-    use rsnano_rpc_messages::{ConfirmationQuorumArgs, ConfirmationQuorumResponse, RpcCommand};
-    use rsnano_types::Amount;
+    use burst_node::representatives::OnlineReps;
+    use burst_rpc_messages::{ConfirmationQuorumArgs, ConfirmationQuorumResponse, RpcCommand};
+    use burst_types::Amount;
 
     #[test]
     fn confirmation_quorum_command() {

@@ -1,8 +1,8 @@
-use rsnano_ledger::{
+use burst_ledger::{
     AnySet, DEV_GENESIS_ACCOUNT, DEV_GENESIS_PUB_KEY, test_helpers::UnsavedBlockLatticeBuilder,
 };
-use rsnano_node::config::{NodeConfig, NodeFlags};
-use rsnano_types::{Amount, DEV_GENESIS_KEY, PrivateKey, WalletId};
+use burst_node::config::{NodeConfig, NodeFlags};
+use burst_types::{Amount, DEV_GENESIS_KEY, PrivateKey, WalletId};
 use test_helpers::{System, assert_timely_eq2};
 
 #[test]

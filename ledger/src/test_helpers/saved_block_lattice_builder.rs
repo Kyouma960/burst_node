@@ -1,12 +1,12 @@
 use std::{collections::HashMap, time::Duration};
 
-use rsnano_types::{
+use burst_types::{
     Account, Amount, Block, BlockDetails, BlockHash, BlockSideband, ChangeBlockArgs,
     DEV_GENESIS_BLOCK, DEV_GENESIS_KEY, Epoch, EpochBlockArgs, Link, OpenBlockArgs, PendingInfo,
     PendingKey, PrivateKey, PublicKey, ReceiveBlockArgs, Root, SavedBlock, SendBlockArgs,
     StateBlockArgs, UnixMillisTimestamp, WorkNonce, WorkRequest, dev_epoch1_signer, epoch_v1_link,
 };
-use rsnano_work::{WorkPool, dev_difficulty};
+use burst_work::{WorkPool, dev_difficulty};
 
 pub struct SavedBlockLatticeBuilder {
     accounts: HashMap<Account, Frontier>,

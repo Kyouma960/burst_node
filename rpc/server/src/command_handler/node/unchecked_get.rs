@@ -1,6 +1,6 @@
 use anyhow::anyhow;
 
-use rsnano_rpc_messages::{HashRpcMessage, UncheckedGetResponse};
+use burst_rpc_messages::{HashRpcMessage, UncheckedGetResponse};
 
 use crate::command_handler::RpcCommandHandler;
 
@@ -17,7 +17,7 @@ impl RpcCommandHandler {
             .filter_map(|(_, block)| {
                 if block.hash() == args.hash {
                     Some(UncheckedGetResponse {
-                        modified_timestamp: 0.into(), // not supported in RsNano
+                        modified_timestamp: 0.into(), // not supported in Burst
                         contents: block.json_representation(),
                     })
                 } else {

@@ -7,9 +7,9 @@ use std::{
 
 use rand::Rng;
 
-use rsnano_messages::Cookie;
-use rsnano_types::{Account, Signature};
-use rsnano_utils::container_info::{ContainerInfo, ContainerInfoProvider};
+use burst_messages::Cookie;
+use burst_types::{Account, Signature};
+use burst_utils::container_info::{ContainerInfo, ContainerInfoProvider};
 
 /// Node ID cookies for node ID handshakes
 pub struct SynCookies {

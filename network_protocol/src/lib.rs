@@ -18,8 +18,8 @@ pub use inbound_message_queue::*;
 pub use latest_keepalives::*;
 pub use nano_data_receiver::*;
 pub use nano_data_receiver_factory::*;
-use rsnano_messages::Message;
-use rsnano_network::ChannelId;
+use burst_messages::Message;
+use burst_network::ChannelId;
 use std::sync::Arc;
 pub use syn_cookies::*;
 

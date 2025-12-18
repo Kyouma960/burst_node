@@ -9,11 +9,11 @@ use std::{cmp::max, sync::Arc, time::Duration};
 use primitive_types::U256;
 use tracing::debug;
 
-use rsnano_ledger::{RepWeightCache, RepWeights};
-use rsnano_network::{Channel, ChannelId};
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::{Amount, Networks, PublicKey};
-use rsnano_utils::{
+use burst_ledger::{RepWeightCache, RepWeights};
+use burst_network::{Channel, ChannelId};
+use burst_nullable_clock::Timestamp;
+use burst_types::{Amount, Networks, PublicKey};
+use burst_utils::{
     container_info::{ContainerInfo, ContainerInfoProvider},
     stats::{StatsCollection, StatsSource},
 };
@@ -394,7 +394,7 @@ impl ConsensusParams {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_nullable_clock::SteadyClock;
+    use burst_nullable_clock::SteadyClock;
     use std::time::Duration;
 
     #[test]

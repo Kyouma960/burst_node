@@ -1,6 +1,6 @@
 use anyhow::Context;
-use rsnano_nullable_fs::NullableFilesystem;
-use rsnano_types::{PrivateKey, PrivateKeyFactory};
+use burst_nullable_fs::NullableFilesystem;
+use burst_types::{PrivateKey, PrivateKeyFactory};
 use std::path::{Path, PathBuf};
 use tracing::info;
 
@@ -77,8 +77,8 @@ impl NodeIdKeyFile {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_nullable_fs::FsEvent;
-    use rsnano_types::RawKey;
+    use burst_nullable_fs::FsEvent;
+    use burst_types::RawKey;
     use std::io::ErrorKind;
     use tracing_test::traced_test;
 

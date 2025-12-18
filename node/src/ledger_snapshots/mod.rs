@@ -7,12 +7,12 @@ use crate::{
     representatives::OnlineReps,
     transport::MessageFlooder,
 };
-use rsnano_ledger::Ledger;
-use rsnano_messages::{Aggregatable, Message, Preproposal, Proposal, ProposalVote};
-use rsnano_network::TrafficType;
-use rsnano_output_tracker::{OutputListenerMt, OutputTrackerMt};
-use rsnano_types::{Account, BlockHash};
-use rsnano_types::{PrivateKey, SnapshotNumber};
+use burst_ledger::Ledger;
+use burst_messages::{Aggregatable, Message, Preproposal, Proposal, ProposalVote};
+use burst_network::TrafficType;
+use burst_output_tracker::{OutputListenerMt, OutputTrackerMt};
+use burst_types::{Account, BlockHash};
+use burst_types::{PrivateKey, SnapshotNumber};
 use std::sync::{Arc, Mutex};
 use tracing::warn;
 
@@ -221,11 +221,11 @@ impl LedgerSnapshots {
 mod tests {
     use super::*;
     use crate::{representatives::ONLINE_WEIGHT_QUORUM, transport::FloodEvent};
-    use rsnano_ledger::{AnySet, RepWeights};
-    use rsnano_messages::{Aggregatable, Message, ProposalHash, ProposalVote};
-    use rsnano_network::TrafficType;
-    use rsnano_output_tracker::OutputTrackerMt;
-    use rsnano_types::{Amount, QualifiedRoot, SavedBlock};
+    use burst_ledger::{AnySet, RepWeights};
+    use burst_messages::{Aggregatable, Message, ProposalHash, ProposalVote};
+    use burst_network::TrafficType;
+    use burst_output_tracker::OutputTrackerMt;
+    use burst_types::{Amount, QualifiedRoot, SavedBlock};
     use std::{sync::LazyLock, time::Duration};
 
     #[test]

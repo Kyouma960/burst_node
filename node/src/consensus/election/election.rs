@@ -6,12 +6,12 @@ use std::{
 
 use strum_macros::{EnumCount, EnumIter};
 
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::{
+use burst_nullable_clock::Timestamp;
+use burst_types::{
     Account, Amount, Block, BlockHash, MaybeSavedBlock, PublicKey, QualifiedRoot, SavedBlock,
     UnixMillisTimestamp, Vote, VoteError,
 };
-use rsnano_utils::stats::DetailType;
+use burst_utils::stats::DetailType;
 
 use super::{ConfirmationType, ConfirmedElection, ElectionState, block_tallies::BlockTallies};
 

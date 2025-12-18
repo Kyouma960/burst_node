@@ -5,8 +5,8 @@ use std::{
 
 use tracing::info;
 
-use rsnano_nullable_clock::SteadyClock;
-use rsnano_utils::{CancellationToken, ticker::Tickable};
+use burst_nullable_clock::SteadyClock;
+use burst_utils::{CancellationToken, ticker::Tickable};
 
 use super::{OnlineReps, OnlineWeightSampler};
 

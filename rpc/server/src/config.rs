@@ -1,5 +1,5 @@
-use rsnano_node::config::{NetworkConstants, get_rpc_toml_config_path, read_toml_file};
-use rsnano_types::Networks;
+use burst_node::config::{NetworkConstants, get_rpc_toml_config_path, read_toml_file};
+use burst_types::Networks;
 use std::{
     net::{AddrParseError, IpAddr, Ipv6Addr, SocketAddr},
     path::Path,
@@ -76,7 +76,7 @@ impl Default for RpcServerLoggingConfig {
 
 #[cfg(test)]
 mod tests {
-    use rsnano_node::config::get_default_rpc_filepath_from;
+    use burst_node::config::get_default_rpc_filepath_from;
     use std::path::Path;
 
     #[test]

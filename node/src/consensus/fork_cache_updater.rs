@@ -1,6 +1,6 @@
 use std::sync::{Arc, RwLock};
 
-use rsnano_ledger::BlockError;
+use burst_ledger::BlockError;
 
 use super::ForkCache;
 use crate::block_processing::ProcessedResult;

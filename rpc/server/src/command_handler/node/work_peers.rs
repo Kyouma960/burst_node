@@ -1,5 +1,5 @@
 use crate::command_handler::RpcCommandHandler;
-use rsnano_rpc_messages::WorkPeersResponse;
+use burst_rpc_messages::WorkPeersResponse;
 
 impl RpcCommandHandler {
     pub(crate) fn work_peers(&self) -> WorkPeersResponse {

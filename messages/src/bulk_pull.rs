@@ -3,7 +3,7 @@ use std::{fmt::Display, io::Read, mem::size_of};
 use bitvec::prelude::BitArray;
 use serde_derive::Serialize;
 
-use rsnano_types::{BlockHash, DeserializationError, HashOrAccount};
+use burst_types::{BlockHash, DeserializationError, HashOrAccount};
 
 use super::MessageVariant;
 

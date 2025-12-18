@@ -1,4 +1,4 @@
-use rsnano_types::WorkNonce;
+use burst_types::WorkNonce;
 
 use super::{WorkGenerator, WorkQueueCoordinator, WorkTicket, work_queue::WorkQueue};
 use std::sync::{Arc, MutexGuard};

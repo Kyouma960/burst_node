@@ -1,5 +1,5 @@
 use crate::{ChannelId, Network};
-use rsnano_nullable_clock::SteadyClock;
+use burst_nullable_clock::SteadyClock;
 use std::{
     ops::Deref,
     sync::{Arc, RwLock},

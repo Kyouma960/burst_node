@@ -1,5 +1,5 @@
-use rsnano_rpc_messages::WalletRepresentativeSetArgs;
-use rsnano_types::{Account, PublicKey, WalletId};
+use burst_rpc_messages::WalletRepresentativeSetArgs;
+use burst_types::{Account, PublicKey, WalletId};
 use test_helpers::{System, setup_rpc_client_and_server};
 
 #[test]

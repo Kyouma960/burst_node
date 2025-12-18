@@ -1,5 +1,5 @@
 use crate::{RpcCommand, common::AmountRpcMessage};
-use rsnano_types::Amount;
+use burst_types::Amount;
 
 impl RpcCommand {
     pub fn nano_to_raw(amount: u64) -> Self {

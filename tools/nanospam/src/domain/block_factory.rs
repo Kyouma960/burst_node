@@ -1,6 +1,6 @@
 use rand::Rng;
 
-use rsnano_types::{Amount, Block, BlockHash, Link, PublicKey, StateBlockArgs, WorkNonce};
+use burst_types::{Amount, Block, BlockHash, Link, PublicKey, StateBlockArgs, WorkNonce};
 
 use crate::domain::AccountMap;
 
@@ -204,7 +204,7 @@ fn create_change_block(account_map: &mut AccountMap) -> BlockResult {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::PrivateKey;
+    use burst_types::PrivateKey;
     use std::time::Instant;
 
     const MAX_BLOCKS: usize = 4;

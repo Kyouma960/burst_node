@@ -2,7 +2,7 @@
 
 use crate::{
     Account, Amount, BlockHash, UnixTimestamp,
-    verification_info::{VerificationInfo, VerificationStatus},
+    verification_info::VerificationInfo,
     BRN_INCREMENT_RATE_PER_MINUTE, trst_expiry_seconds,
 };
 

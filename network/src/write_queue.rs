@@ -5,7 +5,7 @@ use std::sync::{
 
 use tokio::sync::Notify;
 
-use rsnano_utils::fair_queue::FairQueue;
+use burst_utils::fair_queue::FairQueue;
 
 use crate::{TrafficType, channel_stats::ChannelStats};
 

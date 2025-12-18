@@ -1,6 +1,6 @@
 use crate::{ChannelDirection, TcpNetworkAdapter};
 use async_trait::async_trait;
-use rsnano_nullable_tcp::TcpStream;
+use burst_nullable_tcp::TcpStream;
 use std::{
     net::{IpAddr, Ipv6Addr, SocketAddr, SocketAddrV6},
     sync::{

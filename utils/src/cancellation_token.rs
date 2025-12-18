@@ -6,7 +6,7 @@ use std::{
     time::Duration,
 };
 
-use rsnano_output_tracker::{OutputListenerMt, OutputTrackerMt};
+use burst_output_tracker::{OutputListenerMt, OutputTrackerMt};
 
 #[derive(Clone)]
 pub struct CancellationToken {

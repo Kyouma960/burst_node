@@ -1,5 +1,5 @@
 use crate::{BlockError, block_insertion::validation::tests::BlockValidationTest};
-use rsnano_types::{Amount, BlockDetails, BlockHash, BlockSideband, Epoch, PendingKey};
+use burst_types::{Amount, BlockDetails, BlockHash, BlockSideband, Epoch, PendingKey};
 
 #[test]
 fn valid_legacy_receive_block() {

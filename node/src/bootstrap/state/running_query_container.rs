@@ -1,5 +1,5 @@
 use super::{QuerySource, RunningQuery};
-use rsnano_types::{Account, BlockHash};
+use burst_types::{Account, BlockHash};
 use std::{
     collections::{HashMap, VecDeque},
     mem::size_of,
@@ -132,7 +132,7 @@ impl RunningQueryContainer {
 
 #[cfg(test)]
 mod tests {
-    use rsnano_utils::stats::DetailType;
+    use burst_utils::stats::DetailType;
 
     use super::*;
     use crate::bootstrap::state::QueryType;

@@ -1,11 +1,11 @@
-use rsnano_ledger::{
+use burst_ledger::{
     AnySet, ConfirmedSet, DEV_GENESIS_ACCOUNT, DEV_GENESIS_PUB_KEY, LedgerSet,
     test_helpers::UnsavedBlockLatticeBuilder,
 };
-use rsnano_network::ChannelId;
-use rsnano_node::block_processing::{BlockContext, BlockSource};
-use rsnano_types::{Amount, DEV_GENESIS_KEY, PrivateKey};
-use rsnano_utils::stats::{DetailType, Direction, StatType};
+use burst_network::ChannelId;
+use burst_node::block_processing::{BlockContext, BlockSource};
+use burst_types::{Amount, DEV_GENESIS_KEY, PrivateKey};
+use burst_utils::stats::{DetailType, Direction, StatType};
 use test_helpers::{System, assert_timely_eq2};
 
 #[test]

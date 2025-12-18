@@ -1,5 +1,5 @@
 use crate::{RpcCommand, WalletWithAccountArgs};
-use rsnano_types::{Account, WalletId};
+use burst_types::{Account, WalletId};
 
 impl RpcCommand {
     pub fn account_remove(wallet: WalletId, account: Account) -> Self {
@@ -10,7 +10,7 @@ impl RpcCommand {
 #[cfg(test)]
 mod tests {
     use crate::RpcCommand;
-    use rsnano_types::Account;
+    use burst_types::Account;
     use serde_json::to_string_pretty;
 
     #[test]

@@ -1,9 +1,9 @@
 use std::sync::Arc;
 
 use chrono::Utc;
-use rsnano_network::ChannelDirection;
-use rsnano_node::NodeCallbacks;
-use rsnano_nullable_clock::SteadyClock;
+use burst_network::ChannelDirection;
+use burst_node::NodeCallbacks;
+use burst_nullable_clock::SteadyClock;
 
 use crate::{message_collection::RecordedMessage, message_recorder::MessageRecorder};
 

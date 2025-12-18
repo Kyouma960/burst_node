@@ -1,6 +1,6 @@
 use super::{ConfirmReq, MessageVariant};
 use bitvec::prelude::BitArray;
-use rsnano_types::{DeserializationError, Vote};
+use burst_types::{DeserializationError, Vote};
 use std::fmt::{Debug, Display};
 /*
  * Binary Format:
@@ -117,7 +117,7 @@ impl Display for ConfirmAck {
 mod tests {
     use super::*;
     use crate::{Message, assert_deserializable};
-    use rsnano_types::{BlockHash, PrivateKey, UnixMillisTimestamp};
+    use burst_types::{BlockHash, PrivateKey, UnixMillisTimestamp};
 
     #[test]
     fn serialize_v1() {

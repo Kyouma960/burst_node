@@ -2,12 +2,12 @@ use std::sync::{Arc, Mutex, RwLock, Weak, atomic::Ordering};
 
 use tracing::{debug, warn};
 
-use rsnano_messages::*;
-use rsnano_network::{
+use burst_messages::*;
+use burst_network::{
     Channel, ChannelDirection, ChannelMode, DataReceiver, Network, ReceiveResult, TrafficType,
 };
-use rsnano_types::{NodeId, ProtocolInfo};
-use rsnano_utils::stats::{DetailType, Direction, StatType, Stats};
+use burst_types::{NodeId, ProtocolInfo};
+use burst_utils::stats::{DetailType, Direction, StatType, Stats};
 
 use crate::{HandshakeProcess, HandshakeStats, HandshakeStatus, LatestKeepalives};
 

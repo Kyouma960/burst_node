@@ -1,8 +1,8 @@
 // Helper functions for Burst-specific ledger operations
 
-use rsnano_nullable_lmdb::Transaction;
-use rsnano_store_lmdb::LmdbStore;
-use rsnano_types::{
+use burst_nullable_lmdb::Transaction;
+use burst_store_lmdb::LmdbStore;
+use burst_types::{
     Account, BlockHash, UnixTimestamp, VerificationInfo, calculate_brn,
 };
 
@@ -40,7 +40,7 @@ pub fn calculate_total_trst_created(
         if let Some(block) = store.block.get(txn, &current_hash) {
             // Check if this is a burn transaction
             if let Some(ref burst_meta) = block.sideband().burst_metadata {
-                if burst_meta.method == rsnano_types::TransactionMethod::Burn {
+                if burst_meta.method == burst_types::TransactionMethod::Burn {
                     // Add the amount (balance difference indicates burn amount)
                     // For burn transactions, the amount is the balance of the burn block
                     total_trst += block.balance().number();

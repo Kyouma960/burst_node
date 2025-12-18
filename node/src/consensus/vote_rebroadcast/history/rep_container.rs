@@ -1,5 +1,5 @@
 use super::RepresentativeEntry;
-use rsnano_types::{Amount, PublicKey};
+use burst_types::{Amount, PublicKey};
 use std::collections::{BTreeMap, HashMap};
 
 #[derive(Default)]
@@ -101,7 +101,7 @@ fn remove_from_weight_index(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::Amount;
+    use burst_types::Amount;
     use std::time::Duration;
 
     #[test]

@@ -6,11 +6,11 @@ use std::{
     time::Duration,
 };
 
-use rsnano_ledger::{Ledger, LedgerSet};
-use rsnano_network::ChannelId;
-use rsnano_nullable_clock::SteadyClock;
-use rsnano_types::{Block, BlockHash};
-use rsnano_utils::{
+use burst_ledger::{Ledger, LedgerSet};
+use burst_network::ChannelId;
+use burst_nullable_clock::SteadyClock;
+use burst_types::{Block, BlockHash};
+use burst_utils::{
     CancellationToken,
     stats::{StatsCollection, StatsSource},
     ticker::Tickable,
@@ -167,8 +167,8 @@ impl StatsSource for UncheckedBlockReenqueuerStats {
 mod tests {
     use super::*;
     use crate::block_processing::BlockSource;
-    use rsnano_nullable_clock::Timestamp;
-    use rsnano_types::{Block, BlockHash, SavedBlock};
+    use burst_nullable_clock::Timestamp;
+    use burst_types::{Block, BlockHash, SavedBlock};
     use std::time::Duration;
 
     #[test]

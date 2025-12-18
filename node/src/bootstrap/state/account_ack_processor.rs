@@ -1,6 +1,6 @@
-use rsnano_messages::AccountInfoAckPayload;
-use rsnano_types::{Account, BlockHash};
-use rsnano_utils::stats::{StatsCollection, StatsSource};
+use burst_messages::AccountInfoAckPayload;
+use burst_types::{Account, BlockHash};
+use burst_utils::stats::{StatsCollection, StatsSource};
 
 use crate::bootstrap::state::{CandidateAccounts, PriorityUpResult, RunningQuery};
 
@@ -91,7 +91,7 @@ impl StatsSource for AccountAckStats {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_nullable_clock::Timestamp;
+    use burst_nullable_clock::Timestamp;
 
     #[test]
     fn empty_response() {

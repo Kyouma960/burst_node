@@ -1,5 +1,5 @@
-use rsnano_rpc_messages::{BlockHashArgs, HashRpcMessage};
-use rsnano_types::Block;
+use burst_rpc_messages::{BlockHashArgs, HashRpcMessage};
+use burst_types::Block;
 
 pub fn block_hash(args: BlockHashArgs) -> HashRpcMessage {
     let block_enum: Block = args.block.into();

@@ -1,6 +1,6 @@
 use crate::{RpcCommand, RpcU64};
-use rsnano_types::HashOrAccount;
-use rsnano_types::{BlockHash, JsonBlock};
+use burst_types::HashOrAccount;
+use burst_types::{BlockHash, JsonBlock};
 use serde::{Deserialize, Serialize};
 
 impl RpcCommand {

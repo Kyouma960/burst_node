@@ -1,14 +1,14 @@
 use std::collections::VecDeque;
 
-use rsnano_node::{
+use burst_node::{
     bootstrap::{
         FrontierHeadInfo,
         state::{BootstrapLogic, frontiers_processor::FrontiersStats},
     },
     utils::RateCalculator,
 };
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::Account;
+use burst_nullable_clock::Timestamp;
+use burst_types::Account;
 
 #[derive(Default)]
 pub(crate) struct FrontierScanInfo {

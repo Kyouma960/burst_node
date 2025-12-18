@@ -1,4 +1,4 @@
-use rsnano_rpc_messages::{SetResponse, WalletRepresentativeSetArgs};
+use burst_rpc_messages::{SetResponse, WalletRepresentativeSetArgs};
 
 use crate::command_handler::RpcCommandHandler;
 

@@ -1,8 +1,8 @@
 // Helper to derive Burst metadata from blocks and their chain
 
-use rsnano_nullable_lmdb::Transaction;
-use rsnano_store_lmdb::LmdbStore;
-use rsnano_types::{
+use burst_nullable_lmdb::Transaction;
+use burst_store_lmdb::LmdbStore;
+use burst_types::{
     Account, Block, BlockHash, BurstBlockMetadata, TransactionMethod, UnixTimestamp,
 };
 use crate::burst_helpers;
@@ -14,7 +14,7 @@ pub fn derive_burst_metadata(
     txn: &dyn Transaction,
     block: &Block,
     account: &Account,
-    previous_block: Option<&rsnano_types::SavedBlock>,
+    previous_block: Option<&burst_types::SavedBlock>,
     current_timestamp: UnixTimestamp,
 ) -> Option<BurstBlockMetadata> {
     // Check if this account has any previous blocks
@@ -78,7 +78,7 @@ pub fn is_burst_transaction(
     let verification_info = burst_helpers::get_verification_info(store, txn, account);
     
     // If account is verified or pending verification, it's a Burst account
-    verification_info.status != rsnano_types::VerificationStatus::Unverified
+    verification_info.status != burst_types::VerificationStatus::Unverified
         || !verification_info.circle_validator_votes.is_empty()
 }
 

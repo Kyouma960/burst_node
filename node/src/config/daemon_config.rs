@@ -1,7 +1,7 @@
 use super::{
     DaemonToml, NetworkParams, NodeConfig, NodeRpcConfig, get_node_toml_config_path, read_toml_file,
 };
-use rsnano_types::Networks;
+use burst_types::Networks;
 use std::path::Path;
 
 #[derive(Debug, PartialEq)]

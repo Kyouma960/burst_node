@@ -11,8 +11,8 @@ use num_traits::FromPrimitive;
 use tokio_util::sync::{CancellationToken, WaitForCancellationFuture};
 use tracing::debug;
 
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::NodeId;
+use burst_nullable_clock::Timestamp;
+use burst_types::NodeId;
 
 use crate::{
     ChannelDirection, ChannelId, ChannelMode, TEST_ENDPOINT_1, TEST_ENDPOINT_2, TrafficType,

@@ -1,21 +1,21 @@
 use std::sync::Arc;
 
-use rsnano_ledger::{
+use burst_ledger::{
     BlockError, DEV_GENESIS_PUB_KEY, LedgerSet, test_helpers::UnsavedBlockLatticeBuilder,
 };
-use rsnano_network::ChannelId;
-use rsnano_types::{
+use burst_network::ChannelId;
+use burst_types::{
     Account, Amount, Block, BlockHash, DEV_GENESIS_KEY, Epoch, PrivateKey, QualifiedRoot,
     Signature, StateBlockArgs, Vote, VoteError, VoteSource,
 };
 
-use rsnano_node::block_processing::{BlockContext, BlockSource};
+use burst_node::block_processing::{BlockContext, BlockSource};
 use test_helpers::{System, assert_timely_eq2, assert_timely2, start_elections};
 
 mod votes {
     use super::*;
-    use rsnano_ledger::test_helpers::UnsavedBlockLatticeBuilder;
-    use rsnano_node::consensus::ReceivedVote;
+    use burst_ledger::test_helpers::UnsavedBlockLatticeBuilder;
+    use burst_node::consensus::ReceivedVote;
 
     #[test]
     fn add_one() {

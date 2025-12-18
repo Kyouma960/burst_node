@@ -8,8 +8,8 @@ use std::{
 use tokio::time::sleep;
 use tracing::{debug, warn};
 
-use rsnano_nullable_clock::SteadyClock;
-use rsnano_nullable_tcp::TcpStream;
+use burst_nullable_clock::SteadyClock;
+use burst_nullable_tcp::TcpStream;
 
 use crate::{
     Channel, ChannelDirection, ChannelId, DeadChannelCleanupStep, NULL_ENDPOINT, Network,

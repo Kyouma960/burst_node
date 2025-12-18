@@ -1,4 +1,4 @@
-use rsnano_types::Amount;
+use burst_types::Amount;
 use serde::{Deserialize, Serialize};
 
 #[derive(PartialEq, Eq, Debug, Serialize, Deserialize)]

@@ -1,5 +1,5 @@
 use crate::RpcCommand;
-use rsnano_types::{Account, Amount, WalletId, WorkNonce};
+use burst_types::{Account, Amount, WalletId, WorkNonce};
 use serde::{Deserialize, Serialize};
 
 impl RpcCommand {

@@ -3,11 +3,11 @@ use std::{
     sync::{Arc, Mutex, RwLock},
 };
 
-use rsnano_nullable_clock::SteadyClock;
+use burst_nullable_clock::SteadyClock;
 
-use rsnano_ledger::RepWeightCache;
-use rsnano_types::{Amount, BlockHash, VoteError};
-use rsnano_utils::sync::backpressure_channel::Sender;
+use burst_ledger::RepWeightCache;
+use burst_types::{Amount, BlockHash, VoteError};
+use burst_utils::sync::backpressure_channel::Sender;
 
 use super::{ActiveElectionsContainer, AecEvent, FilteredVote, ReceivedVote};
 use crate::{consensus::ApplyVoteArgs, representatives::OnlineReps};
@@ -119,7 +119,7 @@ impl VoteApplier {
 mod tests {
     use super::*;
     use crate::consensus::AecInsertRequest;
-    use rsnano_types::{
+    use burst_types::{
         BlockPriority, PrivateKey, SavedBlock, UnixMillisTimestamp, Vote, VoteSource,
     };
 

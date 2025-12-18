@@ -1,7 +1,7 @@
 use std::sync::atomic::Ordering;
 
-use rsnano_nullable_lmdb::WriteTransaction;
-use rsnano_types::{
+use burst_nullable_lmdb::WriteTransaction;
+use burst_types::{
     Account, AccountInfo, Amount, Block, BlockSideband, PendingInfo, PendingKey, SavedBlock,
 };
 
@@ -140,7 +140,7 @@ impl<'a> BlockInserter<'a> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::{BlockHash, Epoch, PublicKey, TestBlockBuilder, UnixTimestamp};
+    use burst_types::{BlockHash, Epoch, PublicKey, TestBlockBuilder, UnixTimestamp};
 
     #[test]
     fn insert_open_state_block() {

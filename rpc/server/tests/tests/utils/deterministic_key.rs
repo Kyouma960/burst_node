@@ -1,4 +1,4 @@
-use rsnano_types::{Account, PublicKey, RawKey};
+use burst_types::{Account, PublicKey, RawKey};
 use test_helpers::{System, setup_rpc_client_and_server};
 
 #[test]

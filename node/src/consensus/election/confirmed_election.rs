@@ -3,8 +3,8 @@ use std::{
     time::{Duration, SystemTime},
 };
 
-use rsnano_types::{Amount, MaybeSavedBlock, PublicKey, SavedBlock};
-use rsnano_utils::stats::DetailType;
+use burst_types::{Amount, MaybeSavedBlock, PublicKey, SavedBlock};
+use burst_utils::stats::DetailType;
 
 use super::VoteSummary;
 use strum_macros::{EnumCount, EnumIter};

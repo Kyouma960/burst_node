@@ -1,11 +1,11 @@
-use rsnano_ledger::{
+use burst_ledger::{
     DEV_GENESIS_ACCOUNT, DEV_GENESIS_HASH, DEV_GENESIS_PUB_KEY,
     test_helpers::UnsavedBlockLatticeBuilder,
 };
-use rsnano_messages::{ConfirmAck, Message};
-use rsnano_network::{ChannelMode, TrafficType};
-use rsnano_node::consensus::ReceivedVote;
-use rsnano_types::{Amount, DEV_GENESIS_KEY, PrivateKey, UnixMillisTimestamp, Vote, VoteSource};
+use burst_messages::{ConfirmAck, Message};
+use burst_network::{ChannelMode, TrafficType};
+use burst_node::consensus::ReceivedVote;
+use burst_types::{Amount, DEV_GENESIS_KEY, PrivateKey, UnixMillisTimestamp, Vote, VoteSource};
 use std::{sync::Arc, time::Duration};
 use test_helpers::{System, assert_always_eq, assert_never, assert_timely_eq, assert_timely_eq2};
 

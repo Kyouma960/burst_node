@@ -1,5 +1,5 @@
 use crate::{RpcCommand, RpcU64};
-use rsnano_types::QualifiedRoot;
+use burst_types::QualifiedRoot;
 use serde::{Deserialize, Serialize};
 
 impl RpcCommand {

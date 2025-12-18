@@ -1,7 +1,7 @@
 use std::collections::{BTreeSet, HashMap};
 
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::{Account, Root, WalletId};
+use burst_nullable_clock::Timestamp;
+use burst_types::{Account, Root, WalletId};
 
 #[derive(Default)]
 pub(crate) struct DelayedWorkQueue {

@@ -1,5 +1,5 @@
 use crate::{RpcBool, RpcCommand, RpcF64, RpcU64, common::WorkVersionDto};
-use rsnano_types::{Account, BlockHash, JsonBlock, WorkNonce};
+use burst_types::{Account, BlockHash, JsonBlock, WorkNonce};
 use serde::{Deserialize, Serialize};
 
 impl RpcCommand {

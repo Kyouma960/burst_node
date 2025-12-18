@@ -1,4 +1,4 @@
-use rsnano_types::{Account, Amount, Block, DEV_GENESIS_KEY, PrivateKey, PublicKey};
+use burst_types::{Account, Amount, Block, DEV_GENESIS_KEY, PrivateKey, PublicKey};
 
 use super::{SavedAccountChainBuilder, SavedBlockLatticeBuilder};
 
@@ -116,8 +116,8 @@ impl<'a> UnsavedAccountChainBuilder<'a> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::{BlockDetails, BlockHash, DEV_GENESIS_BLOCK, Epoch, StateBlockArgs};
-    use rsnano_work::WorkThresholds;
+    use burst_types::{BlockDetails, BlockHash, DEV_GENESIS_BLOCK, Epoch, StateBlockArgs};
+    use burst_work::WorkThresholds;
 
     #[test]
     fn state_send() {

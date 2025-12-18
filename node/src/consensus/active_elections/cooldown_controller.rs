@@ -1,5 +1,5 @@
 use super::AEC_STAT_KEY;
-use rsnano_utils::stats::{StatsCollection, StatsSource};
+use burst_utils::stats::{StatsCollection, StatsSource};
 use strum::EnumCount;
 use strum_macros::EnumCount as EnumCountMacro;
 

@@ -1,8 +1,8 @@
 use crate::bootstrap::AscPullQuerySpec;
-use rsnano_messages::{AscPullAck, AscPullAckType, AscPullReqType, BlocksAckPayload, HashType};
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::{Account, BlockHash, Frontier, HashOrAccount};
-use rsnano_utils::stats::DetailType;
+use burst_messages::{AscPullAck, AscPullAckType, AscPullReqType, BlocksAckPayload, HashType};
+use burst_nullable_clock::Timestamp;
+use burst_types::{Account, BlockHash, Frontier, HashOrAccount};
+use burst_utils::stats::DetailType;
 use std::time::Duration;
 
 use super::VerifyResult;
@@ -211,7 +211,7 @@ impl RunningQuery {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_messages::{
+    use burst_messages::{
         AccountInfoAckPayload, AccountInfoReqPayload, BlocksReqPayload, FrontiersReqPayload,
     };
 
@@ -488,7 +488,7 @@ mod tests {
     mod verify_blocks {
         use std::collections::VecDeque;
 
-        use rsnano_types::{Block, TestBlockBuilder};
+        use burst_types::{Block, TestBlockBuilder};
 
         use super::*;
 

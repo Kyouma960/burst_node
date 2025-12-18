@@ -1,7 +1,7 @@
 use std::collections::{BTreeMap, HashMap};
 
-use rsnano_types::{Account, BlockHash, TimePriority};
-use rsnano_utils::container_info::ContainerInfo;
+use burst_types::{Account, BlockHash, TimePriority};
+use burst_utils::container_info::ContainerInfo;
 
 #[derive(Clone)]
 pub(super) struct BacklogEntry {

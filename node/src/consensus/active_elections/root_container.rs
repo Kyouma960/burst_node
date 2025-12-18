@@ -1,6 +1,6 @@
 use std::{cmp::Ordering, collections::BTreeSet};
 
-use rsnano_types::{BlockHash, BlockPriority, QualifiedRoot, TimePriority};
+use burst_types::{BlockHash, BlockPriority, QualifiedRoot, TimePriority};
 use rustc_hash::FxHashMap;
 
 use super::{AecInsertRequest, vote_router::VoteRouter};

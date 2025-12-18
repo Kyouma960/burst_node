@@ -1,17 +1,17 @@
 use std::{sync::Arc, time::Duration};
 
-use rsnano_ledger::{
+use burst_ledger::{
     DEV_GENESIS_ACCOUNT, DEV_GENESIS_HASH, DEV_GENESIS_PUB_KEY,
     test_helpers::UnsavedBlockLatticeBuilder,
 };
-use rsnano_node::{
+use burst_node::{
     config::NodeFlags,
     consensus::{ReceivedVote, election::VoteType},
 };
-use rsnano_types::{
+use burst_types::{
     Amount, DEV_GENESIS_KEY, Epoch, PrivateKey, Signature, Vote, VoteError, VoteSource, WalletId,
 };
-use rsnano_utils::stats::{DetailType, Direction, StatType};
+use burst_utils::stats::{DetailType, Direction, StatType};
 use test_helpers::{
     System, assert_timely, assert_timely_eq2, assert_timely2, make_fake_channel, start_election,
     upgrade_epoch,

@@ -2,12 +2,12 @@ use std::sync::Arc;
 
 use tracing::trace;
 
-use rsnano_messages::{Message, MessageSerializer};
-use rsnano_network::{Channel, ChannelId, TrafficType};
-use rsnano_network_protocol::MessageCallback;
-use rsnano_output_tracker::{OutputListenerMt, OutputTrackerMt};
-use rsnano_types::ProtocolInfo;
-use rsnano_utils::stats::{Direction, StatType, Stats};
+use burst_messages::{Message, MessageSerializer};
+use burst_network::{Channel, ChannelId, TrafficType};
+use burst_network_protocol::MessageCallback;
+use burst_output_tracker::{OutputListenerMt, OutputTrackerMt};
+use burst_types::ProtocolInfo;
+use burst_utils::stats::{Direction, StatType, Stats};
 
 /// Sends messages via a given channel to a peered node
 #[derive(Clone)]

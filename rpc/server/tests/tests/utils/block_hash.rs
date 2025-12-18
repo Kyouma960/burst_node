@@ -1,4 +1,4 @@
-use rsnano_types::Block;
+use burst_types::Block;
 use test_helpers::{System, setup_rpc_client_and_server};
 
 #[test]

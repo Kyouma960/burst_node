@@ -1,7 +1,7 @@
 use tracing::info;
 
-use rsnano_rpc_client::NanoRpcClient;
-use rsnano_rpc_messages::{AccountsReceivableArgs, AccountsReceivableResponse};
+use burst_rpc_client::NanoRpcClient;
+use burst_rpc_messages::{AccountsReceivableArgs, AccountsReceivableResponse};
 
 use crate::domain::AccountMap;
 

@@ -1,9 +1,9 @@
 // Post-insertion processing for Burst blocks
 // Updates verification info and handles Burst-specific side effects
 
-use rsnano_nullable_lmdb::WriteTransaction;
-use rsnano_store_lmdb::LmdbStore;
-use rsnano_types::{Account, BlockHash, TransactionMethod, UnixTimestamp};
+use burst_nullable_lmdb::WriteTransaction;
+use burst_store_lmdb::LmdbStore;
+use burst_types::{Account, BlockHash, TransactionMethod, UnixTimestamp};
 use crate::burst_helpers;
 use crate::burst_orphaning;
 

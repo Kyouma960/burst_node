@@ -1,5 +1,5 @@
-use rsnano_types::{Account, Block, PendingKey, SavedBlock, UnixMillisTimestamp};
-use rsnano_store_lmdb::LmdbStore;
+use burst_types::{Account, Block, PendingKey, SavedBlock, UnixMillisTimestamp};
+use burst_store_lmdb::LmdbStore;
 
 use super::BlockValidator;
 use crate::{AnySet, LedgerConstants};
@@ -93,7 +93,7 @@ mod tests {
     use crate::Ledger;
 
     use super::*;
-    use rsnano_types::{AccountInfo, BlockHash, Link, PendingInfo, TestBlockBuilder};
+    use burst_types::{AccountInfo, BlockHash, Link, PendingInfo, TestBlockBuilder};
 
     #[test]
     fn block_for_unknown_account() {

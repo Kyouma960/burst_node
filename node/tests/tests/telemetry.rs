@@ -1,7 +1,7 @@
 use std::{net::SocketAddrV6, thread::sleep, time::Duration};
 
-use rsnano_messages::{Message, TelemetryAck};
-use rsnano_utils::stats::{DetailType, Direction, StatType};
+use burst_messages::{Message, TelemetryAck};
+use burst_utils::stats::{DetailType, Direction, StatType};
 use test_helpers::{
     System, assert_always_eq, assert_never, assert_timely, assert_timely2, make_fake_channel,
 };

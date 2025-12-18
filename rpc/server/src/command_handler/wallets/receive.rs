@@ -2,10 +2,10 @@ use std::cmp::max;
 
 use anyhow::{anyhow, bail};
 
-use rsnano_ledger::{AnySet, LedgerSet};
-use rsnano_rpc_messages::{BlockDto, ReceiveArgs};
-use rsnano_types::{Amount, BlockDetails, PendingKey, Root, WorkNonce};
-use rsnano_wallet::WalletsError;
+use burst_ledger::{AnySet, LedgerSet};
+use burst_rpc_messages::{BlockDto, ReceiveArgs};
+use burst_types::{Amount, BlockDetails, PendingKey, Root, WorkNonce};
+use burst_wallet::WalletsError;
 
 use crate::command_handler::RpcCommandHandler;
 

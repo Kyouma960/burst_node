@@ -1,5 +1,5 @@
-use rsnano_rpc_messages::{ValidResponse, WalletWithPasswordArgs};
-use rsnano_wallet::WalletsError;
+use burst_rpc_messages::{ValidResponse, WalletWithPasswordArgs};
+use burst_wallet::WalletsError;
 
 use crate::command_handler::RpcCommandHandler;
 

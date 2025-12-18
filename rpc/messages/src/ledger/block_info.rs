@@ -1,5 +1,5 @@
 use crate::{BlockSubTypeDto, RpcBool, RpcCommand, RpcU64};
-use rsnano_types::{Account, Amount, BlockHash, JsonBlock};
+use burst_types::{Account, Amount, BlockHash, JsonBlock};
 use serde::{Deserialize, Serialize};
 
 impl RpcCommand {
@@ -47,7 +47,7 @@ pub struct BlockInfoResponse {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::Block;
+    use burst_types::Block;
     use serde_json::json;
 
     #[test]

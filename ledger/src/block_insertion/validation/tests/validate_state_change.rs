@@ -1,5 +1,5 @@
 use crate::block_insertion::validation::tests::BlockValidationTest;
-use rsnano_types::{AccountInfo, BlockDetails, BlockSideband, Epoch};
+use burst_types::{AccountInfo, BlockDetails, BlockSideband, Epoch};
 
 #[test]
 fn valid_change_block() {

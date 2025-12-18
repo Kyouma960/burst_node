@@ -2,8 +2,8 @@ use std::collections::{HashMap, VecDeque};
 
 use bounded_vec_deque::BoundedVecDeque;
 
-use rsnano_types::{Block, BlockHash, QualifiedRoot};
-use rsnano_utils::{
+use burst_types::{Block, BlockHash, QualifiedRoot};
+use burst_utils::{
     container_info::{ContainerInfo, ContainerInfoProvider},
     stats::{StatsCollection, StatsSource},
 };
@@ -130,7 +130,7 @@ impl StatsSource for ForkCache {
 
 #[cfg(test)]
 mod tests {
-    use rsnano_types::{Amount, BlockHash, StateBlockArgs};
+    use burst_types::{Amount, BlockHash, StateBlockArgs};
 
     use super::*;
 

@@ -1,4 +1,4 @@
-use rsnano_utils::stats::{DetailType, StatType};
+use burst_utils::stats::{DetailType, StatType};
 use strum_macros::{EnumCount, EnumIter};
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq, EnumCount, EnumIter)]

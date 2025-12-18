@@ -139,9 +139,9 @@ mod tests {
 
     #[test]
     fn iter() {
-        let _guard1 = FileDropGuard::new("/tmp/rsnano-cursor-test.ldb".as_ref());
-        let _guard2 = FileDropGuard::new("/tmp/rsnano-cursor-test.ldb-lock".as_ref());
-        let env = create_real_lmdb_env("/tmp/rsnano-cursor-test.ldb");
+        let _guard1 = FileDropGuard::new("/tmp/burst-cursor-test.ldb".as_ref());
+        let _guard2 = FileDropGuard::new("/tmp/burst-cursor-test.ldb-lock".as_ref());
+        let env = create_real_lmdb_env("/tmp/burst-cursor-test.ldb");
         create_test_database(&env);
         let database = env.open_db(Some("foo")).unwrap();
         let txn = env.begin_read();
@@ -160,9 +160,9 @@ mod tests {
     }
     #[test]
     fn iter_backwards() {
-        let _guard1 = FileDropGuard::new("/tmp/rsnano-rev-cursor-test.ldb".as_ref());
-        let _guard2 = FileDropGuard::new("/tmp/rsnano-rev-cursor-test.ldb-lock".as_ref());
-        let env = create_real_lmdb_env("/tmp/rsnano-rev-cursor-test.ldb");
+        let _guard1 = FileDropGuard::new("/tmp/burst-rev-cursor-test.ldb".as_ref());
+        let _guard2 = FileDropGuard::new("/tmp/burst-rev-cursor-test.ldb-lock".as_ref());
+        let env = create_real_lmdb_env("/tmp/burst-rev-cursor-test.ldb");
         create_test_database(&env);
         let database = env.open_db(Some("foo")).unwrap();
         let txn = env.begin_read();

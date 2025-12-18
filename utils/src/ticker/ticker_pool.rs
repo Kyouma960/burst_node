@@ -4,7 +4,7 @@ use std::{
     time::Duration,
 };
 
-use rsnano_nullable_clock::{SteadyClock, Timestamp};
+use burst_nullable_clock::{SteadyClock, Timestamp};
 
 use super::Tickable;
 use crate::{

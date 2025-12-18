@@ -3,8 +3,8 @@ use std::{
     sync::{Arc, RwLock},
 };
 
-use rsnano_nullable_clock::SteadyClock;
-use rsnano_utils::{CancellationToken, ticker::Tickable};
+use burst_nullable_clock::SteadyClock;
+use burst_utils::{CancellationToken, ticker::Tickable};
 
 use super::ActiveElectionsContainer;
 
@@ -80,8 +80,8 @@ pub trait AecTickerPlugin: Send + 'static {
 mod tests {
     use super::*;
     use crate::consensus::AecInsertRequest;
-    use rsnano_nullable_clock::Timestamp;
-    use rsnano_types::{BlockPriority, SavedBlock};
+    use burst_nullable_clock::Timestamp;
+    use burst_types::{BlockPriority, SavedBlock};
     use std::sync::atomic::{AtomicBool, Ordering};
 
     #[test]

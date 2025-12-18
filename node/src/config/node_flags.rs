@@ -1,4 +1,4 @@
-use rsnano_ledger::GenerateCacheFlags;
+use burst_ledger::GenerateCacheFlags;
 
 #[derive(Clone)]
 pub struct NodeFlags {

@@ -1,6 +1,6 @@
-use rsnano_network::{Channel, ChannelId};
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::PublicKey;
+use burst_network::{Channel, ChannelId};
+use burst_nullable_clock::Timestamp;
+use burst_types::PublicKey;
 use std::sync::Arc;
 
 /// A representative to which we have a direct connection

@@ -1,5 +1,5 @@
 use crate::command_handler::RpcCommandHandler;
-use rsnano_rpc_messages::{WalletChangeSeedArgs, WalletChangeSeedResponse};
+use burst_rpc_messages::{WalletChangeSeedArgs, WalletChangeSeedResponse};
 
 impl RpcCommandHandler {
     pub(crate) fn wallet_change_seed(

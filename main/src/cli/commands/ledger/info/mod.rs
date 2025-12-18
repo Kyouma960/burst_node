@@ -1,9 +1,9 @@
 use clap::{CommandFactory, Parser, Subcommand};
 
-use rsnano_store_lmdb::{LmdbPeerStore, default_ledger_lmdb_options};
+use burst_store_lmdb::{LmdbPeerStore, default_ledger_lmdb_options};
 
 use crate::cli::GlobalArgs;
-use rsnano_nullable_lmdb::LmdbEnvironmentFactory;
+use burst_nullable_lmdb::LmdbEnvironmentFactory;
 
 #[derive(Subcommand, PartialEq, Debug)]
 pub(crate) enum InfoSubcommands {

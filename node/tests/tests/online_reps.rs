@@ -1,4 +1,4 @@
-use rsnano_types::{Amount, DEV_GENESIS_KEY};
+use burst_types::{Amount, DEV_GENESIS_KEY};
 use std::time::Duration;
 use test_helpers::{System, assert_always_eq, assert_timely_eq2};
 

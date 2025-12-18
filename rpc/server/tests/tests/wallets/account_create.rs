@@ -1,5 +1,5 @@
-use rsnano_rpc_messages::AccountCreateArgs;
-use rsnano_types::WalletId;
+use burst_rpc_messages::AccountCreateArgs;
+use burst_types::WalletId;
 use std::u32;
 use test_helpers::{System, assert_timely2, setup_rpc_client_and_server};
 

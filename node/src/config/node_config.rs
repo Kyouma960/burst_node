@@ -1,14 +1,14 @@
 use std::{cmp::max, net::Ipv6Addr, time::Duration};
 
-use rsnano_network::NetworkConfig;
-use rsnano_nullable_http_client::Url;
-use rsnano_store_lmdb::LmdbConfig;
-use rsnano_types::{
+use burst_network::NetworkConfig;
+use burst_nullable_http_client::Url;
+use burst_store_lmdb::LmdbConfig;
+use burst_types::{
     Account, Amount, PRECONFIGURED_PEERS_BETA, PRECONFIGURED_PEERS_LIVE, PRECONFIGURED_PEERS_TEST,
     Peer, PublicKey,
 };
-use rsnano_wallet::default_preconfigured_representatives_for_live;
-use rsnano_work::OpenClConfig;
+use burst_wallet::default_preconfigured_representatives_for_live;
+use burst_work::OpenClConfig;
 
 use super::{DEV_NETWORK_PARAMS, NetworkParams, Networks, websocket_config::WebsocketConfig};
 use crate::{

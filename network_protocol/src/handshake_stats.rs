@@ -1,5 +1,5 @@
 use crate::HandshakeResponseError;
-use rsnano_utils::stats::{Direction, StatsCollection, StatsSource};
+use burst_utils::stats::{Direction, StatsCollection, StatsSource};
 use std::sync::atomic::{AtomicUsize, Ordering::Relaxed};
 use strum::{EnumCount, IntoEnumIterator};
 

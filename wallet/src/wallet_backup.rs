@@ -3,7 +3,7 @@ use std::{path::PathBuf, sync::Arc};
 use tracing::error;
 
 use super::Wallets;
-use rsnano_utils::{CancellationToken, ticker::Tickable};
+use burst_utils::{CancellationToken, ticker::Tickable};
 
 pub struct WalletBackup {
     pub data_path: PathBuf,

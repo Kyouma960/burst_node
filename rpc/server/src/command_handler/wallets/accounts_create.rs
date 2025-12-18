@@ -1,6 +1,6 @@
 use crate::command_handler::RpcCommandHandler;
-use rsnano_rpc_messages::{AccountsCreateArgs, AccountsRpcMessage, unwrap_bool_or_false};
-use rsnano_types::Account;
+use burst_rpc_messages::{AccountsCreateArgs, AccountsRpcMessage, unwrap_bool_or_false};
+use burst_types::Account;
 
 impl RpcCommandHandler {
     pub(crate) fn accounts_create(

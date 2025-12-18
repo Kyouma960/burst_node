@@ -1,4 +1,4 @@
-use rsnano_network::ChannelId;
+use burst_network::ChannelId;
 
 pub(super) struct PeerScore {
     pub channel_id: ChannelId,

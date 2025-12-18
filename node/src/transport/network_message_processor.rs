@@ -5,11 +5,11 @@ use std::{
 
 use tracing::trace;
 
-use rsnano_messages::{Message, NetworkFilter};
-use rsnano_network::{Channel, Network};
-use rsnano_types::VoteSource;
-use rsnano_utils::stats::{DetailType, Direction, StatType, Stats};
-use rsnano_work::WorkThresholds;
+use burst_messages::{Message, NetworkFilter};
+use burst_network::{Channel, Network};
+use burst_types::VoteSource;
+use burst_utils::stats::{DetailType, Direction, StatType, Stats};
+use burst_work::WorkThresholds;
 
 #[cfg(feature = "ledger_snapshots")]
 use crate::ledger_snapshots::LedgerSnapshots;
@@ -236,7 +236,7 @@ mod tests {
 
     #[test]
     fn preproposal_is_received() {
-        use rsnano_messages::Preproposal;
+        use burst_messages::Preproposal;
 
         let ledger_snapshots = LedgerSnapshots::new_null();
         let receive_tracker = ledger_snapshots.track_received_preproposals();
@@ -253,7 +253,7 @@ mod tests {
 
     #[test]
     fn proposal_is_received() {
-        use rsnano_messages::Proposal;
+        use burst_messages::Proposal;
 
         let ledger_snapshots: LedgerSnapshots = LedgerSnapshots::new_null();
         let receive_tracker = ledger_snapshots.track_received_proposals();
@@ -270,7 +270,7 @@ mod tests {
 
     #[test]
     fn proposal_vote_is_received() {
-        use rsnano_messages::ProposalVote;
+        use burst_messages::ProposalVote;
 
         let ledger_snapshots: LedgerSnapshots = LedgerSnapshots::new_null();
         let receive_tracker = ledger_snapshots.track_received_votes();

@@ -1,8 +1,8 @@
 use std::sync::{Arc, mpsc};
 
-use rsnano_network::ChannelId;
-use rsnano_types::Block;
-use rsnano_wallet::Wallets;
+use burst_network::ChannelId;
+use burst_types::Block;
+use burst_wallet::Wallets;
 
 use crate::block_processing::{BlockContext, BlockProcessorQueue, BlockSource};
 

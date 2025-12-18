@@ -9,7 +9,7 @@ use lmdb_sys::{MDB_CP_COMPACT, MDB_SUCCESS, MDB_env};
 
 use super::{ConfiguredDatabase, LmdbDatabase};
 use crate::{ConfiguredDatabaseBuilder, ReadTransaction, Result, WriteTransaction};
-use rsnano_output_tracker::{OutputListenerMt, OutputTrackerMt};
+use burst_output_tracker::{OutputListenerMt, OutputTrackerMt};
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct EnvironmentOptions {

@@ -1,7 +1,7 @@
 use std::sync::LazyLock;
 
 use ed25519_dalek::ed25519::signature::SignerMut;
-use rsnano_nullable_random::NullableRng;
+use burst_nullable_random::NullableRng;
 
 use super::{PublicKey, RawKey, Signature};
 use crate::{Account, Link, Root};

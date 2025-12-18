@@ -1,7 +1,7 @@
 use tracing::trace;
 
-use rsnano_messages::BlocksAckPayload;
-use rsnano_utils::stats::{StatsCollection, StatsSource};
+use burst_messages::BlocksAckPayload;
+use burst_utils::stats::{StatsCollection, StatsSource};
 
 use crate::bootstrap::state::{
     CandidateAccounts, PriorityDownResult, RunningQuery, VerifyResult,
@@ -124,7 +124,7 @@ impl StatsSource for BlockAckStats {
 mod tests {
     use super::*;
     use crate::bootstrap::state::QueryType;
-    use rsnano_types::Account;
+    use burst_types::Account;
 
     #[test]
     fn response_doesnt_match_query() {

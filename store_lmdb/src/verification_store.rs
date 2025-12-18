@@ -1,10 +1,10 @@
 use std::ops::RangeBounds;
 
-use rsnano_nullable_lmdb::{
+use burst_nullable_lmdb::{
     ConfiguredDatabase, DatabaseFlags, Error, LmdbDatabase, LmdbEnvironment, Transaction,
     WriteFlags, WriteTransaction,
 };
-use rsnano_types::{Account, VerificationInfo};
+use burst_types::{Account, VerificationInfo};
 
 use crate::{
     VERIFICATION_TEST_DATABASE, LmdbIterator, LmdbRangeIterator, parallel_traversal,
@@ -154,8 +154,8 @@ fn read_verification_record(key: &[u8], mut value: &[u8]) -> (Account, Verificat
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_nullable_lmdb::PutEvent;
-    use rsnano_types::UnixTimestamp;
+    use burst_nullable_lmdb::PutEvent;
+    use burst_types::UnixTimestamp;
     use std::sync::Arc;
 
     struct Fixture {

@@ -1,5 +1,5 @@
 use crate::block_rollback::tests::RollbackTest;
-use rsnano_types::{
+use burst_types::{
     Account, AccountInfo, Amount, BlockSubType, Epoch, PendingInfo, PendingKey, SavedAccountChain,
 };
 

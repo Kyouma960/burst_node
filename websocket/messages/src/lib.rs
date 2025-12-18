@@ -9,8 +9,8 @@ use std::{fmt::Debug, hash::Hash, time::Duration};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
-use rsnano_types::{BlockHash, DifficultyV1, SavedBlock, WorkNonce, milliseconds_since_epoch};
-use rsnano_work::WorkThresholds;
+use burst_types::{BlockHash, DifficultyV1, SavedBlock, WorkNonce, milliseconds_since_epoch};
+use burst_work::WorkThresholds;
 
 #[derive(
     Clone, Copy, FromPrimitive, PartialEq, Eq, Hash, Serialize, Debug, Deserialize, IntoStaticStr,

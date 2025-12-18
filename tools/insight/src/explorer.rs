@@ -1,5 +1,5 @@
-use rsnano_ledger::{AnySet, Ledger};
-use rsnano_types::{Account, BlockHash, DetailedBlock};
+use burst_ledger::{AnySet, Ledger};
+use burst_types::{Account, BlockHash, DetailedBlock};
 
 pub(crate) struct Explorer {
     state: ExplorerState,

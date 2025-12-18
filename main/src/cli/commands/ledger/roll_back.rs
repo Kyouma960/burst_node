@@ -1,7 +1,7 @@
 use super::HashArgs;
 use crate::cli::{GlobalArgs, build_node};
 use anyhow::anyhow;
-use rsnano_types::BlockHash;
+use burst_types::BlockHash;
 
 pub(crate) fn roll_back(global_args: GlobalArgs, args: HashArgs) -> anyhow::Result<()> {
     let node = build_node(&global_args)?;

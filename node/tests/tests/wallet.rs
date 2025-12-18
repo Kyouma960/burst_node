@@ -4,22 +4,22 @@ use std::{
     time::{Duration, Instant},
 };
 
-use rsnano_ledger::{
+use burst_ledger::{
     AnySet, DEV_GENESIS_ACCOUNT, DEV_GENESIS_HASH, DEV_GENESIS_PUB_KEY, LedgerSet,
     test_helpers::UnsavedBlockLatticeBuilder,
 };
-use rsnano_node::{
+use burst_node::{
     Node,
     config::{DEV_NETWORK_PARAMS, NodeConfig, NodeFlags},
     unique_path,
 };
-use rsnano_nullable_lmdb::{LmdbEnvironment, LmdbEnvironmentFactory};
-use rsnano_store_lmdb::{EnvironmentFlags, EnvironmentOptions, LmdbWalletStore};
-use rsnano_types::{
+use burst_nullable_lmdb::{LmdbEnvironment, LmdbEnvironmentFactory};
+use burst_store_lmdb::{EnvironmentFlags, EnvironmentOptions, LmdbWalletStore};
+use burst_types::{
     Account, Amount, Block, BlockHash, DEV_GENESIS_KEY, Epoch, EpochBlockArgs,
     KeyDerivationFunction, PrivateKey, PublicKey, RawKey, deterministic_key,
 };
-use rsnano_wallet::WalletsError;
+use burst_wallet::WalletsError;
 use test_helpers::{System, assert_always_eq, assert_timely_eq2, assert_timely2};
 
 struct TestFixture {

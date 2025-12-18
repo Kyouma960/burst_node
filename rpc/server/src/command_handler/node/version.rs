@@ -1,6 +1,6 @@
 use crate::command_handler::RpcCommandHandler;
-use rsnano_node::telemetry::{rsnano_build_info, rsnano_version_string};
-use rsnano_rpc_messages::VersionResponse;
+use burst_node::telemetry::{burst_build_info, burst_version_string};
+use burst_rpc_messages::VersionResponse;
 
 impl RpcCommandHandler {
     pub(crate) fn version(&self) -> VersionResponse {
@@ -8,7 +8,7 @@ impl RpcCommandHandler {
             rpc_version: 1.into(),
             store_version: self.node.ledger.version().into(),
             protocol_version: self.node.network_params.network.protocol_version.into(),
-            node_vendor: rsnano_version_string(),
+            node_vendor: burst_version_string(),
             store_vendor: self.node.ledger.store_vendor(),
             network: self
                 .node
@@ -18,7 +18,7 @@ impl RpcCommandHandler {
                 .as_str()
                 .to_owned(),
             network_identifier: self.node.network_params.ledger.genesis_block.hash(),
-            build_info: rsnano_build_info(),
+            build_info: burst_build_info(),
         }
     }
 }

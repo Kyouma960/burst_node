@@ -1,13 +1,13 @@
 mod http_callbacks;
 
 use http_callbacks::HttpCallbacks;
-use rsnano_node::{
+use burst_node::{
     CompositeNodeEventHandler, Node, NodeBuilder, NodeCallbacks,
     config::{DaemonConfig, Networks, NodeFlags},
 };
-use rsnano_rpc_server::{RpcServerConfig, run_rpc_server};
-use rsnano_utils::get_cpu_count;
-use rsnano_websocket_server::{WebsocketListenerExt, create_websocket_server};
+use burst_rpc_server::{RpcServerConfig, run_rpc_server};
+use burst_utils::get_cpu_count;
+use burst_websocket_server::{WebsocketListenerExt, create_websocket_server};
 use std::{
     future::Future,
     path::PathBuf,
@@ -62,7 +62,7 @@ impl DaemonBuilder {
             DaemonConfig::load_from_data_path(self.network, parallelism, &data_path)?;
         let rpc_config = RpcServerConfig::load_from_data_path(self.network, &data_path)?;
 
-        info!("Starting up RsNano node...");
+        info!("Starting up Burst node...");
 
         info!(
             "Hardware concurrency: {} (configured: {})",

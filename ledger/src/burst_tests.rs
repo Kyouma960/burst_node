@@ -2,9 +2,9 @@
 
 #[cfg(test)]
 mod tests {
-    use rsnano_nullable_lmdb::WriteTransaction;
-    use rsnano_store_lmdb::LmdbStore;
-    use rsnano_types::{
+    use burst_nullable_lmdb::WriteTransaction;
+    use burst_store_lmdb::LmdbStore;
+    use burst_types::{
         Account, Amount, BlockHash, BurstBlockMetadata, TransactionMethod, UnixTimestamp,
         VerificationInfo, VerificationStatus, calculate_brn,
     };

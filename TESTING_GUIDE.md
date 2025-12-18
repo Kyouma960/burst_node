@@ -12,7 +12,7 @@ This guide will help you build, configure, and test your BURST node.
 ## Step 1: Build the Node
 
 ```bash
-cd rsnano-node
+cd burst-node
 cargo build --release
 ```
 
@@ -94,7 +94,7 @@ curl -X POST http://localhost:7077 \
 Expected response:
 ```json
 {
-  "node_vendor": "rsnano",
+  "node_vendor": "burst",
   "version": "...",
   "rpc_version": "..."
 }
@@ -156,14 +156,14 @@ curl -X POST http://localhost:7077 \
 Run all tests:
 
 ```bash
-cd rsnano-node
+cd burst-node
 cargo test --release
 ```
 
 Run BURST-specific tests:
 
 ```bash
-cargo test --package rsnano_ledger --lib burst_tests
+cargo test --package burst_ledger --lib burst_tests
 ```
 
 ## Step 8: Test with Multiple Nodes
@@ -171,7 +171,7 @@ cargo test --package rsnano_ledger --lib burst_tests
 ### Node 1 (Terminal 1):
 
 ```bash
-cd rsnano-node/main
+cd burst-node/main
 cargo run --release -- --network=dev --data-path=../burst_data1 node run
 ```
 
@@ -180,7 +180,7 @@ cargo run --release -- --network=dev --data-path=../burst_data1 node run
 First, get Node 1's IP and port, then:
 
 ```bash
-cd rsnano-node/main
+cd burst-node/main
 # Edit config.toml to add Node 1 as a peer:
 # preconfigured_peers = ["127.0.0.1:7077"]
 

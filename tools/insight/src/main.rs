@@ -15,7 +15,7 @@ mod nullable_runtime;
 
 use eframe::egui;
 use gui::MainView;
-use rsnano_nullable_tracing_subscriber::TracingInitializer;
+use burst_nullable_tracing_subscriber::TracingInitializer;
 
 fn main() -> eframe::Result {
     TracingInitializer::default().init();
@@ -25,7 +25,7 @@ fn main() -> eframe::Result {
         ..Default::default()
     };
     eframe::run_native(
-        "RsNano Insight",
+        "Burst Insight",
         options,
         Box::new(|_| Ok(Box::new(MainView::new()))),
     )

@@ -1,4 +1,4 @@
-use rsnano_types::{Account, Amount};
+use burst_types::{Account, Amount};
 
 use crate::{AnySet, Ledger, LedgerInserter, ledger_constants::DEV_GENESIS_PUB_KEY};
 

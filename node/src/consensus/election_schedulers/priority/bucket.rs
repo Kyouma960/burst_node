@@ -1,7 +1,7 @@
 use std::sync::atomic::Ordering;
 
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::{BlockHash, BlockPriority, SavedBlock};
+use burst_nullable_clock::Timestamp;
+use burst_types::{BlockHash, BlockPriority, SavedBlock};
 
 use super::{
     bucket_stats::BucketStats,
@@ -176,7 +176,7 @@ pub enum BucketInsertError {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::{Amount, TimePriority};
+    use burst_types::{Amount, TimePriority};
 
     #[test]
     fn construction() {

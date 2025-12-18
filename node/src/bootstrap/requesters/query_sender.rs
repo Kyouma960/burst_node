@@ -2,11 +2,11 @@ use std::{sync::Arc, time::Duration};
 
 use rand::RngCore;
 
-use rsnano_messages::{AscPullReq, Message};
-use rsnano_network::TrafficType;
-use rsnano_nullable_clock::SteadyClock;
-use rsnano_output_tracker::{OutputListenerMt, OutputTrackerMt};
-use rsnano_utils::stats::{DetailType, StatType, Stats};
+use burst_messages::{AscPullReq, Message};
+use burst_network::TrafficType;
+use burst_nullable_clock::SteadyClock;
+use burst_output_tracker::{OutputListenerMt, OutputTrackerMt};
+use burst_utils::stats::{DetailType, StatType, Stats};
 
 use crate::{
     bootstrap::{
@@ -115,8 +115,8 @@ impl QuerySender {
 mod tests {
     use super::*;
     use crate::transport::SendEvent;
-    use rsnano_nullable_clock::Timestamp;
-    use rsnano_output_tracker::OutputTrackerMt;
+    use burst_nullable_clock::Timestamp;
+    use burst_output_tracker::OutputTrackerMt;
 
     #[test]
     fn send_message() {

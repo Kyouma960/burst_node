@@ -1,4 +1,4 @@
-use rsnano_types::{PublicKey, WalletId};
+use burst_types::{PublicKey, WalletId};
 use test_helpers::{System, setup_rpc_client_and_server};
 
 #[test]

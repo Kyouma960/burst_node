@@ -2,8 +2,8 @@ use std::collections::HashMap;
 
 use serde::{Deserialize, Serialize};
 
-use rsnano_types::WalletId;
-use rsnano_types::{Account, Amount, BlockHash};
+use burst_types::WalletId;
+use burst_types::{Account, Amount, BlockHash};
 
 use crate::{RpcBool, RpcCommand, RpcU64};
 

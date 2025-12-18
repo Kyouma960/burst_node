@@ -1,4 +1,4 @@
-use rsnano_output_tracker::{OutputListenerMt, OutputTrackerMt};
+use burst_output_tracker::{OutputListenerMt, OutputTrackerMt};
 use std::sync::Arc;
 
 pub struct Console {

@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use rsnano_types::{Account, WalletId};
+    use burst_types::{Account, WalletId};
     use std::time::Duration;
     use test_helpers::{System, assert_timely, setup_rpc_client_and_server};
 

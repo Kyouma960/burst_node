@@ -3,11 +3,11 @@ use std::{
     thread::JoinHandle,
 };
 
-use rsnano_ledger::Ledger;
-use rsnano_network::Network;
-use rsnano_network::token_bucket::TokenBucket;
-use rsnano_nullable_clock::SteadyClock;
-use rsnano_utils::stats::{Stats, StatsCollection, StatsSource};
+use burst_ledger::Ledger;
+use burst_network::Network;
+use burst_network::token_bucket::TokenBucket;
+use burst_nullable_clock::SteadyClock;
+use burst_utils::stats::{Stats, StatsCollection, StatsSource};
 
 use super::{
     bootstrap_promise_runner::BootstrapPromiseRunner, channel_waiter::ChannelWaiter,
@@ -20,7 +20,7 @@ use crate::{
     bootstrap::{AscPullQuerySpec, BootstrapConfig, BootstrapPromise, state::BootstrapLogic},
     transport::MessageSender,
 };
-use rsnano_nullable_random::NullableRngFactory;
+use burst_nullable_random::NullableRngFactory;
 
 /// Manages the threads that send out AscPullReqs
 pub(crate) struct Requesters {

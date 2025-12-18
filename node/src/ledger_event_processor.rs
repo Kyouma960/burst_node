@@ -1,7 +1,7 @@
 use std::sync::{Arc, RwLock, mpsc::SyncSender};
 
-use rsnano_types::Networks;
-use rsnano_utils::stats::{DetailType, StatType, Stats};
+use burst_types::Networks;
+use burst_utils::stats::{DetailType, StatType, Stats};
 
 use crate::{
     NodeEvent,

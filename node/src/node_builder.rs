@@ -3,11 +3,11 @@ use std::{
     sync::{Arc, mpsc::SyncSender},
 };
 
-use rsnano_messages::Message;
-use rsnano_network::ChannelId;
-use rsnano_network_protocol::MessageCallback;
-use rsnano_types::Networks;
-use rsnano_utils::get_cpu_count;
+use burst_messages::Message;
+use burst_network::ChannelId;
+use burst_network_protocol::MessageCallback;
+use burst_types::Networks;
+use burst_utils::get_cpu_count;
 
 use crate::{
     Node, NodeArgs, NodeEvent,

@@ -1,6 +1,6 @@
 use super::BlockValidator;
 use crate::BlockError;
-use rsnano_types::{Block, Epoch, Epochs};
+use burst_types::{Block, Epoch, Epochs};
 
 impl<'a> BlockValidator<'a> {
     pub(crate) fn ensure_valid_epoch_block(&self) -> Result<(), BlockError> {

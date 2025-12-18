@@ -5,7 +5,7 @@ Get your BURST node running in 5 minutes!
 ## 1. Build the Node
 
 ```bash
-cd rsnano-node
+cd burst-node
 cargo build --release
 ```
 

@@ -3,15 +3,15 @@ use std::{
     time::SystemTime,
 };
 
-use rsnano_ledger::Ledger;
-use rsnano_messages::{TelemetryData, TelemetryMaker};
-use rsnano_network::{ChannelMode, Network};
-use rsnano_nullable_clock::{SteadyClock, Timestamp};
-use rsnano_types::{PrivateKey, Signature};
+use burst_ledger::Ledger;
+use burst_messages::{TelemetryData, TelemetryMaker};
+use burst_network::{ChannelMode, Network};
+use burst_nullable_clock::{SteadyClock, Timestamp};
+use burst_types::{PrivateKey, Signature};
 
 use crate::block_processing::UncheckedMap;
 
-use super::{get_pre_release_version, rsnano_version};
+use super::{get_pre_release_version, burst_version};
 
 /// Creates the telemetry data for this node
 pub struct TelemetryFactory {
@@ -46,7 +46,7 @@ impl TelemetryFactory {
             bandwidth_cap = network.bandwidth_limit() as u64;
         }
 
-        let version = rsnano_version();
+        let version = burst_version();
         let unchecked_count = self.unchecked.lock().unwrap().len() as u64;
 
         let mut telemetry_data = TelemetryData {
@@ -64,7 +64,7 @@ impl TelemetryFactory {
             minor_version: version.minor as u8,
             patch_version: version.patch as u8,
             pre_release_version: get_pre_release_version(&version),
-            maker: TelemetryMaker::RsNano as u8,
+            maker: TelemetryMaker::Burst as u8,
             timestamp: SystemTime::now(),
             active_difficulty: self.ledger.work_thresholds().threshold_base(),
             unknown_data: Vec::new(),

@@ -13,12 +13,13 @@ ledger_snapshots = ["burst_utils/ledger_snapshots"]
 burst_types = { path = "../types" }
 burst_work = { path = "../work" }
 burst_utils = { path = "../utils" }
+burst_nullable_random = { path = "../nullables/random" }
 anyhow = "1"
 bitvec = "1"
 num = "0"
 num-derive = "0"
 num-traits = "0"
-rand = { version = "0" }
+rand = { version = "0.9.2" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 serde_derive = "1"

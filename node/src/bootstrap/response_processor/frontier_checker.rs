@@ -1,5 +1,5 @@
-use rsnano_ledger::{LedgerSet, OwningAnySet};
-use rsnano_types::{Account, Frontier};
+use burst_ledger::{LedgerSet, OwningAnySet};
+use burst_types::{Account, Frontier};
 
 use super::database_crawler::{AccountCrawlSource, DatabaseCrawler, PendingCrawlSource};
 use crate::bootstrap::state::frontiers_processor::OutdatedAccounts;
@@ -103,8 +103,8 @@ impl<'a> FrontierChecker<'a> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_ledger::Ledger;
-    use rsnano_types::{AccountInfo, BlockHash, PendingInfo, PendingKey, SavedBlock};
+    use burst_ledger::Ledger;
+    use burst_types::{AccountInfo, BlockHash, PendingInfo, PendingKey, SavedBlock};
 
     #[test]
     fn no_frontiers_and_empty_ledger() {

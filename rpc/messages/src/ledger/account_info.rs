@@ -1,5 +1,5 @@
 use crate::{RpcBool, RpcCommand, RpcU16, RpcU64};
-use rsnano_types::{Account, Amount, BlockHash};
+use burst_types::{Account, Amount, BlockHash};
 use serde::{Deserialize, Serialize};
 
 impl RpcCommand {

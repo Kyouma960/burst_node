@@ -1,9 +1,9 @@
 use std::collections::HashMap;
 
-use rsnano_rpc_messages::{CountArgs, UncheckedResponse, unwrap_u64_or_max};
+use burst_rpc_messages::{CountArgs, UncheckedResponse, unwrap_u64_or_max};
 
 use crate::command_handler::RpcCommandHandler;
-use rsnano_types::{BlockHash, JsonBlock};
+use burst_types::{BlockHash, JsonBlock};
 
 impl RpcCommandHandler {
     pub(crate) fn unchecked(&self, args: CountArgs) -> UncheckedResponse {

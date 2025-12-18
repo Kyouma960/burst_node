@@ -6,11 +6,11 @@ use std::{
 
 use tracing::debug;
 
-use rsnano_ledger::Ledger;
-use rsnano_network::{Channel, Network};
-use rsnano_nullable_clock::SystemTimeFactory;
-use rsnano_nullable_lmdb::WriteTransaction;
-use rsnano_utils::{
+use burst_ledger::Ledger;
+use burst_network::{Channel, Network};
+use burst_nullable_clock::SystemTimeFactory;
+use burst_nullable_lmdb::WriteTransaction;
+use burst_utils::{
     CancellationToken,
     stats::{DetailType, StatType, Stats},
     ticker::Tickable,
@@ -109,12 +109,12 @@ mod tests {
 
     use tracing_test::traced_test;
 
-    use rsnano_network::{
+    use burst_network::{
         ChannelDirection, ChannelMode, NULL_ENDPOINT, TEST_ENDPOINT_1, TEST_ENDPOINT_2,
         TEST_ENDPOINT_3,
     };
-    use rsnano_nullable_clock::Timestamp;
-    use rsnano_utils::stats::Direction;
+    use burst_nullable_clock::Timestamp;
+    use burst_utils::stats::Direction;
 
     use super::*;
 

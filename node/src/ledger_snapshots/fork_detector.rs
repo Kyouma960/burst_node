@@ -2,7 +2,7 @@ use crate::{
     block_processing::LedgerEvent, consensus::ActiveElectionsContainer,
     ledger_event_processor::LedgerEventProcessorPlugin, ledger_snapshots::LedgerSnapshots,
 };
-use rsnano_ledger::{BlockError, Ledger};
+use burst_ledger::{BlockError, Ledger};
 use std::sync::{Arc, RwLock};
 
 pub(crate) struct ForkDetector {
@@ -51,9 +51,9 @@ mod tests {
         ledger_event_processor::LedgerEventProcessorPlugin,
         ledger_snapshots::{LedgerSnapshots, fork_detector::ForkDetector},
     };
-    use rsnano_ledger::{BlockError, Ledger};
-    use rsnano_nullable_clock::Timestamp;
-    use rsnano_types::{Block, BlockPriority, SavedBlock};
+    use burst_ledger::{BlockError, Ledger};
+    use burst_nullable_clock::Timestamp;
+    use burst_types::{Block, BlockPriority, SavedBlock};
     use std::sync::{Arc, RwLock};
 
     #[test]

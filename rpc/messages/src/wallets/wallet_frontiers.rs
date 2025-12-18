@@ -1,5 +1,5 @@
 use crate::{RpcCommand, common::WalletRpcMessage};
-use rsnano_types::WalletId;
+use burst_types::WalletId;
 
 impl RpcCommand {
     pub fn wallet_frontiers(wallet: WalletId) -> Self {
@@ -10,7 +10,7 @@ impl RpcCommand {
 #[cfg(test)]
 mod tests {
     use crate::RpcCommand;
-    use rsnano_types::WalletId;
+    use burst_types::WalletId;
     use serde_json::to_string_pretty;
 
     #[test]

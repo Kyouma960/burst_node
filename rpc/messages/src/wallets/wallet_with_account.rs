@@ -1,4 +1,4 @@
-use rsnano_types::{Account, WalletId};
+use burst_types::{Account, WalletId};
 use serde::{Deserialize, Serialize};
 
 #[derive(PartialEq, Eq, Debug, Serialize, Deserialize)]

@@ -1,4 +1,4 @@
-use rsnano_types::Amount;
+use burst_types::Amount;
 use test_helpers::{System, setup_rpc_client_and_server};
 
 #[test]

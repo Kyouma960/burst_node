@@ -3,8 +3,8 @@ use std::sync::{
     atomic::{AtomicU64, Ordering},
 };
 
-use rsnano_network::{Channel, ChannelId, Network, TrafficType, token_bucket::TokenBucket};
-use rsnano_utils::stats::StatsCollection;
+use burst_network::{Channel, ChannelId, Network, TrafficType, token_bucket::TokenBucket};
+use burst_utils::stats::StatsCollection;
 
 use crate::bootstrap::{BootstrapPromise, PollResult, PromiseContext};
 
@@ -129,7 +129,7 @@ mod tests {
         PromiseContext,
         state::{BootstrapLogic, RunningQuery},
     };
-    use rsnano_nullable_clock::Timestamp;
+    use burst_nullable_clock::Timestamp;
 
     #[test]
     fn initial_state() {

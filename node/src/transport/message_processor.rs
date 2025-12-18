@@ -10,9 +10,9 @@ use std::{
 
 use tracing::debug;
 
-use rsnano_messages::Message;
-use rsnano_network::{Channel, ChannelId};
-use rsnano_network_protocol::InboundMessageQueue;
+use burst_messages::Message;
+use burst_network::{Channel, ChannelId};
+use burst_network_protocol::InboundMessageQueue;
 
 use super::NetworkMessageProcessor;
 use crate::config::NodeConfig;

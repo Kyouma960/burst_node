@@ -1,8 +1,8 @@
 use std::{cmp::Ordering, collections::BTreeMap};
 
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::{Block, BlockHash};
-use rsnano_utils::{
+use burst_nullable_clock::Timestamp;
+use burst_types::{Block, BlockHash};
+use burst_utils::{
     container_info::{ContainerInfo, ContainerInfoProvider},
     stats::{StatsCollection, StatsSource},
 };
@@ -206,7 +206,7 @@ impl Ord for Entry {
 mod tests {
     use super::*;
     use ntest::assert_false;
-    use rsnano_types::Block;
+    use burst_types::Block;
 
     #[test]
     fn empty() {

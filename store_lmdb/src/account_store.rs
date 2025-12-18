@@ -1,11 +1,11 @@
 use std::{ops::RangeBounds, sync::Arc};
 
-use rsnano_nullable_lmdb::{
+use burst_nullable_lmdb::{
     ConfiguredDatabase, DatabaseFlags, Error, LmdbDatabase, LmdbEnvironment, Transaction,
     WriteFlags, WriteTransaction,
 };
-use rsnano_output_tracker::{OutputListenerMt, OutputTrackerMt};
-use rsnano_types::{Account, AccountInfo};
+use burst_output_tracker::{OutputListenerMt, OutputTrackerMt};
+use burst_types::{Account, AccountInfo};
 
 use crate::{
     ACCOUNT_TEST_DATABASE,
@@ -157,8 +157,8 @@ fn read_account_info_record(key: &[u8], mut value: &[u8]) -> (Account, AccountIn
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_nullable_lmdb::{DeleteEvent, PutEvent};
-    use rsnano_types::{Amount, BlockHash};
+    use burst_nullable_lmdb::{DeleteEvent, PutEvent};
+    use burst_types::{Amount, BlockHash};
     use std::sync::Mutex;
 
     struct Fixture {

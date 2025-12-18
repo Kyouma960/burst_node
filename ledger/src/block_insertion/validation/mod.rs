@@ -8,11 +8,11 @@ mod burst_rules;
 #[cfg(test)]
 mod tests;
 
-use rsnano_types::{
+use burst_types::{
     Account, AccountInfo, Block, Epochs, PendingInfo, SavedBlock, UnixMillisTimestamp,
 };
-use rsnano_work::WorkThresholds;
-use rsnano_store_lmdb::LmdbStore;
+use burst_work::WorkThresholds;
+use burst_store_lmdb::LmdbStore;
 
 use super::BlockInsertInstructions;
 use crate::BlockError;

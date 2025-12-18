@@ -2,8 +2,8 @@ use std::{collections::BTreeMap, time::Duration};
 
 use rustc_hash::FxHashMap;
 
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::{Block, BlockHash};
+use burst_nullable_clock::Timestamp;
+use burst_types::{Block, BlockHash};
 
 const DELAY_LIMIT: Duration = Duration::from_secs(10);
 

@@ -3,7 +3,7 @@ use std::sync::{
     atomic::{AtomicBool, AtomicI32, Ordering},
 };
 
-use rsnano_types::{Root, WorkNonce, WorkRequestAsync};
+use burst_types::{Root, WorkNonce, WorkRequestAsync};
 
 static NEVER_EXPIRES: AtomicI32 = AtomicI32::new(0);
 

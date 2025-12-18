@@ -1,6 +1,6 @@
-use rsnano_nullable_lmdb::Transaction;
-use rsnano_store_lmdb::LmdbStore;
-use rsnano_types::{Block, BlockHash};
+use burst_nullable_lmdb::Transaction;
+use burst_store_lmdb::LmdbStore;
+use burst_types::{Block, BlockHash};
 
 /// Goes back in the block history until it finds a block with representative information
 pub(crate) struct RepresentativeBlockFinder<'a> {

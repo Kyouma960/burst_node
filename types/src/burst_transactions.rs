@@ -1,8 +1,7 @@
 // Utilities for creating Burst transactions (burn, send, merge, split)
 
 use crate::{
-    Account, Amount, BlockHash, UnixTimestamp, BurstBlockMetadata, TransactionMethod,
-    trst_expiry_seconds,
+    Amount, BlockHash, UnixTimestamp, BurstBlockMetadata,
 };
 
 /// Create Burst metadata for a burn transaction

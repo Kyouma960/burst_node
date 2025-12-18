@@ -1,5 +1,5 @@
 use crate::command_handler::RpcCommandHandler;
-use rsnano_rpc_messages::{AccountCreateArgs, AccountResponse};
+use burst_rpc_messages::{AccountCreateArgs, AccountResponse};
 
 impl RpcCommandHandler {
     pub(crate) fn account_create(

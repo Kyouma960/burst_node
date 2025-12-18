@@ -1,9 +1,9 @@
 use crate::command_handler::RpcCommandHandler;
-use rsnano_ledger::AnySet;
-use rsnano_rpc_messages::{
+use burst_ledger::AnySet;
+use burst_rpc_messages::{
     BlockHashesResponse, ChainArgs, unwrap_bool_or_false, unwrap_u64_or_zero,
 };
-use rsnano_types::BlockHash;
+use burst_types::BlockHash;
 
 impl RpcCommandHandler {
     pub(crate) fn chain(&self, args: ChainArgs, successors: bool) -> BlockHashesResponse {

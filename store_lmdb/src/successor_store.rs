@@ -1,10 +1,10 @@
 use std::sync::Arc;
 
-use rsnano_nullable_lmdb::{
+use burst_nullable_lmdb::{
     DatabaseFlags, Error, LmdbDatabase, LmdbEnvironment, Transaction, WriteFlags, WriteTransaction,
 };
-use rsnano_output_tracker::{OutputListenerMt, OutputTrackerMt};
-use rsnano_types::BlockHash;
+use burst_output_tracker::{OutputListenerMt, OutputTrackerMt};
+use burst_types::BlockHash;
 
 /// Stores the hash of the successor block for a given block hash
 pub struct LmdbSuccessorStore {
@@ -61,7 +61,7 @@ const TABLE_NAME: &str = "successors";
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_nullable_lmdb::{DeleteEvent, PutEvent};
+    use burst_nullable_lmdb::{DeleteEvent, PutEvent};
 
     #[test]
     fn initialize() {

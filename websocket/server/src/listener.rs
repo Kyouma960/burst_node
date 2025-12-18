@@ -14,11 +14,11 @@ use tokio::{
 use tokio_tungstenite::tungstenite::protocol::{CloseFrame, frame::coding::CloseCode};
 use tracing::{info, warn};
 
-use rsnano_ledger::Ledger;
-use rsnano_node::consensus::election::{ConfirmedElection, VoteSummary};
-use rsnano_types::{Account, Amount, BlockSideband, SavedBlock};
-use rsnano_wallet::Wallets;
-use rsnano_websocket_messages::{
+use burst_ledger::Ledger;
+use burst_node::consensus::election::{ConfirmedElection, VoteSummary};
+use burst_types::{Account, Amount, BlockSideband, SavedBlock};
+use burst_wallet::Wallets;
+use burst_websocket_messages::{
     ConfirmationJsonOptions, ElectionInfo, JsonSideband, JsonVoteSummary, MessageEnvelope, Topic,
 };
 
@@ -272,7 +272,7 @@ pub fn into_election_info(value: &ConfirmedElection) -> ElectionInfo {
         final_tally: value.final_tally.to_string_dec(),
         blocks: value.block_count.to_string(),
         voters: value.voter_count.to_string(),
-        request_count: 0.to_string(), // currently not supported in RsNano
+        request_count: 0.to_string(), // currently not supported in Burst
         votes: None,
     }
 }

@@ -6,11 +6,11 @@ use std::{
     time::{Duration, SystemTime, UNIX_EPOCH},
 };
 
-use rsnano_nullable_lmdb::{
+use burst_nullable_lmdb::{
     ConfiguredDatabase, DatabaseFlags, LmdbDatabase, LmdbEnvironment, Transaction, WriteFlags,
     WriteTransaction,
 };
-use rsnano_output_tracker::{OutputListenerMt, OutputTrackerMt};
+use burst_output_tracker::{OutputListenerMt, OutputTrackerMt};
 
 use crate::{PEERS_TEST_DATABASE, iterator::LmdbIterator};
 
@@ -200,7 +200,7 @@ impl ConfiguredPeersDatabaseBuilder {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_nullable_lmdb::{DeleteEvent, PutEvent};
+    use burst_nullable_lmdb::{DeleteEvent, PutEvent};
     use std::{
         net::Ipv6Addr,
         time::{Duration, UNIX_EPOCH},

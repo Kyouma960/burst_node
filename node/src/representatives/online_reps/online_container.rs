@@ -1,5 +1,5 @@
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::{Account, PublicKey};
+use burst_nullable_clock::Timestamp;
+use burst_types::{Account, PublicKey};
 use std::{
     collections::{BTreeMap, HashMap},
     mem::size_of,

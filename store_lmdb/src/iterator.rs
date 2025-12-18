@@ -1,6 +1,6 @@
 use std::{cmp::Ordering, ops::Bound};
 
-use rsnano_nullable_lmdb::{
+use burst_nullable_lmdb::{
     EMPTY_DATABASE, Error, Result, RoCursor,
     sys::{MDB_FIRST, MDB_LAST, MDB_NEXT, MDB_PREV, MDB_SET_RANGE, MDB_cursor_op},
 };

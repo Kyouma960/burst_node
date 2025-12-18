@@ -1,8 +1,8 @@
 use std::sync::{Arc, Condvar, Mutex};
 
-use rsnano_ledger::BlockError;
-use rsnano_network::ChannelId;
-use rsnano_types::{Block, BlockHash, SavedBlock};
+use burst_ledger::BlockError;
+use burst_network::ChannelId;
+use burst_types::{Block, BlockHash, SavedBlock};
 
 use super::BlockSource;
 

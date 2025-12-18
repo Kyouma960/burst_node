@@ -1,9 +1,9 @@
 // Burst verification voting system implementation
 // Handles circle validators (burn BRN) and random validators (stake TRST)
 
-use rsnano_nullable_lmdb::{Transaction, WriteTransaction};
-use rsnano_store_lmdb::LmdbStore;
-use rsnano_types::{
+use burst_nullable_lmdb::{Transaction, WriteTransaction};
+use burst_store_lmdb::LmdbStore;
+use burst_types::{
     Account, Amount, BlockHash, UnixTimestamp, VerificationInfo, VerificationStatus,
     CIRCLE_VALIDATOR_THRESHOLD, MIN_CIRCLE_VALIDATOR_STAKE_BRN, MIN_RANDOM_VALIDATOR_STAKE_TRST,
     RANDOM_VALIDATOR_THRESHOLD, calculate_brn,
@@ -144,7 +144,7 @@ pub fn random_validator_vote(
     // Add random validator vote
     let stake_u64 = stake_amount.number().min(u64::MAX as u128) as u64;
     candidate_info.random_validator_votes.push(
-        rsnano_types::RandomValidatorVote {
+        burst_types::RandomValidatorVote {
             validator: *validator_account,
             vote,
             stake_amount: stake_u64,

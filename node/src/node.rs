@@ -14,27 +14,27 @@ use bounded_vec_deque::BoundedVecDeque;
 use num_format::{Locale, ToFormattedString};
 use tracing::{error, info, warn};
 
-use rsnano_ledger::{AnySet, BlockError, Ledger, LedgerBuilder, LedgerSet};
-use rsnano_messages::NetworkFilter;
-use rsnano_network::{
+use burst_ledger::{AnySet, BlockError, Ledger, LedgerBuilder, LedgerSet};
+use burst_messages::NetworkFilter;
+use burst_network::{
     ChannelId, DeadChannelCleanup, Network, NetworkCleanup, PeerConnector, TcpListener,
     TcpListenerExt, TcpNetworkAdapter, TrafficType,
 };
-use rsnano_network_protocol::{
+use burst_network_protocol::{
     HandshakeStats, InboundMessageQueue, InboundMessageQueueCleanup, LatestKeepalives,
     LatestKeepalivesCleanup, NanoDataReceiverFactory, SynCookies,
 };
-use rsnano_nullable_clock::{SteadyClock, SystemTimeFactory};
-use rsnano_nullable_fs::NullableFilesystem;
-use rsnano_nullable_lmdb::{
+use burst_nullable_clock::{SteadyClock, SystemTimeFactory};
+use burst_nullable_fs::NullableFilesystem;
+use burst_nullable_lmdb::{
     EnvironmentFlags, EnvironmentOptions, LmdbEnvironment, LmdbEnvironmentFactory,
 };
-use rsnano_output_tracker::OutputListenerMt;
-use rsnano_types::{
+use burst_output_tracker::OutputListenerMt;
+use burst_types::{
     Account, Amount, Block, BlockHash, Networks, NodeId, Peer, PrivateKey, QualifiedRoot, Root,
     SavedBlock, Vote, VoteError, WorkNonce, WorkRequest,
 };
-use rsnano_utils::{
+use burst_utils::{
     CancellationToken,
     container_info::{ContainerInfo, ContainerInfoFactory, ContainerInfoProvider},
     stats::{Direction, Stats, StatsCollection, StatsCollector},
@@ -42,7 +42,7 @@ use rsnano_utils::{
     thread_pool::ThreadPool,
     ticker::{Tickable, TickerPool, TimerThread},
 };
-use rsnano_wallet::{ReceivableSearch, WalletBackup, Wallets, WalletsTicker};
+use burst_wallet::{ReceivableSearch, WalletBackup, Wallets, WalletsTicker};
 
 #[cfg(feature = "ledger_snapshots")]
 use crate::ledger_snapshots::{LedgerSnapshots, fork_detector::ForkDetector};
@@ -82,8 +82,8 @@ use crate::{
         OnlineReps, OnlineRepsCleanup, OnlineWeightCalculation, RepCrawler, RepCrawlerExt,
     },
     telemetry::{
-        TelementryConfig, TelementryExt, Telemetry, TelemetryFactory, rsnano_build_info,
-        rsnano_version_string,
+        TelementryConfig, TelementryExt, Telemetry, TelemetryFactory, burst_build_info,
+        burst_version_string,
     },
     tokio_runner::TokioRunner,
     transport::{
@@ -220,8 +220,8 @@ impl Node {
         let application_path = args.data_path;
 
         info!("Node started");
-        info!("Version: {}", rsnano_version_string());
-        info!("{}", rsnano_build_info());
+        info!("Version: {}", burst_version_string());
+        info!("{}", burst_build_info());
         info!("Network: {}", network_label);
         info!("Data path: {:?}", application_path);
         info!(
@@ -1723,7 +1723,7 @@ mod tests {
     use crate::consensus::{
         AecEvent, AecTickerPlugin, BootstrapStaleElections, StaleElectionsStats,
     };
-    use rsnano_utils::{stats::StatsSource, ticker::Tickable};
+    use burst_utils::{stats::StatsSource, ticker::Tickable};
     use std::any::type_name;
 
     #[test]

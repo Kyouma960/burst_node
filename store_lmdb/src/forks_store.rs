@@ -1,9 +1,9 @@
 use crate::{FORKS_TEST_DATABASE, LmdbIterator};
-use rsnano_nullable_lmdb::{
+use burst_nullable_lmdb::{
     ConfiguredDatabase, DatabaseFlags, Error, LmdbDatabase, LmdbEnvironment, Transaction,
     WriteFlags, WriteTransaction,
 };
-use rsnano_types::{QualifiedRoot, SnapshotNumber, read_u32_be};
+use burst_types::{QualifiedRoot, SnapshotNumber, read_u32_be};
 
 /// Maps the qualified roots to the snapshot number when the fork was detected
 pub struct LmdbForksStore {
@@ -91,7 +91,7 @@ impl ConfiguredForksDatabaseBuilder {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_nullable_lmdb::{DeleteEvent, PutEvent};
+    use burst_nullable_lmdb::{DeleteEvent, PutEvent};
     use std::sync::Arc;
 
     const TEST_DATABASE: LmdbDatabase = LmdbDatabase::new_null(100);

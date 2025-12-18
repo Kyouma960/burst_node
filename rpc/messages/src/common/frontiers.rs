@@ -1,4 +1,4 @@
-use rsnano_types::{Account, BlockHash};
+use burst_types::{Account, BlockHash};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 

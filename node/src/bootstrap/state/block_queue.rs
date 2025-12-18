@@ -1,4 +1,4 @@
-use rsnano_types::{Account, Block, BlockHash};
+use burst_types::{Account, Block, BlockHash};
 use rustc_hash::FxHashMap;
 use std::collections::VecDeque;
 

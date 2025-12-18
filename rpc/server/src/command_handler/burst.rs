@@ -1,14 +1,14 @@
 // Burst-specific RPC command handlers
 
 use crate::command_handler::RpcCommandHandler;
-use rsnano_ledger::burst_helpers;
-use rsnano_ledger::burst_verification;
-use rsnano_rpc_messages::{
+use burst_ledger::burst_helpers;
+use burst_ledger::burst_verification;
+use burst_rpc_messages::{
     BrnBalanceArgs, BrnBalanceResponse, RequestVerificationArgs, RequestVerificationResponse,
     TrstHistoryArgs, TrstHistoryEntry, TrstHistoryResponse, VoteVerificationArgs,
     VoteVerificationResponse,
 };
-use rsnano_types::{Account, Amount, UnixTimestamp, calculate_brn};
+use burst_types::{Account, Amount, UnixTimestamp, calculate_brn};
 
 impl RpcCommandHandler {
     /// Get BRN balance for an account
@@ -61,10 +61,10 @@ impl RpcCommandHandler {
         let verification_info = burst_helpers::get_verification_info(store, &read_txn, &args.account);
 
         let status_str = match verification_info.status {
-            rsnano_types::VerificationStatus::Unverified => "unverified",
-            rsnano_types::VerificationStatus::Pending => "pending",
-            rsnano_types::VerificationStatus::Verified => "verified",
-            rsnano_types::VerificationStatus::UnverifiedAfterRevote => "unverified",
+            burst_types::VerificationStatus::Unverified => "unverified",
+            burst_types::VerificationStatus::Pending => "pending",
+            burst_types::VerificationStatus::Verified => "verified",
+            burst_types::VerificationStatus::UnverifiedAfterRevote => "unverified",
         };
 
         Ok(RequestVerificationResponse {
@@ -191,9 +191,9 @@ impl RpcCommandHandler {
                 // Check if this block has Burst metadata
                 if let Some(ref burst_meta) = block.sideband().burst_metadata {
                     let method_str = match burst_meta.method {
-                        rsnano_types::TransactionMethod::Burn => "burn",
-                        rsnano_types::TransactionMethod::Send => "send",
-                        rsnano_types::TransactionMethod::Merge => "merge",
+                        burst_types::TransactionMethod::Burn => "burn",
+                        burst_types::TransactionMethod::Send => "send",
+                        burst_types::TransactionMethod::Merge => "merge",
                     };
 
                     let is_transferable = burst_meta.is_transferable(current_timestamp);

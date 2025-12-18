@@ -1,7 +1,7 @@
 use super::*;
 use bitvec::prelude::BitArray;
-use rsnano_types::{DeserializationError, ProtocolInfo};
-use rsnano_utils::stats::DetailType;
+use burst_types::{DeserializationError, ProtocolInfo};
+use burst_utils::stats::DetailType;
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Message {
@@ -332,7 +332,7 @@ pub fn validate_header(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_types::{TestBlockBuilder, Vote};
+    use burst_types::{TestBlockBuilder, Vote};
 
     #[test]
     fn exact_confirm_ack() {

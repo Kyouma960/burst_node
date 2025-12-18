@@ -1,11 +1,11 @@
 use std::sync::LazyLock;
 
-use rsnano_nullable_env::get_env_or_default_string;
-use rsnano_types::{
+use burst_nullable_env::get_env_or_default_string;
+use burst_types::{
     Account, Amount, Block, BlockDetails, BlockHash, BlockSideband, DEV_GENESIS_KEY, Epoch, Epochs,
     Networks, PublicKey, SavedBlock, UnixMillisTimestamp, epoch_v1_link, epoch_v2_link,
 };
-use rsnano_work::{WORK_THRESHOLDS_STUB, WorkThresholds};
+use burst_work::{WORK_THRESHOLDS_STUB, WorkThresholds};
 
 static BETA_PUBLIC_KEY_DATA: &str =
     "259A438A8F9F9226130C84D902C237AF3E57C0981C7D709C288046B110D8C8AC";
@@ -82,7 +82,7 @@ fn parse_block_from_genesis_data(genesis_data: &str) -> anyhow::Result<Block> {
 
 #[cfg(test)]
 mod tests {
-    use rsnano_types::BlockType;
+    use burst_types::BlockType;
 
     use super::*;
 

@@ -14,8 +14,8 @@ use std::{
 use mock_instant::thread_local::Instant;
 use rustc_hash::{FxHashMap, FxHashSet};
 
-use rsnano_types::{Amount, BlockHash, DescTallyKey, PublicKey, Vote, VoteError};
-use rsnano_utils::{
+use burst_types::{Amount, BlockHash, DescTallyKey, PublicKey, Vote, VoteError};
+use burst_utils::{
     container_info::{ContainerInfo, ContainerInfoProvider},
     stats::{DetailType, StatType, Stats},
 };
@@ -535,8 +535,8 @@ impl OrderedVoters {
 mod tests {
     use super::*;
     use mock_instant::thread_local::MockClock;
-    use rsnano_types::{PrivateKey, UnixMillisTimestamp};
-    use rsnano_utils::stats::Direction;
+    use burst_types::{PrivateKey, UnixMillisTimestamp};
+    use burst_utils::stats::Direction;
 
     fn create_vote(rep: &PrivateKey, hash: &BlockHash, timestamp_offset: u64) -> Arc<Vote> {
         let timestamp = UnixMillisTimestamp::new(timestamp_offset * 1024 * 1024);

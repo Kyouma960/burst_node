@@ -2,7 +2,6 @@
 
 use crate::{BlockHash, UnixTimestamp};
 use serde::{Deserialize, Serialize};
-use std::collections::HashSet;
 
 /// Transaction method type for Burst transactions
 #[repr(u8)]

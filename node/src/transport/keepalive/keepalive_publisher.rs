@@ -5,11 +5,11 @@ use std::{
 
 use tracing::error;
 
-use rsnano_network::{
+use burst_network::{
     Channel, Network, PeerConnector, TrafficType, utils::into_ipv6_socket_address,
 };
-use rsnano_output_tracker::{OutputListenerMt, OutputTrackerMt};
-use rsnano_types::Peer;
+use burst_output_tracker::{OutputListenerMt, OutputTrackerMt};
+use burst_types::Peer;
 
 use super::KeepaliveMessageFactory;
 use crate::transport::MessageSender;

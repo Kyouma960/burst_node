@@ -2,8 +2,8 @@ use std::{net::SocketAddrV6, sync::Arc, time::Duration};
 use tokio_util::sync::CancellationToken;
 use tracing::debug;
 
-use rsnano_nullable_tcp::{TcpSocket, TcpStream};
-use rsnano_output_tracker::{OutputListenerMt, OutputTrackerMt};
+use burst_nullable_tcp::{TcpSocket, TcpStream};
+use burst_output_tracker::{OutputListenerMt, OutputTrackerMt};
 
 use crate::{ChannelDirection, NetworkError, TcpNetworkAdapter};
 

@@ -1,5 +1,5 @@
 use crate::command_handler::RpcCommandHandler;
-use rsnano_rpc_messages::{
+use burst_rpc_messages::{
     ConfirmationEntry, ConfirmationHistoryArgs, ConfirmationHistoryResponse, ConfirmationStats,
 };
 use std::time::{Duration, UNIX_EPOCH};
@@ -27,7 +27,7 @@ impl RpcCommandHandler {
                     final_tally: election.final_tally,
                     blocks: election.block_count.into(),
                     voters: election.voter_count.into(),
-                    request_count: 0.into(), // currently not supported in RsNano
+                    request_count: 0.into(), // currently not supported in Burst
                 });
             }
             running_total += election.election_duration;

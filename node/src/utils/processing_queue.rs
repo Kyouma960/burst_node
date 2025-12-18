@@ -8,7 +8,7 @@ use std::{
     thread::{self, JoinHandle},
 };
 
-use rsnano_utils::stats::{DetailType, Direction, StatType, Stats};
+use burst_utils::stats::{DetailType, Direction, StatType, Stats};
 
 /**
  * Queue that processes enqueued elements in (possibly parallel) batches

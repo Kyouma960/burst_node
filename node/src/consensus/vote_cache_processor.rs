@@ -4,9 +4,9 @@ use std::{
     thread::JoinHandle,
 };
 
-use rsnano_types::{BlockHash, VoteSource};
-use rsnano_utils::container_info::{ContainerInfo, ContainerInfoProvider};
-use rsnano_utils::stats::{DetailType, StatType, Stats};
+use burst_types::{BlockHash, VoteSource};
+use burst_utils::container_info::{ContainerInfo, ContainerInfoProvider};
+use burst_utils::stats::{DetailType, StatType, Stats};
 
 use super::{VoteCache, VoteProcessorConfig, VoteProcessorQueue};
 

@@ -1,7 +1,7 @@
-use rsnano_ledger::{AnySet, Ledger};
-use rsnano_node::consensus::election::ConfirmedElection;
-use rsnano_types::{Amount, BlockType, SavedBlock};
-use rsnano_websocket_messages::{
+use burst_ledger::{AnySet, Ledger};
+use burst_node::consensus::election::ConfirmedElection;
+use burst_types::{Amount, BlockType, SavedBlock};
+use burst_websocket_messages::{
     BlockConfirmed, ElectionInfo, JsonSideband, MessageEnvelope, Topic,
 };
 
@@ -98,8 +98,8 @@ impl ConfirmationMessageFactory<'_> {
 
 #[cfg(test)]
 mod tests {
-    use rsnano_node::consensus::election::ConfirmationType;
-    use rsnano_websocket_messages::ConfirmationJsonOptions;
+    use burst_node::consensus::election::ConfirmationType;
+    use burst_websocket_messages::ConfirmationJsonOptions;
 
     use super::*;
 

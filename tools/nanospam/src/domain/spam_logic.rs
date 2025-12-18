@@ -2,9 +2,9 @@ use crate::domain::{
     AccountMap, BlockFactory, BlockResult, DelayedBlocks, Forks, RateSpec, SpamStrategy,
     high_prio_tracker::HighPrioTracker,
 };
-use rsnano_network::token_bucket::TokenBucket;
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::{Block, BlockHash};
+use burst_network::token_bucket::TokenBucket;
+use burst_nullable_clock::Timestamp;
+use burst_types::{Block, BlockHash};
 use std::time::Duration;
 
 pub(crate) struct SpamSpec {

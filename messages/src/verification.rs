@@ -2,8 +2,8 @@
 
 use super::MessageVariant;
 use bitvec::prelude::BitArray;
-use rsnano_types::{
-    Account, Amount, BlockHash, DeserializationError, Signature, UnixTimestamp,
+use burst_types::{
+    Account, Amount, DeserializationError, Signature, UnixTimestamp,
 };
 use std::io::{Read, Write};
 

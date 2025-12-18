@@ -6,7 +6,7 @@ use crate::{
     LmdbVerificationStore,
     successor_store::LmdbSuccessorStore,
 };
-use rsnano_nullable_lmdb::{LmdbEnvironment, ReadTransaction, WriteTransaction};
+use burst_nullable_lmdb::{LmdbEnvironment, ReadTransaction, WriteTransaction};
 use serde::{Deserialize, Serialize};
 use std::sync::{
     Arc,
@@ -113,7 +113,7 @@ pub struct MemoryStats {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_nullable_lmdb::{EnvironmentFlags, EnvironmentOptions, LmdbEnvironmentFactory};
+    use burst_nullable_lmdb::{EnvironmentFlags, EnvironmentOptions, LmdbEnvironmentFactory};
 
     #[test]
     fn create_store() -> anyhow::Result<()> {

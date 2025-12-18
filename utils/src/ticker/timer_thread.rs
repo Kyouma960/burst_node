@@ -4,7 +4,7 @@ use std::{
     time::{Duration, Instant},
 };
 
-use rsnano_output_tracker::{OutputListenerMt, OutputTrackerMt};
+use burst_output_tracker::{OutputListenerMt, OutputTrackerMt};
 
 use crate::{CancellationToken, ticker::Tickable};
 

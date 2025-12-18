@@ -1,5 +1,5 @@
 use crate::{RpcCommand, common::KeyArg};
-use rsnano_types::PublicKey;
+use burst_types::PublicKey;
 
 impl RpcCommand {
     pub fn account_get(key: PublicKey) -> Self {
@@ -10,7 +10,7 @@ impl RpcCommand {
 #[cfg(test)]
 mod tests {
     use crate::RpcCommand;
-    use rsnano_types::PublicKey;
+    use burst_types::PublicKey;
     use serde_json::to_string_pretty;
 
     #[test]

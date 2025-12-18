@@ -1,5 +1,5 @@
-use rsnano_nullable_clock::Timestamp;
-use rsnano_types::{BlockHash, Root};
+use burst_nullable_clock::Timestamp;
+use burst_types::{BlockHash, Root};
 use std::{
     collections::{BTreeMap, HashMap, HashSet},
     time::Duration,

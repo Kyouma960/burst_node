@@ -1,9 +1,9 @@
 use std::time::Duration;
 
-use rsnano_types::{
+use burst_types::{
     DEFAULT_PORT_NODE, DEFAULT_PORT_RPC, DEFAULT_PORT_WEBSOCKET, Networks, ProtocolInfo,
 };
-use rsnano_work::WorkThresholds;
+use burst_work::WorkThresholds;
 
 use crate::bootstrap::BootstrapConfig;
 

@@ -3,8 +3,8 @@ use std::sync::{
     atomic::{AtomicU64, Ordering},
 };
 
-use rsnano_network::Channel;
-use rsnano_utils::stats::{StatsCollection, StatsSource};
+use burst_network::Channel;
+use burst_utils::stats::{StatsCollection, StatsSource};
 
 use super::channel_waiter::ChannelWaiter;
 use crate::bootstrap::{
@@ -107,9 +107,9 @@ impl StatsSource for DependencyRequesterStats {
 mod tests {
     use super::*;
     use crate::bootstrap::{PromiseContext, progress, progress_state, state::BootstrapLogic};
-    use rsnano_network::{Network, token_bucket::TokenBucket};
-    use rsnano_nullable_clock::Timestamp;
-    use rsnano_types::{Account, BlockHash};
+    use burst_network::{Network, token_bucket::TokenBucket};
+    use burst_nullable_clock::Timestamp;
+    use burst_types::{Account, BlockHash};
     use std::sync::{Mutex, RwLock};
 
     #[test]

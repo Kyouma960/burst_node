@@ -1,5 +1,5 @@
 use crate::command_handler::RpcCommandHandler;
-use rsnano_rpc_messages::{ConfirmationActiveArgs, ConfirmationActiveResponse, unwrap_u64_or_zero};
+use burst_rpc_messages::{ConfirmationActiveArgs, ConfirmationActiveResponse, unwrap_u64_or_zero};
 
 impl RpcCommandHandler {
     pub(crate) fn confirmation_active(
@@ -12,7 +12,7 @@ impl RpcCommandHandler {
 
         let active = self.node.active.read().unwrap();
         for election in active.iter_round_robin() {
-            let req_count = 0; // not supported in RsNano
+            let req_count = 0; // not supported in Burst
             if req_count as u64 >= announcements {
                 if !election.is_confirmed() {
                     elections.push(election.qualified_root().clone());

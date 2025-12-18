@@ -1,5 +1,5 @@
 use crate::command_handler::RpcCommandHandler;
-use rsnano_rpc_messages::{FrontiersArgs, FrontiersResponse};
+use burst_rpc_messages::{FrontiersArgs, FrontiersResponse};
 
 impl RpcCommandHandler {
     pub(crate) fn frontiers(&self, args: FrontiersArgs) -> FrontiersResponse {

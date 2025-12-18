@@ -9,10 +9,10 @@ use std::{
 
 use anyhow::bail;
 
-use rsnano_nullable_lmdb::{
+use burst_nullable_lmdb::{
     DatabaseFlags, Error, LmdbEnvironment, Transaction, WriteFlags, WriteTransaction,
 };
-use rsnano_types::{
+use burst_types::{
     Account, DeserializationError, KeyDerivationFunction, PublicKey, RawKey, WorkNonce,
     deterministic_key, read_u64_ne,
 };

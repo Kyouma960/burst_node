@@ -3,13 +3,13 @@ use std::{
     sync::{Arc, Mutex, RwLock},
 };
 
-use rsnano_messages::{Message, MessageSerializer};
-use rsnano_network::{
+use burst_messages::{Message, MessageSerializer};
+use burst_network::{
     Channel, ChannelDirection, Network, TEST_ENDPOINT_1, TEST_ENDPOINT_2, TrafficType,
 };
-use rsnano_nullable_clock::Timestamp;
-use rsnano_output_tracker::{OutputListenerMt, OutputTrackerMt};
-use rsnano_utils::stats::Stats;
+use burst_nullable_clock::Timestamp;
+use burst_output_tracker::{OutputListenerMt, OutputTrackerMt};
+use burst_utils::stats::Stats;
 
 use super::{MessageSender, try_send_serialized_message};
 use crate::representatives::OnlineReps;
@@ -52,7 +52,7 @@ impl MessageFlooder {
                 Timestamp::new_test_instance(),
             )
             .unwrap();
-        channel.set_mode(rsnano_network::ChannelMode::Realtime);
+        channel.set_mode(burst_network::ChannelMode::Realtime);
 
         Self::new(
             Arc::new(Mutex::new(OnlineReps::default())),

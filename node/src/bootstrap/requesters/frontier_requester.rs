@@ -1,10 +1,10 @@
 use std::sync::Arc;
 
-use rsnano_messages::{AscPullReqType, FrontiersReqPayload};
-use rsnano_network::{Channel, token_bucket::TokenBucket};
-use rsnano_nullable_clock::SteadyClock;
-use rsnano_types::{Account, BlockHash};
-use rsnano_utils::stats::{DetailType, StatType, Stats};
+use burst_messages::{AscPullReqType, FrontiersReqPayload};
+use burst_network::{Channel, token_bucket::TokenBucket};
+use burst_nullable_clock::SteadyClock;
+use burst_types::{Account, BlockHash};
+use burst_utils::stats::{DetailType, StatType, Stats};
 
 use super::channel_waiter::ChannelWaiter;
 use crate::bootstrap::{AscPullQuerySpec, BootstrapPromise, PollResult, PromiseContext};
@@ -132,7 +132,7 @@ mod tests {
         BootstrapConfig, progress, progress_state,
         state::{BootstrapLogic, CandidateAccountsConfig, FrontierScan},
     };
-    use rsnano_network::Network;
+    use burst_network::Network;
     use std::sync::{Mutex, RwLock};
 
     #[test]

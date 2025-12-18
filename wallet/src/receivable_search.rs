@@ -3,7 +3,7 @@ use std::sync::Arc;
 use tracing::warn;
 
 use super::Wallets;
-use rsnano_utils::{CancellationToken, ticker::Tickable};
+use burst_utils::{CancellationToken, ticker::Tickable};
 
 pub struct ReceivableSearch {
     wallets: Arc<Wallets>,

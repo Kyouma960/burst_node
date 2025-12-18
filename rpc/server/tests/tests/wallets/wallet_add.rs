@@ -1,5 +1,5 @@
-use rsnano_rpc_messages::WalletAddArgs;
-use rsnano_types::{PublicKey, RawKey, WalletId};
+use burst_rpc_messages::WalletAddArgs;
+use burst_types::{PublicKey, RawKey, WalletId};
 use test_helpers::{System, assert_timely2, setup_rpc_client_and_server};
 
 #[test]

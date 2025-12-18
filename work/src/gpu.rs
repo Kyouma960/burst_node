@@ -3,7 +3,7 @@ use ocl::{
     builders::{DeviceSpecifier, ProgramBuilder},
     flags::MemFlags,
 };
-use rsnano_types::Root;
+use burst_types::Root;
 use tracing::info;
 
 use crate::OpenClConfig;

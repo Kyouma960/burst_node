@@ -3,9 +3,9 @@ use std::{
     time::Duration,
 };
 
-use rsnano_network::ChannelDirection;
-use rsnano_node::utils::RateCalculator;
-use rsnano_nullable_clock::Timestamp;
+use burst_network::ChannelDirection;
+use burst_node::utils::RateCalculator;
+use burst_nullable_clock::Timestamp;
 
 use crate::message_collection::RecordedMessage;
 

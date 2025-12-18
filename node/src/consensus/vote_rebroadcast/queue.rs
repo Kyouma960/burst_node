@@ -6,8 +6,8 @@ use std::{
     },
 };
 
-use rsnano_types::{BlockHash, PublicKey, Signature, Vote, VoteError};
-use rsnano_utils::{
+use burst_types::{BlockHash, PublicKey, Signature, Vote, VoteError};
+use burst_utils::{
     container_info::{ContainerInfo, ContainerInfoProvider},
     fair_queue::FairQueue,
     stats::{DetailType, StatType, Stats},

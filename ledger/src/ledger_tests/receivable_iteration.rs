@@ -1,5 +1,5 @@
 use crate::{AnySet, Ledger};
-use rsnano_types::{Account, BlockHash, PendingInfo, PendingKey};
+use burst_types::{Account, BlockHash, PendingInfo, PendingKey};
 
 #[test]
 fn empty() {

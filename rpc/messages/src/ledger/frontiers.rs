@@ -1,5 +1,5 @@
 use crate::{RpcCommand, RpcU64};
-use rsnano_types::Account;
+use burst_types::Account;
 use serde::{Deserialize, Serialize};
 
 impl RpcCommand {
@@ -26,7 +26,7 @@ impl FrontiersArgs {
 #[cfg(test)]
 mod tests {
     use crate::RpcCommand;
-    use rsnano_types::Account;
+    use burst_types::Account;
     use serde_json::to_string_pretty;
 
     #[test]

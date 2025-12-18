@@ -1,6 +1,6 @@
 use std::sync::{Arc, Mutex};
 
-use rsnano_utils::{CancellationToken, ticker::Tickable};
+use burst_utils::{CancellationToken, ticker::Tickable};
 
 use crate::wallets::WalletRepresentatives;
 

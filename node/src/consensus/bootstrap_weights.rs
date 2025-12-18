@@ -1,5 +1,5 @@
-use rsnano_ledger::{BootstrapWeights, RepWeightCache, RepWeights};
-use rsnano_types::{Account, Amount, Networks};
+use burst_ledger::{BootstrapWeights, RepWeightCache, RepWeights};
+use burst_types::{Account, Amount, Networks};
 use tracing::info;
 
 pub(crate) fn get_bootstrap_weights(network: Networks) -> BootstrapWeights {

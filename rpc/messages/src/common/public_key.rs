@@ -1,4 +1,4 @@
-use rsnano_types::PublicKey;
+use burst_types::PublicKey;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, PartialEq, Eq, Serialize, Deserialize)]

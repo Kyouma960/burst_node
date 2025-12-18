@@ -1,6 +1,6 @@
 use crate::{ledger_snapshots::Aggregator, representatives::ConsensusParams};
-use rsnano_messages::{Aggregatable, Preproposal, Proposal, ProposalHash, ProposalVote};
-use rsnano_types::{Amount, PrivateKey};
+use burst_messages::{Aggregatable, Preproposal, Proposal, ProposalHash, ProposalVote};
+use burst_types::{Amount, PrivateKey};
 use std::collections::HashMap;
 
 #[derive(Default)]
@@ -115,9 +115,9 @@ impl State {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rsnano_ledger::RepWeights;
-    use rsnano_messages::ProposalHash;
-    use rsnano_types::Amount;
+    use burst_ledger::RepWeights;
+    use burst_messages::ProposalHash;
+    use burst_types::Amount;
 
     #[test]
     fn discard_preproposal_with_different_snapshot_number_than_current() {

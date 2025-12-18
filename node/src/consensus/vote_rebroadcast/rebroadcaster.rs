@@ -6,8 +6,8 @@ use super::{
     rebroadcast_processor::{RebroadcastProcessor, RebroadcastStats},
 };
 use crate::transport::MessageFlooder;
-use rsnano_ledger::RepWeightCache;
-use rsnano_nullable_clock::SteadyClock;
+use burst_ledger::RepWeightCache;
+use burst_nullable_clock::SteadyClock;
 
 /// Rebroadcasts votes that were created by other nodes
 pub(crate) struct VoteRebroadcaster {
@@ -99,9 +99,9 @@ mod tests {
         consensus::{RepTiers, RepTiersConsumer},
         transport::FloodEvent,
     };
-    use rsnano_output_tracker::OutputTrackerMt;
-    use rsnano_types::Vote;
-    use rsnano_utils::sync::OneShotNotification;
+    use burst_output_tracker::OutputTrackerMt;
+    use burst_types::Vote;
+    use burst_utils::sync::OneShotNotification;
 
     #[test]
     fn rebroadcast() {

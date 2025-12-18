@@ -11,8 +11,8 @@ use futures_util::{SinkExt, StreamExt};
 use tokio::sync::{mpsc, oneshot};
 use tracing::{info, trace, warn};
 
-use rsnano_wallet::Wallets;
-use rsnano_websocket_messages::{
+use burst_wallet::Wallets;
+use burst_websocket_messages::{
     ConfirmationJsonOptions, MessageEnvelope, Request, Topic, to_topic,
 };
 

@@ -1,6 +1,6 @@
 use crate::bootstrap::{BootstrapServer, state::Priority};
 use num::clamp;
-use rsnano_messages::BlocksAckPayload;
+use burst_messages::BlocksAckPayload;
 use std::cmp::min;
 
 /// Decides how many blocks to pull

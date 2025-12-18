@@ -1,6 +1,6 @@
-use rsnano_nullable_lmdb::{ReadTransaction, Transaction};
-use rsnano_store_lmdb::LmdbStore;
-use rsnano_types::{
+use burst_nullable_lmdb::{ReadTransaction, Transaction};
+use burst_store_lmdb::LmdbStore;
+use burst_types::{
     Account, AccountInfo, Amount, BlockHash, ConfirmationHeightInfo, PendingInfo, PendingKey,
     SavedBlock,
 };
@@ -229,7 +229,7 @@ impl<'a> Iterator for ConfirmedReceivableIterator<'a> {
 #[cfg(test)]
 mod tests {
     use crate::Ledger;
-    use rsnano_types::{
+    use burst_types::{
         Account, AccountInfo, BlockHash, ConfirmationHeightInfo, PendingInfo, PendingKey,
         SavedBlock,
     };

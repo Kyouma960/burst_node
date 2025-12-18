@@ -1,6 +1,6 @@
 use indexmap::IndexMap;
-use rsnano_ledger::DEV_GENESIS_ACCOUNT;
-use rsnano_types::Amount;
+use burst_ledger::DEV_GENESIS_ACCOUNT;
+use burst_types::Amount;
 use test_helpers::{System, setup_rpc_client_and_server};
 
 #[test]

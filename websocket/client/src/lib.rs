@@ -2,8 +2,8 @@
 extern crate strum_macros;
 
 use futures_util::{Sink, SinkExt, Stream, StreamExt};
-use rsnano_types::Account;
-use rsnano_websocket_messages::{ConfirmationJsonOptions, MessageEnvelope, Request, Topic};
+use burst_types::Account;
+use burst_websocket_messages::{ConfirmationJsonOptions, MessageEnvelope, Request, Topic};
 use std::{
     collections::HashSet,
     pin::Pin,

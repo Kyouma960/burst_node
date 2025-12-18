@@ -1,4 +1,4 @@
-use rsnano_types::Account;
+use burst_types::Account;
 use serde::Deserialize;
 use serde_json::Value;
 use std::collections::HashSet;

@@ -5,9 +5,9 @@ use tokio::{select, sync::mpsc::Sender, time::sleep};
 use tokio_util::sync::CancellationToken;
 use tracing::info;
 
-use rsnano_rpc_client::NanoRpcClient;
-use rsnano_rpc_messages::SendArgs;
-use rsnano_types::{
+use burst_rpc_client::NanoRpcClient;
+use burst_rpc_messages::SendArgs;
+use burst_types::{
     Account, Amount, Block, BlockHash, JsonBlock, Link, PrivateKey, PublicKey, RawKey,
     StateBlockArgs, WalletId,
 };

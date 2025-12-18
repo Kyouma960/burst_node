@@ -1,4 +1,4 @@
-use crate::{Account, BlockHash, DeserializationError, UnixTimestamp, read_u8, read_u64_ne};
+use crate::{Account, DeserializationError, UnixTimestamp, read_u8, read_u64_ne};
 use num::FromPrimitive;
 use serde::{Deserialize, Serialize};
 use std::collections::HashSet;
@@ -78,7 +78,7 @@ impl VerificationInfo {
         size += 4; // circle_validator_votes count
         size += self.circle_validator_votes.len() * Account::SERIALIZED_SIZE;
         size += 4; // random_validator_votes count
-        for vote in &self.random_validator_votes {
+        for _vote in &self.random_validator_votes {
             size += Account::SERIALIZED_SIZE; // validator
             size += 1; // vote (1 byte: 0=None, 1=Some(false), 2=Some(true))
             size += 8; // stake_amount
