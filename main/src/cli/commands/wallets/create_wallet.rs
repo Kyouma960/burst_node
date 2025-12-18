@@ -2,7 +2,7 @@ use crate::cli::{GlobalArgs, build_node};
 use anyhow::anyhow;
 use clap::Parser;
 use rand::Rng;
-use rsnano_types::{RawKey, WalletId};
+use burst_types::{RawKey, WalletId};
 
 #[derive(Parser, PartialEq, Debug)]
 pub(crate) struct CreateWalletArgs {

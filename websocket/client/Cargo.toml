@@ -1,11 +1,11 @@
 [package]
-name = "rsnano_websocket_client"
+name = "burst_websocket_client"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-rsnano_types = { path = "../../types" }
-rsnano_websocket_messages = { path = "../messages" }
+burst_types = { path = "../../types" }
+burst_websocket_messages = { path = "../messages" }
 tokio-tungstenite = "0"
 tokio = { version = "1", features = [
     "net",

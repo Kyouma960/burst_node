@@ -1,5 +1,5 @@
 [package]
-name = "rsnano_nullable_env"
+name = "burst_nullable_env"
 version = "0.1.0"
 edition = "2024"
 

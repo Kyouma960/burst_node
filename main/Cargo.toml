@@ -1,29 +1,29 @@
 [package]
-name = "rsnano_node_main"
+name = "burst_node_main"
 version = "0.1.0"
 authors = ["Gustav Schauwecker <service@simpago.com>"]
 edition = "2024"
 
 [features]
-ledger_snapshots = ["rsnano_node/ledger_snapshots", "rsnano_rpc_server/ledger_snapshots"]
+ledger_snapshots = ["burst_node/ledger_snapshots", "burst_rpc_server/ledger_snapshots"]
 
 [[bin]]
-name = "rsnano_node"
+name = "burst_node"
 path = "src/bin.rs"
 
 [dependencies]
-rsnano_types = { path = "../types" }
-rsnano_utils = { path = "../utils" }
-rsnano_messages = { path = "../messages" }
-rsnano_store_lmdb = { path = "../store_lmdb" }
-rsnano_node = { path = "../node" }
-rsnano_ledger = { path = "../ledger" }
-rsnano_rpc_server = { path = "../rpc/server" }
-rsnano_daemon = { path = "../daemon" }
-rsnano_nullable_console = { path = "../nullables/console" }
-rsnano_nullable_tracing_subscriber = { path = "../nullables/tracing_subscriber" }
-rsnano_nullable_lmdb = { path = "../nullables/lmdb" }
-rsnano_nullable_fs = { path = "../nullables/fs" }
+burst_types = { path = "../types" }
+burst_utils = { path = "../utils" }
+burst_messages = { path = "../messages" }
+burst_store_lmdb = { path = "../store_lmdb" }
+burst_node = { path = "../node" }
+burst_ledger = { path = "../ledger" }
+burst_rpc_server = { path = "../rpc/server" }
+burst_daemon = { path = "../daemon" }
+burst_nullable_console = { path = "../nullables/console" }
+burst_nullable_tracing_subscriber = { path = "../nullables/tracing_subscriber" }
+burst_nullable_lmdb = { path = "../nullables/lmdb" }
+burst_nullable_fs = { path = "../nullables/fs" }
 tracing = "0.1"
 clap = { version = "4", features = ["derive"] }
 anyhow = "1.0.100"

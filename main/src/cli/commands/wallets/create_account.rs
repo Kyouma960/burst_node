@@ -1,7 +1,7 @@
 use crate::cli::{GlobalArgs, build_node};
 use anyhow::anyhow;
 use clap::Parser;
-use rsnano_types::{Account, WalletId};
+use burst_types::{Account, WalletId};
 
 #[derive(Parser, PartialEq, Debug)]
 pub(crate) struct CreateAccountArgs {

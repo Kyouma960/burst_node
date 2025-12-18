@@ -1,23 +1,23 @@
 [package]
-name = "rsnano_rpc_server"
+name = "burst_rpc_server"
 version = "0.1.0"
 edition = "2024"
 
 [features]
-ledger_snapshots = ["rsnano_rpc_messages/ledger_snapshots"]
+ledger_snapshots = ["burst_rpc_messages/ledger_snapshots"]
 
 [dependencies]
-rsnano_types = { path = "../../types" }
-rsnano_utils = { path = "../../utils" }
-rsnano_messages = { path = "../../messages" }
-rsnano_network = { path = "../../network" }
-rsnano_node = { path = "../../node" }
-rsnano_ledger = { path = "../../ledger" }
-rsnano_wallet = { path = "../../wallet" }
-rsnano_rpc_client = { path = "../client" }
-rsnano_nullable_clock = { path = "../../nullables/clock" }
-rsnano_rpc_messages = { path = "../messages" }
-rsnano_store_lmdb = { path = "../../store_lmdb" }
+burst_types = { path = "../../types" }
+burst_utils = { path = "../../utils" }
+burst_messages = { path = "../../messages" }
+burst_network = { path = "../../network" }
+burst_node = { path = "../../node" }
+burst_ledger = { path = "../../ledger" }
+burst_wallet = { path = "../../wallet" }
+burst_rpc_client = { path = "../client" }
+burst_nullable_clock = { path = "../../nullables/clock" }
+burst_rpc_messages = { path = "../messages" }
+burst_store_lmdb = { path = "../../store_lmdb" }
 serde = { version = "1", features = ["derive"] }
 serde_json = { version = "1", features = ["preserve_order"] }
 tokio = { version = "1", features = ["net"] }
@@ -30,4 +30,4 @@ indexmap = "2"
 
 [dev-dependencies]
 test_helpers = { path = "../../tools/test_helpers" }
-rsnano_utils = { path = "../../utils" }
+burst_utils = { path = "../../utils" }

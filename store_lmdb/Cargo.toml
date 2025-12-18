@@ -1,5 +1,5 @@
 [package]
-name = "rsnano_store_lmdb"
+name = "burst_store_lmdb"
 version = "0.1.0"
 edition = "2024"
 
@@ -10,12 +10,12 @@ output_tracking = []
 ledger_snapshots = []
 
 [dev-dependencies]
-rsnano_store_lmdb = { path = ".", features = ["output_tracking"] }
+burst_store_lmdb = { path = ".", features = ["output_tracking"] }
 
 [dependencies]
-rsnano_types = { path = "../types" }
-rsnano_output_tracker = { path = "../nullables/output_tracker" }
-rsnano_nullable_lmdb = { path = "../nullables/lmdb" }
+burst_types = { path = "../types" }
+burst_output_tracker = { path = "../nullables/output_tracker" }
+burst_nullable_lmdb = { path = "../nullables/lmdb" }
 primitive-types = "0"
 anyhow = "1"
 uuid = { version = "1", features = ["v4"] }

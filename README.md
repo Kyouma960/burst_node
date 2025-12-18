@@ -6,16 +6,16 @@
 [![Discord](https://img.shields.io/badge/discord-join%20chat-orange.svg)](https://discord.gg/kBwvAyxEWE)
 
 
-### What is RsNano?
+### What is BURST?
 
-RsNano is a full Nano node written in Rust.
+BURST is a cryptocurrency node implementation written in Rust, based on the Nano codebase but modified for the BURST ecosystem.
 
-### What is Nano?
+### What is BURST?
 
-Nano is a digital payment protocol designed to be accessible and lightweight, 
+BURST is a digital payment protocol designed to be accessible and lightweight, 
 with a focus on removing inefficiencies present in other cryptocurrencies. 
 With ultrafast transactions and zero fees on a secure, green and decentralized 
-network, this makes Nano ideal for everyday transactions.
+network, BURST features BRN (Burn Points) and TRST (Trust Tokens) with humanity verification.
 
 ### Links & Resources
 
@@ -25,44 +25,27 @@ network, this makes Nano ideal for everyday transactions.
 
 ### Installation
 
-## Option 1: Run the official docker image
+## Option 1: Build from source
 
-    docker run -p 7075:7075 -v ~/Nano:/root/Nano simpago/rsnano:V2.0 --network=live node run
+Currently you can build BURST on Linux and on Mac.
 
-## Option 2: Build your own docker image
+To just build and run the burst_node:
 
-    docker build -f tools/scripts/docker/node/Dockerfile -t rsnano-node https://github.com/simpago/rsnano-node.git#releases/v2
-
-    docker run -p 7075:7075 -v ~/Nano:/root/Nano rsnano-node:latest --network=live node run
-
-## Option 3: Build from source
-
-Currently you can only build RsNano on Linux and on Mac.
-
-To just build and run the rsnano_node:
-
-    git clone https://github.com/simpago/rsnano-node.git
-    git switch releases/v2
-    cd rsnano-node/main
+    cd burst_node/main
     cargo build --release
-    cargo run --release -- --network=live node run
+    cargo run --release -- --network=dev --data-path=../burst_data node run
 
-To install and run the rsnano_node executable:
+To install and run the burst_node executable:
 
-    git clone https://github.com/simpago/rsnano-node.git
-    git switch releases/v2
-    cd rsnano-node
+    cd burst_node
     cargo install --path main
-    rsnano_node --network=live node run
+    burst_node --network=dev --data-path=./burst_data node run
 
 ## Running it with a GUI
 
-You can even run an RsNano node with a GUI that looks like this:
-![RsNano Insight App](https://raw.githubusercontent.com/rsnano-node/rsnano-node/refs/heads/develop/doc/insight_app.png)
+You can run a BURST node with a GUI:
 
-Run these commands:
-
-    cd rsnano-node/tools/insight
+    cd burst_node/tools/insight
     cargo run --release
 
 ### Contact us

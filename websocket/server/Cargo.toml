@@ -1,5 +1,5 @@
 [package]
-name = "rsnano_websocket_server"
+name = "burst_websocket_server"
 version = "0.1.0"
 edition = "2024"
 
@@ -8,12 +8,12 @@ anyhow = "1"
 futures-util = { version = "0", features = ["sink"] }
 num-derive = "0"
 num-traits = "0"
-rsnano_types = { path = "../../types" }
-rsnano_messages = { path = "../../messages" }
-rsnano_ledger = { path = "../../ledger" }
-rsnano_wallet = { path = "../../wallet" }
-rsnano_node = { path = "../../node" }
-rsnano_websocket_messages = { path = "../messages" }
+burst_types = { path = "../../types" }
+burst_messages = { path = "../../messages" }
+burst_ledger = { path = "../../ledger" }
+burst_wallet = { path = "../../wallet" }
+burst_node = { path = "../../node" }
+burst_websocket_messages = { path = "../messages" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 tokio = { version = "1", features = [
@@ -29,5 +29,5 @@ tracing = "0"
 
 [dev-dependencies]
 test_helpers = { path = "../../tools/test_helpers" }
-rsnano_nullable_tcp = { path = "../../nullables/tcp" }
-rsnano_websocket_client = { path = "../client" }
+burst_nullable_tcp = { path = "../../nullables/tcp" }
+burst_websocket_client = { path = "../client" }
