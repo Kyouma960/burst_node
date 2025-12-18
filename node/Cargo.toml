@@ -82,6 +82,23 @@ mock_instant = "0"
 tracing-test = "0"
 test_helpers = { path = "../tools/test_helpers" }
 ntest = "0.9.3"
+burst_types = { path = "../types" }
+burst_utils = { path = "../utils" }
+burst_messages = { path = "../messages" }
+burst_network = { path = "../network" }
+burst_store_lmdb = { path = "../store_lmdb" }
+burst_ledger = { path = "../ledger" }
+burst_node = { path = "." }
+burst_nullable_clock = { path = "../nullables/clock" }
+burst_nullable_tcp = { path = "../nullables/tcp" }
+burst_nullable_lmdb = { path = "../nullables/lmdb" }
+burst_nullable_random = { path = "../nullables/random" }
+burst_nullable_env = { path = "../nullables/env" }
+burst_output_tracker = { path = "../nullables/output_tracker" }
+burst_work = { path = "../work" }
+burst_wallet = { path = "../wallet" }
+burst_websocket_messages = { path = "../websocket/messages" }
+burst_network_protocol = { path = "../network_protocol" }
 
 [build-dependencies]
 build-info-build = "0.0.42"

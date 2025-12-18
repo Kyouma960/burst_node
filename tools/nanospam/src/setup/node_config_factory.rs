@@ -3,7 +3,7 @@ use std::{fs::remove_dir_all, path::Path};
 use tracing::info;
 
 use crate::cli_args::CliArgs;
-use rsnano_types::{Block, BlockHash, PrivateKey};
+use burst_types::{Block, BlockHash, PrivateKey};
 
 pub(crate) const GENESIS_BLOCK: &str = r#"{
     "type": "open",

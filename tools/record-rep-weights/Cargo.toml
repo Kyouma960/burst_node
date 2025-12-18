@@ -4,9 +4,9 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-rsnano_types = { path = "../../types" }
-rsnano_rpc_messages = { path = "../../rpc/messages" }
-rsnano_rpc_client = { path = "../../rpc/client" }
+burst_types = { path = "../../types" }
+burst_rpc_messages = { path = "../../rpc/messages" }
+burst_rpc_client = { path = "../../rpc/client" }
 anyhow = "1"
 tokio = { version = "1", features = [
     "rt",

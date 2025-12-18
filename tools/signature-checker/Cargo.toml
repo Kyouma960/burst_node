@@ -4,8 +4,8 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-rsnano_types = { path = "../../types" }
-rsnano_ledger = { path = "../../ledger" }
-rsnano_store_lmdb = { path = "../../store_lmdb" }
-rsnano_nullable_lmdb = { path = "../../nullables/lmdb" }
+burst_types = { path = "../../types" }
+burst_ledger = { path = "../../ledger" }
+burst_store_lmdb = { path = "../../store_lmdb" }
+burst_nullable_lmdb = { path = "../../nullables/lmdb" }
 ed25519-dalek-blake2b = "1.0.2"

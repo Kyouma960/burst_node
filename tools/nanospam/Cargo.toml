@@ -1,22 +1,22 @@
 [package]
-name = "nanospam"
+name = "burstspam"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-rsnano_nullable_clock = { path = "../../nullables/clock" }
-rsnano_nullable_tcp = { path = "../../nullables/tcp" }
-rsnano_nullable_tracing_subscriber = { path = "../../nullables/tracing_subscriber" }
-rsnano_nullable_env = { path = "../../nullables/env" }
-rsnano_types = { path = "../../types" }
-rsnano_utils = { path = "../../utils" }
-rsnano_messages = { path = "../../messages" }
-rsnano_network = { path = "../../network" }
-rsnano_network_protocol = { path = "../../network_protocol" }
-rsnano_websocket_messages = { path = "../../websocket/messages" }
-rsnano_websocket_client = { path = "../../websocket/client" }
-rsnano_rpc_client = { path = "../../rpc/client" }
-rsnano_rpc_messages = { path = "../../rpc/messages" }
+burst_nullable_clock = { path = "../../nullables/clock" }
+burst_nullable_tcp = { path = "../../nullables/tcp" }
+burst_nullable_tracing_subscriber = { path = "../../nullables/tracing_subscriber" }
+burst_nullable_env = { path = "../../nullables/env" }
+burst_types = { path = "../../types" }
+burst_utils = { path = "../../utils" }
+burst_messages = { path = "../../messages" }
+burst_network = { path = "../../network" }
+burst_network_protocol = { path = "../../network_protocol" }
+burst_websocket_messages = { path = "../../websocket/messages" }
+burst_websocket_client = { path = "../../websocket/client" }
+burst_rpc_client = { path = "../../rpc/client" }
+burst_rpc_messages = { path = "../../rpc/messages" }
 anyhow = "1.0.100"
 tokio = { version = "1.48.0", features = ["macros", "rt", "rt-multi-thread", "net", "io-util"] }
 tokio-scoped = "0.2.0"

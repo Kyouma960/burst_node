@@ -31,3 +31,14 @@ indexmap = "2"
 [dev-dependencies]
 test_helpers = { path = "../../tools/test_helpers" }
 burst_utils = { path = "../../utils" }
+burst_types = { path = "../../types" }
+burst_messages = { path = "../../messages" }
+burst_network = { path = "../../network" }
+burst_node = { path = "../../node" }
+burst_ledger = { path = "../../ledger" }
+burst_wallet = { path = "../../wallet" }
+burst_rpc_client = { path = "../client" }
+burst_rpc_messages = { path = "../messages" }
+burst_store_lmdb = { path = "../../store_lmdb" }
+burst_nullable_clock = { path = "../../nullables/clock" }
+burst_websocket_server = { path = "../../websocket/server" }

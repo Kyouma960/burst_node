@@ -1,27 +1,27 @@
 [package]
-name = "rsnano-insight"
+name = "burst-insight"
 version = "0.1.0"
 edition = "2024"
 
 [features]
 ledger_snapshots = [
-	"rsnano_node/ledger_snapshots",
-	"rsnano_daemon/ledger_snapshots",
+	"burst_node/ledger_snapshots",
+	"burst_daemon/ledger_snapshots",
 ]
 
 [dependencies]
 eframe = "0.33.2"
 egui_extras = "0.33.2"
-rsnano_nullable_clock = { path = "../../nullables/clock" }
-rsnano_nullable_tracing_subscriber = { path = "../../nullables/tracing_subscriber" }
-rsnano_types = { path = "../../types" }
-rsnano_utils = { path = "../../utils" }
-rsnano_messages = { path = "../../messages" }
-rsnano_network = { path = "../../network" }
-rsnano_store_lmdb = { path = "../../store_lmdb" }
-rsnano_node = { path = "../../node" }
-rsnano_daemon = { path = "../../daemon" }
-rsnano_ledger = { path = "../../ledger" }
+burst_nullable_clock = { path = "../../nullables/clock" }
+burst_nullable_tracing_subscriber = { path = "../../nullables/tracing_subscriber" }
+burst_types = { path = "../../types" }
+burst_utils = { path = "../../utils" }
+burst_messages = { path = "../../messages" }
+burst_network = { path = "../../network" }
+burst_store_lmdb = { path = "../../store_lmdb" }
+burst_node = { path = "../../node" }
+burst_daemon = { path = "../../daemon" }
+burst_ledger = { path = "../../ledger" }
 tokio = { version = "1", features = ["rt-multi-thread"] }
 num-format = "0.4.4"
 num = "0"

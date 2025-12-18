@@ -2,8 +2,8 @@ use crate::AccountBalanceResponse;
 use anyhow::{Ok, Result, anyhow};
 use reqwest::Client;
 pub use reqwest::Url;
-use rsnano_rpc_messages::*;
-use rsnano_types::{
+use burst_rpc_messages::*;
+use burst_types::{
     Account, Amount, BlockHash, HashOrAccount, JsonBlock, PublicKey, RawKey, WalletId, WorkNonce,
 };
 use serde::Serialize;

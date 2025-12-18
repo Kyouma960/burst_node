@@ -6,7 +6,7 @@ use std::{
 use tokio::time::sleep;
 use tracing::info;
 
-use rsnano_rpc_client::NanoRpcClient;
+use burst_rpc_client::NanoRpcClient;
 
 use crate::{
     cli_args::CliArgs,

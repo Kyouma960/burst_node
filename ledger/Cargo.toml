@@ -10,6 +10,12 @@ ledger_snapshots = ["burst_store_lmdb/ledger_snapshots"]
 
 [dev-dependencies]
 burst_store_lmdb = { path = "../store_lmdb", features=["output_tracking"]}
+burst_types = { path = "../types" }
+burst_work = { path = "../work" }
+burst_utils = { path = "../utils" }
+burst_nullable_lmdb = { path = "../nullables/lmdb" }
+burst_nullable_env = { path = "../nullables/env" }
+burst_output_tracker = { path = "../nullables/output_tracker" }
 
 [dependencies]
 burst_types = { path = "../types" }
