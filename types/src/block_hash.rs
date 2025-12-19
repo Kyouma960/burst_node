@@ -5,6 +5,7 @@ use blake2::{
     Blake2bVar,
     digest::{Update, VariableOutput},
 };
+use burst_nullable_random::NullableRng;
 use rand::Rng;
 
 u256_struct!(Blake2Hash);
@@ -14,7 +15,8 @@ pub type BlockHash = Blake2Hash;
 
 impl Blake2Hash {
     pub fn random() -> Self {
-        BlockHash::from_bytes(rand::rng().random())
+        let mut rng = NullableRng::rng();
+        BlockHash::from_bytes(rng.random())
     }
 }
 

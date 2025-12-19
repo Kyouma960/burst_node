@@ -3,7 +3,7 @@
 use burst_nullable_lmdb::Transaction;
 use burst_store_lmdb::LmdbStore;
 use burst_types::{
-    Account, BlockHash, UnixTimestamp, VerificationInfo, calculate_brn,
+    Account, BlockHash, UnixTimestamp, VerificationInfo,
 };
 
 /// Get verification info for an account, or return default (unverified)

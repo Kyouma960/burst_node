@@ -5,6 +5,7 @@ use std::{
     time::{Duration, Instant},
 };
 
+use burst_nullable_random::NullableRng;
 use rand::Rng;
 
 use burst_messages::Cookie;
@@ -41,7 +42,7 @@ impl SynCookies {
         let ip_cookies = lock.cookies_per_ip.entry(*ip_addr).or_default();
         if *ip_cookies < self.max_cookies_per_ip {
             *ip_cookies += 1;
-            let cookie = rand::rng().random::<Cookie>();
+            let cookie = NullableRng::rng().random::<Cookie>();
             lock.cookies.insert(
                 *endpoint,
                 SynCookieInfo {

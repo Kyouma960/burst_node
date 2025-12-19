@@ -1,7 +1,7 @@
 use super::OnlineReps;
 use burst_ledger::RepWeightCache;
-use burst_types::{Amount, Networks};
-use std::{sync::Arc, time::Duration};
+use burst_types::Amount;
+use std::sync::Arc;
 
 pub struct OnlineRepsBuilder {
     rep_weights: Option<Arc<RepWeightCache>>,

@@ -3,9 +3,8 @@
 
 use burst_nullable_lmdb::WriteTransaction;
 use burst_store_lmdb::LmdbStore;
-use burst_types::{Account, BlockHash, TransactionMethod, UnixTimestamp};
+use burst_types::{Account, BlockHash, TransactionMethod};
 use crate::burst_helpers;
-use crate::burst_orphaning;
 
 /// Process Burst-specific side effects after a block is inserted
 pub fn process_burst_block_post_insert(
@@ -56,9 +55,9 @@ fn update_verification_info_after_burn(
     store: &LmdbStore,
     txn: &mut WriteTransaction,
     account: &Account,
-    trst_amount: u128,
+    _trst_amount: u128,
 ) -> anyhow::Result<()> {
-    let mut verification_info = burst_helpers::get_verification_info(store, txn, account);
+    let verification_info = burst_helpers::get_verification_info(store, txn, account);
     
     // Note: total_trst_created is calculated on-the-fly, not stored
     // But we could store it for performance if needed
@@ -92,9 +91,9 @@ fn check_and_orphan_if_needed(
 
 /// Orphan all TRST tokens that originated from a specific epoch
 fn orphan_trst_by_epoch(
-    store: &LmdbStore,
-    txn: &mut WriteTransaction,
-    epoch: &BlockHash,
+    _store: &LmdbStore,
+    _txn: &mut WriteTransaction,
+    _epoch: &BlockHash,
 ) -> anyhow::Result<()> {
     // This is a placeholder - full implementation would:
     // 1. Find all blocks with epoch == epoch_hash

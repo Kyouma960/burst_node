@@ -1,5 +1,6 @@
 use std::{sync::Arc, time::Duration};
 
+use burst_nullable_random::NullableRng;
 use rand::RngCore;
 
 use burst_messages::{AscPullReq, Message};
@@ -59,7 +60,7 @@ impl QuerySender {
             self.send_listener.emit(spec.clone());
         }
 
-        let id = rand::rng().next_u64();
+        let id = NullableRng::rng().next_u64();
         let now = self.clock.now();
         let query_type = spec.query_type();
         let channel_id = spec.channel.channel_id();

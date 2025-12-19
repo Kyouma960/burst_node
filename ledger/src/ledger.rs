@@ -21,7 +21,7 @@ use burst_store_lmdb::{
 };
 use burst_types::{
     Account, AccountInfo, Amount, Block, BlockHash, ConfirmationHeightInfo, Epoch, Link,
-    PendingInfo, PendingKey, PublicKey, QualifiedRoot, Root, SavedBlock, SnapshotNumber,
+    PendingInfo, PendingKey, PublicKey, QualifiedRoot, Root, SavedBlock,
     UnixTimestamp,
 };
 use burst_utils::{
@@ -221,7 +221,7 @@ impl NullLedgerBuilder {
 
     pub fn finish(self) -> Ledger {
         let (block_index, block_data) = self.blocks.build();
-        let mut env_builder = LmdbEnvironment::null_builder()
+        let env_builder = LmdbEnvironment::null_builder()
             .configured_database(block_index)
             .configured_database(block_data)
             .configured_database(self.accounts.build())

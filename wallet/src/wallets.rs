@@ -7,6 +7,7 @@ use std::{
     sync::{Arc, Mutex, mpsc},
 };
 
+use burst_nullable_random::NullableRng;
 use rand::{Rng, seq::IndexedRandom};
 use tracing::{debug, info, warn};
 
@@ -119,7 +120,7 @@ impl Wallets {
     fn random_representative(&self) -> PublicKey {
         self.wallets_config
             .preconfigured_representatives
-            .choose(&mut rand::rng())
+            .choose(&mut NullableRng::rng())
             .cloned()
             .unwrap_or(self.ledger.constants.genesis_account.into())
     }
@@ -734,7 +735,8 @@ impl Wallets {
         let existing = guard
             .get(&wallet_id)
             .ok_or_else(|| anyhow!("wallet not found"))?;
-        let id = WalletId::from_bytes(rand::rng().random());
+        let mut rng = NullableRng::rng();
+        let id = WalletId::from_bytes(rng.random());
         let temp = LmdbWalletStore::new_from_json(
             1,
             self.kdf.clone(),

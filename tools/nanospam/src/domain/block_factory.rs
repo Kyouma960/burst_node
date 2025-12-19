@@ -1,3 +1,4 @@
+use burst_nullable_random::NullableRng;
 use rand::Rng;
 
 use burst_types::{Amount, Block, BlockHash, Link, PublicKey, StateBlockArgs, WorkNonce};
@@ -139,7 +140,8 @@ fn create_send_or_receive_block(account_map: &mut AccountMap, is_fork: bool) -> 
     } else if let Some(state) = account_map.random_account_that_can_send() {
         assert!(state.confirmed());
         let destination = account_map.random_account().unwrap();
-        let new_balance: Amount = rand::rng().random_range(..state.balance.number()).into();
+        let mut rng = NullableRng::rng();
+        let new_balance: Amount = rng.random_range(..state.balance.number()).into();
         let amount_sent = state.balance - new_balance;
 
         let send: Block = StateBlockArgs {
@@ -191,7 +193,7 @@ fn create_change_block(account_map: &mut AccountMap) -> BlockResult {
     let block: Block = StateBlockArgs {
         key: &state.key,
         previous: state.confirmed_frontier,
-        representative: PublicKey::from_bytes(rand::rng().random()),
+        representative: PublicKey::from_bytes(NullableRng::rng().random()),
         balance: state.balance,
         link: Link::ZERO,
         work: WorkNonce::new(0),

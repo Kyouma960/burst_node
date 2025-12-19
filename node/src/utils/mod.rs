@@ -8,6 +8,7 @@ use blake2::{
     Blake2bVar,
     digest::{Update, VariableOutput},
 };
+use burst_nullable_random::NullableRng;
 use rand::Rng;
 
 pub(crate) use backpressure_event_processor::{
@@ -30,6 +31,6 @@ pub fn ip_address_hash_raw(address: &Ipv6Addr, port: u16) -> u64 {
 }
 
 static RANDOM_128: LazyLock<u128> = LazyLock::new(|| {
-    let mut rng = rand::rng();
+    let mut rng = NullableRng::rng();
     u128::from_ne_bytes(rng.random::<[u8; 16]>())
 });

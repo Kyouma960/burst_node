@@ -53,17 +53,18 @@ pub fn orphan_wallet_trst(
 /// Handle orphaning for merged TRST tokens
 /// When a merged token contains illegitimate TRST, we need to mark
 /// all transactions that have this merge as their epoch as partially orphaned
+#[allow(dead_code)]
 pub fn orphan_merged_trst_proportional(
-    store: &LmdbStore,
-    txn: &mut WriteTransaction,
-    merge_hash: BlockHash,
-    illegitimate_ratio: f64, // Ratio of illegitimate TRST in the merge (0.0 to 1.0)
+    _store: &LmdbStore,
+    _txn: &mut WriteTransaction,
+    _merge_hash: BlockHash,
+    _illegitimate_ratio: f64, // Ratio of illegitimate TRST in the merge (0.0 to 1.0)
 ) -> anyhow::Result<Vec<BlockHash>> {
     // Find all transactions that have this merge as their epoch
     // This requires iterating through all blocks (expensive, but necessary)
     // In production, we might want to maintain an index of epoch -> transactions
     
-    let mut orphaned_hashes = Vec::new();
+    let orphaned_hashes = Vec::new();
     
     // For now, this is a placeholder
     // Full implementation would:
@@ -78,17 +79,18 @@ pub fn orphan_merged_trst_proportional(
 }
 
 /// Check if a TRST token is orphaned by checking its originator
+#[allow(dead_code)]
 pub fn check_trst_orphaned(
-    store: &LmdbStore,
-    txn: &dyn Transaction,
+    _store: &LmdbStore,
+    _txn: &dyn Transaction,
     epoch: &BlockHash,
 ) -> bool {
     // Find the original burn block
-    if let Some(burn_block) = store.block.get(txn, epoch) {
+    if let Some(burn_block) = _store.block.get(_txn, epoch) {
         let originator_account = burn_block.account();
         
         // Check verification status
-        if let Some(verification_info) = store.verification.get(txn, &originator_account) {
+        if let Some(verification_info) = _store.verification.get(_txn, &originator_account) {
             return !verification_info.status.can_transact();
         }
         

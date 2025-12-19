@@ -1,10 +1,10 @@
 // Burst verification voting system implementation
 // Handles circle validators (burn BRN) and random validators (stake TRST)
 
-use burst_nullable_lmdb::{Transaction, WriteTransaction};
+use burst_nullable_lmdb::WriteTransaction;
 use burst_store_lmdb::LmdbStore;
 use burst_types::{
-    Account, Amount, BlockHash, UnixTimestamp, VerificationInfo, VerificationStatus,
+    Account, Amount, UnixTimestamp, VerificationInfo, VerificationStatus,
     CIRCLE_VALIDATOR_THRESHOLD, MIN_CIRCLE_VALIDATOR_STAKE_BRN, MIN_RANDOM_VALIDATOR_STAKE_TRST,
     RANDOM_VALIDATOR_THRESHOLD, calculate_brn,
 };
@@ -307,7 +307,7 @@ pub fn process_revote_result(
 /// Random validators can vote on verification requests
 pub fn opt_in_random_validator(
     store: &LmdbStore,
-    txn: &mut WriteTransaction,
+    _txn: &mut WriteTransaction,
     account: &Account,
 ) -> anyhow::Result<()> {
     // Check if account is verified

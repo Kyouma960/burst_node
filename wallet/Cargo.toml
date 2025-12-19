@@ -10,6 +10,7 @@ burst_work = { path = "../work" }
 burst_store_lmdb = { path = "../store_lmdb" }
 burst_ledger = { path = "../ledger" }
 burst_nullable_clock = { path = "../nullables/clock" }
+burst_nullable_random = { path = "../nullables/random" }
 burst_nullable_lmdb = { path = "../nullables/lmdb" }
 anyhow = "1"
 serde = { version = "1", features = ["derive"] }

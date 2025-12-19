@@ -1,4 +1,5 @@
 use crate::{serialize_32_byte_string, u256_struct};
+use burst_nullable_random::NullableRng;
 use ctr::cipher::{KeyIvInit, StreamCipher};
 use rand::Rng;
 use std::ops::BitXorAssign;
@@ -10,7 +11,8 @@ serialize_32_byte_string!(RawKey);
 
 impl RawKey {
     pub fn random() -> Self {
-        Self::from_bytes(rand::rng().random())
+        let mut rng = NullableRng::rng();
+        Self::from_bytes(rng.random())
     }
 
     pub fn encrypt(&self, key: &RawKey, iv: &[u8; 16]) -> Self {

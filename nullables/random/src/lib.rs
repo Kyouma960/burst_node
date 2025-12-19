@@ -1,4 +1,4 @@
-use rand::{CryptoRng, Rng, RngCore};
+use rand::{CryptoRng, RngCore};
 
 pub struct NullableRng {
     strategy: RngStrategy,
@@ -31,21 +31,30 @@ impl NullableRng {
 impl RngCore for NullableRng {
     fn next_u32(&mut self) -> u32 {
         match &mut self.strategy {
-            RngStrategy::Thread => rand::thread_rng().next_u32(),
+            RngStrategy::Thread => {
+                let mut rng = rand::rng();
+                rng.next_u32()
+            },
             RngStrategy::Nulled(i) => i.next_u32(),
         }
     }
 
     fn next_u64(&mut self) -> u64 {
         match &mut self.strategy {
-            RngStrategy::Thread => rand::thread_rng().next_u64(),
+            RngStrategy::Thread => {
+                let mut rng = rand::rng();
+                rng.next_u64()
+            },
             RngStrategy::Nulled(i) => i.next_u64(),
         }
     }
 
     fn fill_bytes(&mut self, dest: &mut [u8]) {
         match &mut self.strategy {
-            RngStrategy::Thread => rand::thread_rng().fill_bytes(dest),
+            RngStrategy::Thread => {
+                let mut rng = rand::rng();
+                rng.fill_bytes(dest)
+            },
             RngStrategy::Nulled(i) => i.fill_bytes(dest),
         }
     }

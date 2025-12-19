@@ -2,7 +2,6 @@
 
 use super::BlockValidator;
 use crate::{BlockError, burst_helpers};
-use burst_nullable_lmdb::ReadTransaction;
 use burst_types::{
     TransactionMethod, UnixTimestamp,
 };

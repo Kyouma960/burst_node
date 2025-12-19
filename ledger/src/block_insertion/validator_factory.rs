@@ -12,6 +12,7 @@ pub(crate) struct BlockValidatorFactory<'a> {
 }
 
 impl<'a> BlockValidatorFactory<'a> {
+    #[allow(dead_code)]
     pub(crate) fn new(
         any: &'a dyn AnySet,
         constants: &'a LedgerConstants,

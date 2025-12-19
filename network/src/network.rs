@@ -7,6 +7,7 @@ use std::{
     time::Duration,
 };
 
+use burst_nullable_random::NullableRng;
 use rand::seq::SliceRandom;
 use tracing::{debug, warn};
 
@@ -363,7 +364,7 @@ impl Network {
 
     pub fn shuffled_channels(&self, traffic_type: TrafficType) -> Vec<Arc<Channel>> {
         let mut channels: Vec<_> = self.available_channels(traffic_type).cloned().collect();
-        let mut rng = rand::rng();
+        let mut rng = NullableRng::rng();
         channels.shuffle(&mut rng);
         channels
     }
@@ -671,7 +672,7 @@ impl Network {
             .cloned()
             .collect();
 
-        let mut rng = rand::rng();
+        let mut rng = NullableRng::rng();
         peers.shuffle(&mut rng);
         peers.truncate(endpoints.len());
 

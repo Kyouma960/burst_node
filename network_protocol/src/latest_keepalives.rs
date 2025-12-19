@@ -3,6 +3,7 @@ use std::{
     sync::{Arc, Mutex},
 };
 
+use burst_nullable_random::NullableRng;
 use rand::seq::IteratorRandom;
 
 use burst_messages::Keepalive;
@@ -42,7 +43,7 @@ impl LatestKeepalives {
 
     //TODO: randomize
     pub fn pop_random(&mut self) -> Option<Keepalive> {
-        let mut rng = rand::rng();
+        let mut rng = NullableRng::rng();
         if let Some(&channel_id) = self.entries.keys().choose(&mut rng) {
             self.entries.remove(&channel_id)
         } else {

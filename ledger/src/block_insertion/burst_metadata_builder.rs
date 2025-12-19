@@ -3,7 +3,7 @@
 use burst_nullable_lmdb::Transaction;
 use burst_store_lmdb::LmdbStore;
 use burst_types::{
-    Account, Block, BlockHash, BurstBlockMetadata, TransactionMethod, UnixTimestamp,
+    Account, Block, BurstBlockMetadata, UnixTimestamp,
 };
 use crate::burst_helpers;
 
@@ -13,7 +13,7 @@ pub fn derive_burst_metadata(
     store: &LmdbStore,
     txn: &dyn Transaction,
     block: &Block,
-    account: &Account,
+    _account: &Account,
     previous_block: Option<&burst_types::SavedBlock>,
     current_timestamp: UnixTimestamp,
 ) -> Option<BurstBlockMetadata> {
@@ -69,6 +69,7 @@ pub fn derive_burst_metadata(
 }
 
 /// Check if a block should be treated as a Burst transaction
+#[allow(dead_code)]
 pub fn is_burst_transaction(
     store: &LmdbStore,
     txn: &dyn Transaction,

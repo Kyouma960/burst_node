@@ -1,7 +1,5 @@
-use rand::{
-    rng,
-    seq::{IndexedRandom, IteratorRandom},
-};
+use burst_nullable_random::NullableRng;
+use rand::seq::{IndexedRandom, IteratorRandom};
 use burst_types::{Account, Amount, BlockHash, PrivateKey};
 use rustc_hash::{FxHashMap, FxHashSet};
 
@@ -106,7 +104,7 @@ impl AccountMap {
     }
 
     pub fn random_account(&self) -> Option<Account> {
-        self.all_accounts.choose(&mut rand::rng()).cloned()
+        self.all_accounts.choose(&mut NullableRng::rng()).cloned()
     }
 
     pub fn process_send(
@@ -243,7 +241,8 @@ impl AccountMap {
 
     pub fn random_account_that_can_send(&self) -> Option<&AccountState> {
         for _ in 0..100 {
-            let account = self.active_accounts_vec.iter().choose(&mut rng())?;
+            let mut rng = NullableRng::rng();
+            let account = self.active_accounts_vec.iter().choose(&mut rng)?;
             let state = self.account_states.get(account).unwrap();
             if state.confirmed() && !state.balance.is_zero() {
                 return Some(state);

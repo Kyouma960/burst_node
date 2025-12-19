@@ -1,4 +1,5 @@
 use super::WorkRng;
+use burst_nullable_random::NullableRng;
 use rand::Rng;
 
 pub(crate) struct XorShift1024Star {
@@ -9,7 +10,7 @@ pub(crate) struct XorShift1024Star {
 impl XorShift1024Star {
     pub fn new() -> Self {
         Self {
-            s: rand::rng().random(),
+            s: NullableRng::rng().random(),
             p: 0,
         }
     }

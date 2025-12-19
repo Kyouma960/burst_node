@@ -1,3 +1,4 @@
+use burst_nullable_random::NullableRng;
 use rand::seq::SliceRandom;
 
 use burst_network::ChannelId;
@@ -33,7 +34,8 @@ impl PeerScoring {
     }
 
     pub fn channel(&mut self, mut candidates: Vec<ChannelId>) -> Option<ChannelId> {
-        candidates.shuffle(&mut rand::rng());
+        let mut rng = NullableRng::rng();
+        candidates.shuffle(&mut rng);
         candidates
             .iter()
             .find(|channel_id| {

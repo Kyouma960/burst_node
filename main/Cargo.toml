@@ -21,6 +21,7 @@ burst_ledger = { path = "../ledger" }
 burst_rpc_server = { path = "../rpc/server" }
 burst_daemon = { path = "../daemon" }
 burst_nullable_console = { path = "../nullables/console" }
+burst_nullable_random = { path = "../nullables/random" }
 burst_nullable_tracing_subscriber = { path = "../nullables/tracing_subscriber" }
 burst_nullable_lmdb = { path = "../nullables/lmdb" }
 burst_nullable_fs = { path = "../nullables/fs" }

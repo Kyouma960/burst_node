@@ -165,12 +165,16 @@ impl HintedScheduler {
 
             // Check if block exists
             if let Some(block) = any.get_block(&current_hash) {
-                let mut forked = false;
-
-                #[cfg(feature = "ledger_snapshots")]
-                {
-                    forked = any.is_forked(&block.qualified_root());
-                }
+                let forked = {
+                    #[cfg(feature = "ledger_snapshots")]
+                    {
+                        any.is_forked(&block.qualified_root())
+                    }
+                    #[cfg(not(feature = "ledger_snapshots"))]
+                    {
+                        false
+                    }
+                };
                 // Ensure block is not already confirmed
                 let is_confirmed = self.confirming_set.contains(&current_hash)
                     || any.confirmed().block_exists(&current_hash);

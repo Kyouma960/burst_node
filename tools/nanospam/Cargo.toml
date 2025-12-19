@@ -5,6 +5,7 @@ edition = "2024"
 
 [dependencies]
 burst_nullable_clock = { path = "../../nullables/clock" }
+burst_nullable_random = { path = "../../nullables/random" }
 burst_nullable_tcp = { path = "../../nullables/tcp" }
 burst_nullable_tracing_subscriber = { path = "../../nullables/tracing_subscriber" }
 burst_nullable_env = { path = "../../nullables/env" }

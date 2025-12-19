@@ -1,5 +1,6 @@
 use crate::cli::{GlobalArgs, build_node};
 use anyhow::anyhow;
+use burst_nullable_random::NullableRng;
 use clap::Parser;
 use rand::Rng;
 use burst_types::{RawKey, WalletId};
@@ -17,7 +18,8 @@ pub(crate) struct CreateWalletArgs {
 impl CreateWalletArgs {
     pub(crate) fn create_wallet(&self, global_args: GlobalArgs) -> anyhow::Result<()> {
         let node = build_node(&global_args)?;
-        let wallet_id = WalletId::from_bytes(rand::rng().random());
+        let mut rng = NullableRng::rng();
+        let wallet_id = WalletId::from_bytes(rng.random());
 
         node.wallets.create(wallet_id);
         println!("{:?}", wallet_id);

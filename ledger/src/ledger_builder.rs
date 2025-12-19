@@ -4,7 +4,6 @@ use std::{
     sync::Arc,
 };
 
-use tracing::info;
 
 use burst_nullable_lmdb::LmdbEnvironmentFactory;
 use burst_store_lmdb::{

@@ -9,6 +9,7 @@ opencl = ["dep:ocl"]
 [dependencies]
 burst_types = { path = "../types" }
 burst_utils = { path = "../utils" }
+burst_nullable_random = { path = "../nullables/random" }
 tracing = "0"
 ocl = { version = "0.19", optional = true }
 rand = { version = "0.9" }
